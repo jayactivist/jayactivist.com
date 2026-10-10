@@ -284,11 +284,11 @@ footer a:hover{text-decoration:underline}
     <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Open menu"><span></span><span></span><span></span></button>
     <nav aria-label="Main">
       <ul class="menu" id="main-menu">
+        <li><a href="#shows">Shows</a></li>
+        <li><a href="#problem">Who's the problem?</a></li>
         <li><a href="#music">Music</a></li>
         <li><a href="#videos">Videos</a></li>
-        <li><a href="#shows">Shows</a></li>
         <li><a href="#listeners">Listeners</a></li>
-        <li><a href="#problem">Who's the problem?</a></li>
         <li><a href="https://jay-activist-store.myshopify.com/" target="_blank" rel="noopener">Store</a></li>
         <li>
           <details id="social-menu">
@@ -322,6 +322,54 @@ footer a:hover{text-decoration:underline}
         </div>
       </div>
       <div class="hero-art"><img src="img/mitp.jpg" alt="Maybe I'm the Problem cover art" width="560" height="560"></div>
+    </div>
+  </section>
+  <section class="sec shows" id="shows">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Shows</h2>
+        <a class="viewall" href="https://open.spotify.com/artist/6lEsbycrGkZFkJ1bvrCBGS/concerts" target="_blank" rel="noopener">All dates on Spotify</a>
+      </div>
+      <ul class="show-list">
+        <li class="show">
+          <div class="show-date"><span class="m">Oct</span><span class="d">25</span><span class="w">Sun</span></div>
+          <div class="show-info">
+            <h3>The Wren's Nest</h3>
+            <div class="meta">Atlanta, GA · 3:00 PM</div>
+          </div>
+          <span class="show-tag">On sale</span>
+          <a class="listen show-btn" href="https://open.spotify.com/concert/057hbX1raGeaHa9AIDQY77" target="_blank" rel="noopener">Tickets</a>
+        </li>
+      </ul>
+      <p class="show-note">Want Jay Activist in your city? Booking: <span class="sel">jayactivistmanagement@gmail.com</span></p>
+    </div>
+  </section>
+
+  <section class="sec problem" id="problem">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Who's the problem?</h2>
+        <span class="label">Audience participation required</span>
+      </div>
+      <div class="game">
+        <div class="card" id="card" aria-live="polite">
+          <div class="count" id="count">Case 1 of 6</div>
+          <p class="scenario" id="scenario"></p>
+          <div class="choices" id="choices">
+            <button type="button" class="me" data-a="me" id="btn-me">Me</button>
+            <button type="button" data-a="them" id="btn-them">Them</button>
+            <button type="button" data-a="both" id="btn-both">Both of us</button>
+          </div>
+          <div class="tally" id="tally" aria-hidden="true"></div>
+        </div>
+        <aside class="classified">
+          <div class="label" style="color:var(--gold)">Classified</div>
+          <div class="hl">We listen. We don't judge. You might be the problem.</div>
+          <p>Still not sure? Call the hotline and tell it to us straight.</p>
+          <div class="phone">1-800-IM-THE-PROBLEM</div>
+          <div class="phone">(404) 654-3252</div>
+        </aside>
+      </div>
     </div>
   </section>
 
@@ -382,27 +430,6 @@ footer a:hover{text-decoration:underline}
     </div>
   </section>
 
-  <section class="sec shows" id="shows">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Shows</h2>
-        <a class="viewall" href="https://open.spotify.com/artist/6lEsbycrGkZFkJ1bvrCBGS/concerts" target="_blank" rel="noopener">All dates on Spotify</a>
-      </div>
-      <ul class="show-list">
-        <li class="show">
-          <div class="show-date"><span class="m">Oct</span><span class="d">25</span><span class="w">Sun</span></div>
-          <div class="show-info">
-            <h3>The Wren's Nest</h3>
-            <div class="meta">Atlanta, GA · 3:00 PM</div>
-          </div>
-          <span class="show-tag">On sale</span>
-          <a class="listen show-btn" href="https://open.spotify.com/concert/057hbX1raGeaHa9AIDQY77" target="_blank" rel="noopener">Tickets</a>
-        </li>
-      </ul>
-      <p class="show-note">Want Jay Activist in your city? Booking: <span class="sel">jayactivistmanagement@gmail.com</span></p>
-    </div>
-  </section>
-
   <section class="sec" id="listeners">
     <div class="wrap">
       <div class="sec-head">
@@ -424,34 +451,6 @@ footer a:hover{text-decoration:underline}
           <p class="find-msg" id="find-msg" aria-live="polite"></p>
           <ol class="city-list" id="city-list"></ol>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec problem" id="problem">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Who's the problem?</h2>
-        <span class="label">Audience participation required</span>
-      </div>
-      <div class="game">
-        <div class="card" id="card" aria-live="polite">
-          <div class="count" id="count">Case 1 of 6</div>
-          <p class="scenario" id="scenario"></p>
-          <div class="choices" id="choices">
-            <button type="button" class="me" data-a="me" id="btn-me">Me</button>
-            <button type="button" data-a="them" id="btn-them">Them</button>
-            <button type="button" data-a="both" id="btn-both">Both of us</button>
-          </div>
-          <div class="tally" id="tally" aria-hidden="true"></div>
-        </div>
-        <aside class="classified">
-          <div class="label" style="color:var(--gold)">Classified</div>
-          <div class="hl">We listen. We don't judge. You might be the problem.</div>
-          <p>Still not sure? Call the hotline and tell it to us straight.</p>
-          <div class="phone">1-800-IM-THE-PROBLEM</div>
-          <div class="phone">(404) 654-3252</div>
-        </aside>
       </div>
     </div>
   </section>
