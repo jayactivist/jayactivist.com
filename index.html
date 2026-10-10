@@ -385,7 +385,7 @@ footer a:hover{text-decoration:underline}
       </div>
       <div class="game">
         <div class="card" id="card" aria-live="polite">
-          <div class="count" id="count">Case 1 of 6</div>
+          <div class="count" id="count">Case 1 of 10</div>
           <p class="scenario" id="scenario"></p>
           <div class="choices" id="choices">
             <button type="button" class="me" data-a="me" id="btn-me">Me</button>
@@ -731,8 +731,12 @@ footer a:hover{text-decoration:underline}
     "You've been “talking” for five months. Neither of you has said what this is.",
     "They texted “wyd” at 1:47am. You answered in under a minute.",
     "You said you didn't want anything serious. Now you're mad they believed you.",
-    "They post everyone's story except yours.",
+    "They watched your story in 30 seconds but left your text on read for two days.",
+    "You told them you need space. Then you texted them the same night.",
+    "You went through their following list to see who they just followed.",
+    "You both said “we're just friends.” Nobody believes you, including you.",
     "You still have their playlist on repeat. It's been a year.",
+    "You told your friends you're done. You're still texting them good morning.",
     "You knew what this was. You stayed anyway."
   ];
   const verdicts = {
@@ -767,12 +771,24 @@ footer a:hover{text-decoration:underline}
     { me:"You set the terms. They just read them out loud.",
       them:"If they saw you catching feelings and played dumb, that's on them.",
       both:"Nobody said what they meant. That's how you end up here." },
-    { me:"Checking whose story they post isn't a crime, but it's telling you something.",
-      them:"Posting everyone but you is a message, and it's not a subtle one.",
-      both:"Y'all are keeping it quiet on purpose. Ask yourself why." },
+    { me:"If you're tracking how fast they view your story, you're already in too deep.",
+      them:"Your story in 30 seconds and your text in two days? They saw it. They chose.",
+      both:"Y'all talk in views and read receipts. That's not communication." },
+    { me:"You asked for space and then filled it yourself. That's not a boundary, that's a pause.",
+      them:"If they kept reaching out until you gave in, they didn't respect the space you asked for.",
+      both:"One asked for space, the other never gave it. Neither of you meant it." },
+    { me:"Checking their following list is a full-time job you gave yourself.",
+      them:"If they gave you a reason to check, the trust was already gone.",
+      both:"When trust is low on both sides, the following list becomes evidence." },
+    { me:"If you have to keep saying “just friends,” you're trying to convince yourself.",
+      them:"They keep the “friends” label because it lets them have you without the title.",
+      both:"Everyone around y'all already knows. It's only “just friends” until somebody says it out loud." },
     { me:"A year later and still on repeat? The playlist isn't the problem.",
       them:"Leaving you the soundtrack and no closure is cold.",
       both:"Some songs just stay. Heal at your own pace." },
+    { me:"You're not done. You just announced it.",
+      them:"If they reply to every good morning, they're keeping you close on purpose.",
+      both:"Y'all keep the door cracked because neither of you wants to close it." },
     { me:"You read the terms and signed anyway. That's on you.",
       them:"If they kept the door half open, they knew what they were doing.",
       both:"You knew. They knew. Nobody said stop." }
