@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Jay Activist: Atlanta R&amp;B and hip-hop. New super single Maybe I'm the Problem out now.">
+<meta property="og:title" content="Jay Activist">
+<meta property="og:description" content="New super single Maybe I'm the Problem out now.">
+<meta property="og:image" content="https://jayactivist.com/img/mitp.jpg">
+<meta property="og:url" content="https://jayactivist.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/mitp.jpg">
+<title>Jay Activist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: label-style artist home. Slim top bar, split release banner, Music grid (+features), Videos grid, listener map, the game, Follow, footer. */
+:root{
+  --paper:#fbe9d8; --paper-2:#f6d9bf; --ink:#3a0d12; --ink-soft:#6e3a34;
+  --flame:#d2481c; --gold:#e4a72b; --line:#3a0d1233; --land:#efcfae; --border-land:#fbe9d8;
+  --ray-a:#f3c58f; --ray-b:#fbe9d8;
+  --cream:#fff8ef; --oxblood:#3a0d12;
+  --display:"Shrikhand", Georgia, serif;
+  --body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#1e0a10; --paper-2:#2b1018; --ink:#fbe3cb; --ink-soft:#d6ae96;
+  --flame:#f06a35; --gold:#f0b94a; --line:#fbe3cb26; --land:#3a1820; --border-land:#1e0a10; --ray-a:#3a1219; --ray-b:#1e0a10; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#1e0a10; --paper-2:#2b1018; --ink:#fbe3cb; --ink-soft:#d6ae96;
+  --flame:#f06a35; --gold:#f0b94a; --line:#fbe3cb26; --land:#3a1820; --border-land:#1e0a10; --ray-a:#3a1219; --ray-b:#1e0a10; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1rem;line-height:1.55;margin:0}
+a{color:inherit}
+img{max-width:100%}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+h1,h2,h3{text-wrap:balance;margin:0}
+.label{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
+
+/* ---------- top bar ---------- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--paper);border-bottom:3px solid var(--ink)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:14px;flex-wrap:wrap}
+.logo{font-family:var(--display);font-size:1.5rem;color:var(--flame);text-decoration:none;line-height:1}
+.menu{display:flex;align-items:center;gap:clamp(12px,2.2vw,26px);list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.menu a,.menu summary{font-family:var(--mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+.menu a:hover,.menu summary:hover{color:var(--flame)}
+.menu details{position:relative}
+.menu summary{list-style:none}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary::after{content:" +"}
+.menu details[open] summary::after{content:" –"}
+.drop{position:absolute;right:0;top:calc(100% + 14px);background:var(--paper);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:10px 0;min-width:190px;display:grid;z-index:2}
+.drop a{padding:8px 16px}
+.menu .cta{background:var(--flame);color:var(--cream);padding:8px 14px;border:2px solid var(--ink)}
+.menu .cta:hover{color:var(--cream);background:var(--oxblood)}
+
+/* ---------- hero ---------- */
+.hero{border-bottom:3px solid var(--ink);position:relative;overflow:hidden;background:var(--ray-b)}
+.hero::before{content:"";position:absolute;left:30%;top:50%;width:250vmax;height:250vmax;transform:translate(-50%,-50%);
+  background:repeating-conic-gradient(var(--ray-a) 0deg 6deg,var(--ray-b) 6deg 12deg);animation:spin 240s linear infinite}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.hero::before{animation:none}}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,72px);align-items:center;padding-block:clamp(40px,7vw,88px)}
+@media (max-width:760px){.hero .wrap{grid-template-columns:1fr}}
+.hero-text{display:grid;gap:clamp(12px,2vw,22px);justify-items:start}
+.kicker{background:var(--ink);color:var(--paper);padding:5px 12px}
+.hero h1{font-family:var(--display);font-weight:400;color:var(--flame);font-size:clamp(2.8rem,8vw,6.6rem);line-height:.92;text-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
+.hero h1 small{display:block;font-size:.4em;color:var(--gold);margin-bottom:.2em}
+.hero p{margin:0;max-width:40ch;font-weight:700;font-size:1.1rem;background:var(--paper);border:3px solid var(--ink);padding:10px 14px}
+.hero-art{position:relative;aspect-ratio:1/1;width:100%;max-width:520px;justify-self:center;border:4px solid var(--ink);box-shadow:12px 12px 0 var(--ink);transform:rotate(2.5deg);overflow:hidden;background:var(--paper-2)}
+.hero-art img{width:100%;height:100%;object-fit:cover;display:block}
+.listen{display:inline-block;font-weight:800;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;font-size:.95rem;
+  padding:14px 28px;background:var(--flame);color:var(--cream);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.listen:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap}
+.listen.ghost{background:var(--paper);color:var(--ink)}
+
+/* ---------- section shell ---------- */
+.sec{padding-block:clamp(48px,7vw,88px);border-bottom:3px solid var(--ink)}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+.sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,6vw,3.6rem);line-height:1;color:var(--flame)}
+.viewall{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:2px}
+.viewall:hover{color:var(--flame)}
+.sub-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:56px 0 20px;border-top:2px solid var(--ink);padding-top:16px;flex-wrap:wrap}
+.sub-head.first{margin-top:0}
+.grid.trio{grid-template-columns:repeat(3,minmax(0,1fr));max-width:calc(75% + clamp(4px,.6vw,7px))}
+@media (max-width:980px){.grid.trio{max-width:none}}
+@media (max-width:700px){.grid.trio{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.grid.duo{grid-template-columns:repeat(2,minmax(0,1fr));max-width:calc(50% + clamp(8px,1.2vw,14px))}
+@media (max-width:980px){.grid.duo{max-width:calc(66.6% + 10px)}}
+@media (max-width:700px){.grid.duo{max-width:none}}
+.sub-head h3{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,4vw,2.2rem);color:var(--flame)}
+
+/* ---------- music grid ---------- */
+.grid{display:grid;gap:clamp(16px,2.4vw,28px);grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:980px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:700px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rel{display:grid;gap:8px;align-content:start;min-width:0;text-decoration:none}
+.cover{aspect-ratio:1/1;max-width:100%;border:3px solid var(--ink);position:relative;overflow:hidden;background:var(--paper-2);transition:transform .15s, box-shadow .15s}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.rel:hover .cover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink)}
+.rel h3{font-weight:800;font-size:1rem;line-height:1.25;margin-top:4px}
+.rel .meta{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft)}
+.rel .go{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--flame);font-weight:600}
+
+/* ---------- videos ---------- */
+.vgrid{display:grid;gap:clamp(16px,2.4vw,28px);grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:860px){.vgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.vgrid{grid-template-columns:1fr}}
+.vid{display:grid;gap:8px;text-decoration:none;min-width:0}
+.thumb{aspect-ratio:16/9;max-width:100%;border:3px solid var(--ink);position:relative;display:grid;place-items:center;overflow:hidden;background:var(--paper-2);transition:transform .15s, box-shadow .15s}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vid:hover .thumb{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink)}
+.play{position:relative;width:54px;height:54px;border-radius:50%;background:var(--cream);border:3px solid var(--oxblood);display:grid;place-items:center;transition:transform .15s}
+.play::after{content:"";border-left:15px solid var(--oxblood);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:5px}
+.vid:hover .play{transform:scale(1.08)}
+.vid h3{font-weight:800;font-size:1rem;line-height:1.25}
+.vid .meta{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft)}
+
+/* ---------- shows ---------- */
+.show-list{list-style:none;margin:0;padding:0;border-top:3px solid var(--ink)}
+.show{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:clamp(14px,3vw,32px);align-items:center;padding-block:20px;border-bottom:3px solid var(--ink)}
+.show-date{display:grid;justify-items:center;width:84px;padding:8px 0;background:var(--flame);color:var(--cream);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);line-height:1}
+.show-date .m,.show-date .w{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase}
+.show-date .d{font-family:var(--display);font-size:2.4rem;margin:2px 0}
+.show-info h3{font-weight:800;font-size:clamp(1.15rem,2.6vw,1.5rem)}
+.show-info .meta{font-family:var(--mono);font-size:.8rem;color:var(--ink-soft);margin-top:4px}
+.show-tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;background:var(--gold);color:var(--oxblood);padding:4px 10px}
+.show-btn{padding:12px 24px}
+.show-note{margin:22px 0 0;color:var(--ink-soft)}
+.show-note .sel{font-family:var(--mono);color:var(--ink);user-select:all;overflow-wrap:anywhere}
+@media (max-width:620px){.show{grid-template-columns:auto minmax(0,1fr)}.show-tag{justify-self:start;grid-column:2}.show-btn{grid-column:1/-1;text-align:center}}
+
+/* ---------- listener map ---------- */
+.map-lede{max-width:52ch;margin:0 0 24px;font-size:1.05rem}
+.map-stats{display:flex;gap:clamp(20px,4vw,48px);flex-wrap:wrap;margin-bottom:24px}
+.map-stats div{display:grid}
+.map-stats b{font-family:var(--display);font-weight:400;font-size:clamp(2rem,5vw,3rem);line-height:1;color:var(--flame);font-variant-numeric:tabular-nums}
+.map-stats span{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.map-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,300px);gap:28px;align-items:start}
+@media (max-width:900px){.map-layout{grid-template-columns:1fr}}
+.map-frame{border:3px solid var(--ink);background:var(--paper);position:relative;min-width:0}
+.map-frame svg{display:block;width:100%;height:auto}
+.map-frame .land{fill:var(--land);stroke:var(--border-land);stroke-width:.6}
+.map-frame .dot{fill:var(--flame);fill-opacity:.78;stroke:var(--ink);stroke-width:1.2;cursor:pointer;transition:fill-opacity .15s}
+.map-frame .dot:hover,.map-frame .dot.on{fill:var(--gold);fill-opacity:1}
+.map-frame .pulse{fill:none;stroke:var(--flame);stroke-width:2;opacity:0}
+.map-frame .dot.on + .pulse{animation:ping 1.4s ease-out infinite}
+@keyframes ping{0%{opacity:.9;r:var(--r0)}100%{opacity:0;r:calc(var(--r0) * 3)}}
+@media (prefers-reduced-motion:reduce){.map-frame .dot.on + .pulse{animation:none}}
+.map-tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);font:700 .82rem var(--body);padding:6px 10px;white-space:nowrap;transform:translate(-50%,calc(-100% - 12px))}
+.map-note{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:.8rem;color:var(--ink-soft);text-align:center;padding:16px}
+.map-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 14px;border-top:3px solid var(--ink);font-family:var(--mono);font-size:.7rem;color:var(--ink-soft)}
+.city-panel{display:grid;gap:14px;min-width:0}
+.city-panel label{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.city-panel input{font:600 1rem var(--body);padding:12px 14px;border:3px solid var(--ink);background:var(--paper);color:var(--ink);width:100%}
+.find-msg{font-weight:700;min-height:1.4em;margin:0}
+.city-list{list-style:none;margin:0;padding:0;counter-reset:c;max-height:420px;overflow:auto;border-top:2px solid var(--ink)}
+.city-list li{counter-increment:c;display:grid;grid-template-columns:2.2rem minmax(0,1fr);gap:4px 8px;padding:9px 4px;border-bottom:1px solid var(--line);cursor:pointer}
+.city-list li::before{content:counter(c);font-family:var(--mono);font-size:.78rem;color:var(--flame);font-weight:600;grid-row:span 2;padding-top:2px}
+.city-list li:hover,.city-list li.on{background:var(--paper-2)}
+.city-list .n{font-weight:800;line-height:1.2}
+.city-list .c{font-family:var(--mono);font-size:.7rem;color:var(--ink-soft)}
+.city-list .bar-r{grid-column:2;height:5px;background:var(--line)}
+.city-list .bar-r i{display:block;height:100%;background:var(--flame)}
+
+/* ---------- game ---------- */
+.problem{background:var(--ink);color:var(--paper);border-bottom-color:var(--flame)}
+.problem .sec-head h2{color:var(--gold)}
+.problem .label{color:var(--paper);opacity:.75}
+.game{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:40px;align-items:start}
+@media (max-width:820px){.game{grid-template-columns:1fr}}
+.card{border:3px solid var(--paper);padding:28px;min-height:250px;display:flex;flex-direction:column;gap:20px}
+.card .count{font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;color:var(--gold)}
+.card .scenario{font-size:clamp(1.25rem,2.8vw,1.6rem);font-weight:700;line-height:1.35;margin:0}
+.choices{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;align-items:center}
+.choices button{font:800 1rem var(--body);padding:12px 18px;border:3px solid var(--paper);background:transparent;color:var(--paper);cursor:pointer}
+.choices button:hover{background:var(--paper);color:var(--ink)}
+.choices button.me{background:var(--flame);border-color:var(--flame);color:var(--cream)}
+.choices button.me:hover{background:var(--gold);border-color:var(--gold);color:var(--oxblood)}
+.choices .listen{box-shadow:none;border-color:var(--paper)}
+.verdict{font-family:var(--display);font-weight:400;font-size:clamp(2rem,5vw,3rem);color:var(--gold);line-height:1.05;margin:0}
+.classified{border:3px dashed var(--gold);padding:24px;display:grid;gap:12px}
+.classified .hl{font-family:var(--display);font-size:clamp(1.4rem,3.4vw,2rem);color:var(--flame);line-height:1.1}
+.classified p{margin:0}
+.phone{font-family:var(--mono);font-size:1.05rem;font-weight:600;color:var(--gold);user-select:all}
+.tally{display:flex;gap:4px}
+.tally i{flex:1;height:8px;background:color-mix(in srgb,var(--paper) 25%,transparent)}
+.tally i.me{background:var(--flame)} .tally i.them{background:var(--paper)} .tally i.both{background:var(--gold)}
+
+/* ---------- follow ---------- */
+.follow{background:var(--paper-2)}
+.follow .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:center}
+@media (max-width:820px){.follow .wrap{grid-template-columns:1fr}}
+.follow h2{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,6vw,3.6rem);line-height:1;color:var(--flame)}
+.follow p{max-width:46ch;margin:14px 0 0}
+.signup{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border:3px solid var(--ink);background:var(--paper);padding:18px 20px;box-shadow:6px 6px 0 var(--ink)}
+.signup div{display:grid;gap:2px;min-width:0}
+.signup b{font-family:var(--display);font-weight:400;font-size:1.5rem;color:var(--flame);line-height:1.1}
+.signup span{font-size:.95rem;color:var(--ink-soft)}
+.signup .listen{box-shadow:none}
+.socials{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:420px){.socials{grid-template-columns:1fr}}
+.socials a{display:flex;justify-content:space-between;align-items:center;gap:10px;text-decoration:none;border:3px solid var(--ink);background:var(--paper);padding:15px 18px;font-weight:800;transition:transform .12s, box-shadow .12s;min-width:0}
+.socials a span{font-family:var(--mono);font-weight:400;font-size:.76rem;color:var(--ink-soft);overflow-wrap:anywhere;text-align:right}
+.socials a:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+.socials a.store{background:var(--flame);color:var(--cream)}
+.socials a.store span{color:var(--cream)}
+
+/* ---------- footer ---------- */
+footer{background:var(--flame);color:var(--cream);padding-block:48px 28px}
+footer .wrap{display:grid;gap:32px}
+.foot-top{display:grid;grid-template-columns:minmax(0,1.2fr) repeat(2,minmax(0,1fr));gap:32px}
+@media (max-width:760px){.foot-top{grid-template-columns:1fr}}
+.foot-logo{font-family:var(--display);font-size:clamp(2.4rem,7vw,4rem);line-height:.95;color:var(--cream);text-shadow:3px 3px 0 var(--oxblood)}
+footer h4{margin:0 0 10px;font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;opacity:.85}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer a{text-decoration:none;font-weight:700}
+footer a:hover{text-decoration:underline}
+.email{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.email code{font-family:var(--mono);font-size:.85rem;user-select:all;overflow-wrap:anywhere}
+.email button{font:700 .75rem var(--body);background:var(--oxblood);color:var(--cream);border:0;padding:5px 10px;cursor:pointer}
+.foot-bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:2px solid var(--oxblood);padding-top:18px;font-family:var(--mono);font-size:.75rem}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="#top">Jay Activist</a>
+    <nav aria-label="Main">
+      <ul class="menu">
+        <li><a href="#music">Music</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#shows">Shows</a></li>
+        <li><a href="#listeners">Listeners</a></li>
+        <li><a href="#problem">Who's the problem?</a></li>
+        <li><a href="https://jay-activist-store.myshopify.com/" target="_blank" rel="noopener">Store</a></li>
+        <li>
+          <details id="social-menu">
+            <summary>Social</summary>
+            <div class="drop">
+              <a href="https://open.spotify.com/artist/6lEsbycrGkZFkJ1bvrCBGS" target="_blank" rel="noopener">Spotify</a>
+              <a href="https://music.apple.com/us/artist/jay-activist/1465915308" target="_blank" rel="noopener">Apple Music</a>
+              <a href="https://www.youtube.com/@JayActivist1" target="_blank" rel="noopener">YouTube</a>
+              <a href="https://www.instagram.com/thejayactivist/" target="_blank" rel="noopener">Instagram</a>
+              <a href="https://www.tiktok.com/@jayactivist" target="_blank" rel="noopener">TikTok</a>
+              <a href="https://soundcloud.com/jayactivist" target="_blank" rel="noopener">SoundCloud</a>
+            </div>
+          </details>
+        </li>
+        <li><a class="cta" href="https://mailchi.mp/05322e2709cc/jay-act" target="_blank" rel="noopener">Subscribe</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Latest release">
+    <div class="wrap">
+      <div class="hero-text">
+        <span class="label kicker">New super single · Out now</span>
+        <h1><small>Jay Activist</small>Maybe I'm the Problem</h1>
+        <p>Three tracks, self-produced. Maybe I'm the Problem, Art of Seduction Interlude, Feel Alive.</p>
+        <div class="btn-row">
+          <a class="listen" href="https://ffm.to/youtheproblem" target="_blank" rel="noopener">Listen now</a>
+          <a class="listen ghost" href="#problem">Who's the problem?</a>
+        </div>
+      </div>
+      <div class="hero-art"><img src="img/mitp.jpg" alt="Maybe I'm the Problem cover art" width="560" height="560"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="music">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Music</h2>
+        <a class="viewall" href="https://open.spotify.com/artist/6lEsbycrGkZFkJ1bvrCBGS" target="_blank" rel="noopener">View all</a>
+      </div>
+      <div class="sub-head first"><h3>Albums &amp; EPs</h3><span class="label">Projects</span></div>
+      <div class="grid trio">
+        <a class="rel" href="https://ffm.to/youtheproblem" target="_blank" rel="noopener"><div class="cover"><img src="img/mitp.jpg" alt="" loading="lazy"></div><h3>Maybe I'm the Problem</h3><div class="meta">Super single · 3 tracks · 2026</div><span class="go">Stream / Download</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/you-knew-what-this-was/6818676686" target="_blank" rel="noopener"><div class="cover"><img src="img/ykwtw.jpg" alt="" loading="lazy"></div><h3>You Knew What This Was</h3><div class="meta">Album · 9 tracks · 2025</div><span class="go">Stream / Download</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/sugar-honey-iced-tea-ep/6821020973" target="_blank" rel="noopener"><div class="cover"><img src="img/shit.jpg" alt="" loading="lazy"></div><h3>Sugar Honey Iced Tea</h3><div class="meta">EP · 4 tracks · 2025</div><span class="go">Stream / Download</span></a>
+      </div>
+
+      <div class="sub-head"><h3>The Act Pack</h3><span class="label">Series</span></div>
+      <div class="grid duo">
+        <a class="rel" href="https://music.apple.com/us/album/the-act-pack-love-edition-ep/1876981800" target="_blank" rel="noopener"><div class="cover"><img src="img/actlove.jpg" alt="" loading="lazy"></div><h3>The Act Pack Love Edition</h3><div class="meta">EP · 5 tracks · 2026</div><span class="go">Stream / Download</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/the-act-pack-vol-1-ep/1826112802" target="_blank" rel="noopener"><div class="cover"><img src="img/actvol1.jpg" alt="" loading="lazy"></div><h3>The Act Pack, Vol. 1</h3><div class="meta">EP · 6 tracks · 2025</div><span class="go">Stream / Download</span></a>
+      </div>
+
+      <div class="sub-head"><h3>Singles</h3><span class="label">Latest</span></div>
+      <div class="grid">
+        <a class="rel" href="https://music.apple.com/us/album/the-lifestyle-parade-on-tara-blvd-single/1895416297" target="_blank" rel="noopener"><div class="cover"><img src="img/lifestyle.jpg" alt="" loading="lazy"></div><h3>The Lifestyle / Parade on Tara Blvd</h3><div class="meta">Single · 2026</div><span class="go">Stream / Download</span></a>
+        <a class="rel" href="https://ffm.to/loseyouagainjay" target="_blank" rel="noopener"><div class="cover"><img src="img/lya.jpg" alt="" loading="lazy"></div><h3>Lose You Again</h3><div class="meta">Single · 2025</div><span class="go">Stream / Download</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/love-yourself-single/1810799282" target="_blank" rel="noopener"><div class="cover"><img src="img/loveyourself.jpg" alt="" loading="lazy"></div><h3>Love Yourself</h3><div class="meta">Single · 2025</div><span class="go">Stream / Download</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/sacrifices-single/1802129488" target="_blank" rel="noopener"><div class="cover"><img src="img/sacrifices.jpg" alt="" loading="lazy"></div><h3>SACRIFICES</h3><div class="meta">Single · 2025</div><span class="go">Stream / Download</span></a>
+      </div>
+
+      <div class="sub-head"><h3>Features</h3><span class="label">Appears on</span></div>
+      <div class="grid">
+        <a class="rel" href="https://music.apple.com/us/album/ghetto-angels-feat-jay-activist-single/6786405152" target="_blank" rel="noopener"><div class="cover"><img src="img/ghetto.jpg" alt="" loading="lazy"></div><h3>GHETTO ANGELS</h3><div class="meta">feat. Jay Activist · 2026</div><span class="go">Stream</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/rrc-episode-10-feat-jiah-jay-activist-pryce-single/1866855828" target="_blank" rel="noopener"><div class="cover"><img src="img/rrc.jpg" alt="" loading="lazy"></div><h3>RRC Episode 10</h3><div class="meta">feat. Jiah, Jay Activist &amp; Pryce · 2026</div><span class="go">Stream</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/ygmco-feat-calvin-merazh-jay-activist-single/1865748639" target="_blank" rel="noopener"><div class="cover"><img src="img/ygmco.jpg" alt="" loading="lazy"></div><h3>YGMCO</h3><div class="meta">feat. Calvin Merazh &amp; Jay Activist · 2026</div><span class="go">Stream</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/slide-feat-jay-activist-single/1847053138" target="_blank" rel="noopener"><div class="cover"><img src="img/slide.jpg" alt="" loading="lazy"></div><h3>Slide</h3><div class="meta">feat. Jay Activist · 2025</div><span class="go">Stream</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="videos">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Videos</h2>
+        <a class="viewall" href="https://www.youtube.com/@JayActivist1/videos" target="_blank" rel="noopener">View all</a>
+      </div>
+      <div class="vgrid">
+        <a class="vid" href="https://www.youtube.com/watch?v=FPeHYiKhoKs" target="_blank" rel="noopener"><div class="thumb"><img src="img/FPeHYiKhoKs.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></div><h3>The Lifestyle (ft. WAVY H2O)</h3><div class="meta">Visualizer</div></a>
+        <a class="vid" href="https://www.youtube.com/watch?v=pspQSCAQSA0" target="_blank" rel="noopener"><div class="thumb"><img src="img/pspQSCAQSA0.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></div><h3>Lose You Again (ft. Kaliyah Lyric)</h3><div class="meta">Official music video</div></a>
+        <a class="vid" href="https://www.youtube.com/watch?v=gBO15A4hEJo" target="_blank" rel="noopener"><div class="thumb"><img src="img/gBO15A4hEJo.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></div><h3>My Life</h3><div class="meta">Official music video</div></a>
+        <a class="vid" href="https://www.youtube.com/watch?v=-tVIai7rp9w" target="_blank" rel="noopener"><div class="thumb"><img src="img/-tVIai7rp9w.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></div><h3>See You Go</h3><div class="meta">Official visualizer</div></a>
+        <a class="vid" href="https://www.youtube.com/watch?v=YiAfT0M36UQ" target="_blank" rel="noopener"><div class="thumb"><img src="img/YiAfT0M36UQ.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></div><h3>You Knew What This Was</h3><div class="meta">Album trailer</div></a>
+        <a class="vid" href="https://www.youtube.com/watch?v=MLywlACh5p4" target="_blank" rel="noopener"><div class="thumb"><img src="img/MLywlACh5p4.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></div><h3>Tonight</h3><div class="meta">Official visualizer</div></a>
+        <a class="vid" href="https://www.youtube.com/watch?v=JLyiLOo1GVM" target="_blank" rel="noopener"><div class="thumb"><img src="img/JLyiLOo1GVM.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></div><h3>Sugar Honey Iced Tea</h3><div class="meta">Live at Center Stage 2025</div></a>
+        <a class="vid" href="https://www.youtube.com/watch?v=uln7BrAY3MQ" target="_blank" rel="noopener"><div class="thumb"><img src="img/uln7BrAY3MQ.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></div><h3>Love Yourself</h3><div class="meta">Official music video</div></a>
+        <a class="vid" href="https://www.youtube.com/watch?v=1TBlnHO-oB0" target="_blank" rel="noopener"><div class="thumb"><img src="img/1TBlnHO-oB0.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></div><h3>SACRIFICES</h3><div class="meta">Official music video</div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec shows" id="shows">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Shows</h2>
+        <a class="viewall" href="https://open.spotify.com/artist/6lEsbycrGkZFkJ1bvrCBGS/concerts" target="_blank" rel="noopener">All dates on Spotify</a>
+      </div>
+      <ul class="show-list">
+        <li class="show">
+          <div class="show-date"><span class="m">Oct</span><span class="d">25</span><span class="w">Sun</span></div>
+          <div class="show-info">
+            <h3>The Wren's Nest</h3>
+            <div class="meta">Atlanta, GA · 3:00 PM</div>
+          </div>
+          <span class="show-tag">On sale</span>
+          <a class="listen show-btn" href="https://open.spotify.com/concert/057hbX1raGeaHa9AIDQY77" target="_blank" rel="noopener">Tickets</a>
+        </li>
+      </ul>
+      <p class="show-note">Want Jay Activist in your city? Booking: <span class="sel">jayactivistmanagement@gmail.com</span></p>
+    </div>
+  </section>
+
+  <section class="sec" id="listeners">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Where you're listening</h2>
+        <span class="label" id="map-updated">Updated weekly</span>
+      </div>
+      <p class="map-lede">These are the top cities playing Jay Activist on Spotify and Apple Music right now. Find yours, and if it's not here yet, run it up.</p>
+      <div class="map-stats" id="map-stats"></div>
+      <div class="map-layout">
+        <div class="map-frame" id="map-frame">
+          <svg id="map" viewBox="0 0 960 500" role="img" aria-label="World map of top listener cities"></svg>
+          <div class="map-note" id="map-note">Loading map…</div>
+          <div class="map-tip" id="map-tip" hidden></div>
+          <div class="map-foot"><span>Circle size = Spotify + Apple Music activity</span><span id="map-source">Spotify · last 28 days</span></div>
+        </div>
+        <div class="city-panel">
+          <label for="city-find">Find your city</label>
+          <input id="city-find" type="search" placeholder="Atlanta, Lagos, London…" autocomplete="off">
+          <p class="find-msg" id="find-msg" aria-live="polite"></p>
+          <ol class="city-list" id="city-list"></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec problem" id="problem">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Who's the problem?</h2>
+        <span class="label">Audience participation required</span>
+      </div>
+      <div class="game">
+        <div class="card" id="card" aria-live="polite">
+          <div class="count" id="count">Case 1 of 6</div>
+          <p class="scenario" id="scenario"></p>
+          <div class="choices" id="choices">
+            <button type="button" class="me" data-a="me" id="btn-me">Me</button>
+            <button type="button" data-a="them" id="btn-them">Them</button>
+            <button type="button" data-a="both" id="btn-both">Both of us</button>
+          </div>
+          <div class="tally" id="tally" aria-hidden="true"></div>
+        </div>
+        <aside class="classified">
+          <div class="label" style="color:var(--gold)">Classified</div>
+          <div class="hl">We listen. We don't judge. You might be the problem.</div>
+          <p>Still not sure? Call the hotline and tell it to us straight.</p>
+          <div class="phone">1-800-IM-THE-PROBLEM</div>
+          <div class="phone">(404) 654-3252</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec follow" id="follow">
+    <div class="wrap">
+      <div>
+        <span class="label">Stay in the loop</span>
+        <h2>Follow Jay Activist</h2>
+        <p>New music, behind-the-scenes clips, and the first word on We're Just Friends.</p>
+        <div class="signup">
+          <div>
+            <b>Get on the email list</b>
+            <span>Drops, shows and pre-saves before anyone else.</span>
+          </div>
+          <a class="listen" href="https://mailchi.mp/05322e2709cc/jay-act" target="_blank" rel="noopener">Sign up</a>
+        </div>
+      </div>
+      <div class="socials">
+        <a href="https://open.spotify.com/artist/6lEsbycrGkZFkJ1bvrCBGS" target="_blank" rel="noopener">Spotify <span>Follow</span></a>
+        <a href="https://music.apple.com/us/artist/jay-activist/1465915308" target="_blank" rel="noopener">Apple Music <span>Follow</span></a>
+        <a href="https://www.youtube.com/@JayActivist1" target="_blank" rel="noopener">YouTube <span>@JayActivist1</span></a>
+        <a href="https://www.instagram.com/thejayactivist/" target="_blank" rel="noopener">Instagram <span>@thejayactivist</span></a>
+        <a href="https://www.tiktok.com/@jayactivist" target="_blank" rel="noopener">TikTok <span>@jayactivist</span></a>
+        <a href="https://soundcloud.com/jayactivist" target="_blank" rel="noopener">SoundCloud <span>jayactivist</span></a>
+        <a class="store" href="https://jay-activist-store.myshopify.com/" target="_blank" rel="noopener" style="grid-column:1/-1">Merch store <span>Shop now</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="booking">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo">Jay Activist</div>
+        <p style="margin:12px 0 0;max-width:36ch">Atlanta. R&amp;B and hip-hop with Caribbean roots.</p>
+      </div>
+      <div>
+        <h4>Booking &amp; management</h4>
+        <div class="email"><code id="mgmt">jayactivistmanagement@gmail.com</code><button type="button" data-copy="mgmt" id="copy-mgmt">Copy</button></div>
+        <h4 style="margin-top:18px">Music &amp; business</h4>
+        <div class="email"><code id="direct">jayactivist41@gmail.com</code><button type="button" data-copy="direct" id="copy-direct">Copy</button></div>
+      </div>
+      <div>
+        <h4>Listen &amp; follow</h4>
+        <ul>
+          <li><a href="https://open.spotify.com/artist/6lEsbycrGkZFkJ1bvrCBGS" target="_blank" rel="noopener">Spotify</a></li>
+          <li><a href="https://music.apple.com/us/artist/jay-activist/1465915308" target="_blank" rel="noopener">Apple Music</a></li>
+          <li><a href="https://www.youtube.com/@JayActivist1" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="https://www.instagram.com/thejayactivist/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@jayactivist" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="https://jay-activist-store.myshopify.com/" target="_blank" rel="noopener">Store</a></li>
+          <li><a href="https://mailchi.mp/05322e2709cc/jay-act" target="_blank" rel="noopener">Email list</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Jay Activist</span><span>Atlanta, GA</span></div>
+  </div>
+</footer>
+
+<!--
+  LISTENER DATA: refresh weekly from Spotify for Artists (Audience → Location → Top cities, 28 days)
+  and Apple Music for Artists (Places → Top Cities, 4 weeks).
+  Each row: [city, country, Spotify listeners, Apple Music plays, latitude, longitude]
+-->
+<script type="application/json" id="listener-data">
+{
+ "updated": "2026-10-09",
+ "source": "Spotify + Apple Music · last 28 days",
+ "showCounts": false,
+ "note": "Each row: [city, country, Spotify listeners (28 days), Apple Music plays (4 weeks), latitude, longitude]",
+ "cities": [
+  ["Barre, MA", "United States", 172, 0, 42.42, -72.1],
+  ["Lagos", "Nigeria", 169, 0, 6.52, 3.38],
+  ["Atlanta", "United States", 135, 1341, 33.75, -84.39],
+  ["Nairobi", "Kenya", 99, 0, -1.29, 36.82],
+  ["Athens", "Greece", 84, 0, 37.98, 23.73],
+  ["Istanbul", "Turkey", 80, 0, 41.01, 28.98],
+  ["Johannesburg", "South Africa", 77, 0, -26.2, 28.05],
+  ["Warsaw", "Poland", 67, 0, 52.23, 21.01],
+  ["Houston", "United States", 64, 181, 29.76, -95.37],
+  ["São Paulo", "Brazil", 61, 0, -23.55, -46.63],
+  ["New York", "United States", 57, 304, 40.71, -74.01],
+  ["Mexico City", "Mexico", 56, 0, 19.43, -99.13],
+  ["Charlotte", "United States", 54, 203, 35.23, -80.84],
+  ["Chicago", "United States", 53, 307, 41.88, -87.63],
+  ["London", "United Kingdom", 51, 0, 51.51, -0.13],
+  ["Dallas", "United States", 47, 205, 32.78, -96.8],
+  ["Washington, D.C.", "United States", 47, 248, 38.91, -77.04],
+  ["Philadelphia", "United States", 47, 144, 39.95, -75.17],
+  ["Los Angeles", "United States", 46, 166, 34.05, -118.24],
+  ["Paris", "France", 44, 0, 48.86, 2.35],
+  ["Thessaloniki", "Greece", 43, 0, 40.64, 22.94],
+  ["Budapest", "Hungary", 41, 0, 47.5, 19.04],
+  ["Montreal", "Canada", 38, 0, 45.5, -73.57],
+  ["Abuja", "Nigeria", 37, 0, 9.08, 7.4],
+  ["Accra", "Ghana", 36, 0, 5.6, -0.19],
+  ["Kuala Lumpur", "Malaysia", 36, 0, 3.14, 101.69],
+  ["Gothenburg", "Sweden", 35, 0, 57.71, 11.97],
+  ["Prague", "Czech Republic", 35, 0, 50.08, 14.44],
+  ["Bengaluru", "India", 33, 0, 12.97, 77.59],
+  ["Casablanca", "Morocco", 33, 0, 33.57, -7.59],
+  ["Detroit", "United States", 32, 232, 42.33, -83.05],
+  ["Toronto", "Canada", 32, 0, 43.65, -79.38],
+  ["Berlin", "Germany", 32, 0, 52.52, 13.4],
+  ["Miami", "United States", 29, 67, 25.76, -80.19],
+  ["Austin", "United States", 29, 45, 30.27, -97.74],
+  ["Singapore", "Singapore", 28, 0, 1.35, 103.82],
+  ["Wrocław", "Poland", 27, 0, 51.11, 17.04],
+  ["Amsterdam", "Netherlands", 27, 0, 52.37, 4.9],
+  ["Port Harcourt", "Nigeria", 27, 0, 4.82, 7.03],
+  ["İzmir", "Turkey", 26, 0, 38.42, 27.14],
+  ["Rio de Janeiro", "Brazil", 26, 0, -22.91, -43.17],
+  ["Ankara", "Turkey", 25, 0, 39.93, 32.86],
+  ["Sydney", "Australia", 25, 0, -33.87, 151.21],
+  ["St. Louis", "United States", 25, 99, 38.63, -90.2],
+  ["Itabuna", "Brazil", 25, 0, -14.79, -39.28],
+  ["Santiago", "Chile", 25, 0, -33.45, -70.67],
+  ["San Antonio", "United States", 24, 42, 29.42, -98.49],
+  ["Kraków", "Poland", 24, 0, 50.06, 19.94],
+  ["Bangkok", "Thailand", 23, 0, 13.76, 100.5],
+  ["Seattle", "United States", 23, 68, 47.61, -122.33],
+  ["Orlando", "United States", 0, 178, 28.54, -81.38],
+  ["Columbus", "United States", 0, 137, 39.96, -83.0],
+  ["Baltimore", "United States", 0, 119, 39.29, -76.61],
+  ["Nashville", "United States", 0, 112, 36.16, -86.78],
+  ["Norfolk", "United States", 0, 112, 36.85, -76.29],
+  ["Birmingham", "United States", 0, 109, 33.52, -86.8],
+  ["Mesa", "United States", 0, 105, 33.42, -111.83],
+  ["Fort Worth", "United States", 0, 104, 32.76, -97.33],
+  ["Toledo", "United States", 0, 97, 41.65, -83.54],
+  ["Memphis", "United States", 0, 93, 35.15, -90.05],
+  ["Minneapolis", "United States", 0, 89, 44.98, -93.27],
+  ["Cleveland", "United States", 0, 87, 41.5, -81.69],
+  ["Kansas City", "United States", 0, 72, 39.1, -94.58],
+  ["Omaha", "United States", 0, 66, 41.26, -95.94],
+  ["Baton Rouge", "United States", 0, 65, 30.45, -91.15],
+  ["Indianapolis", "United States", 0, 65, 39.77, -86.16],
+  ["Mobile", "United States", 0, 65, 30.69, -88.04],
+  ["Jacksonville", "United States", 0, 63, 30.33, -81.66],
+  ["Richmond", "United States", 0, 63, 37.54, -77.44],
+  ["Sacramento", "United States", 0, 59, 38.58, -121.49],
+  ["Boston", "United States", 0, 58, 42.36, -71.06],
+  ["Denver", "United States", 0, 57, 39.74, -104.99]
+ ]
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/datamaps@0.5.10/dist/datamaps.world.min.js"></script>
+
+<script>
+/* ---------- listener map ---------- */
+(function(){
+  let data;
+  try { data = JSON.parse(document.getElementById('listener-data').textContent); } catch(e){ return; }
+  // Score blends both platforms: each scaled to its own top city, then added.
+  const raw = data.cities.map(([name,country,sp,ap,lat,lon])=>({name,country,sp,ap,lat,lon}));
+  const maxSp = Math.max(...raw.map(c=>c.sp)) || 1, maxAp = Math.max(...raw.map(c=>c.ap)) || 1;
+  const cities = raw.map(c=>({...c, n: c.sp/maxSp + c.ap/maxAp})).sort((a,b)=>b.n-a.n);
+  const max = cities[0].n;
+  const plat = c => [c.sp?'Spotify':'', c.ap?'Apple Music':''].filter(Boolean).join(' + ');
+  const counts = c => [c.sp?`${c.sp.toLocaleString()} Spotify listeners`:'', c.ap?`${c.ap.toLocaleString()} Apple plays`:''].filter(Boolean).join(' · ');
+  const countries = new Set(cities.map(c=>c.country));
+  const fmtDate = d => new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+
+  document.getElementById('map-updated').textContent = 'Updated ' + fmtDate(data.updated);
+  document.getElementById('map-source').textContent = data.source;
+  document.getElementById('map-stats').innerHTML =
+    `<div><b>${cities.length}</b><span>Top cities</span></div>
+     <div><b>${countries.size}</b><span>Countries</span></div>
+     <div><b>${cities.filter(c=>c.country!=='United States').length}</b><span>Cities outside the US</span></div>`;
+
+  // list
+  const list = document.getElementById('city-list');
+  list.innerHTML = cities.map((c,i)=>`<li data-i="${i}" tabindex="0"><span class="n">${c.name}</span><span class="c">${c.country} · ${data.showCounts?counts(c):plat(c)}</span><span class="bar-r"><i style="width:${Math.max(6,Math.round(c.n/max*100))}%"></i></span></li>`).join('');
+
+  const svg = document.getElementById('map'), note = document.getElementById('map-note'), tip = document.getElementById('map-tip'), frame = document.getElementById('map-frame');
+  let dots = [];
+
+  function select(i, scroll){
+    list.querySelectorAll('li').forEach(li=>li.classList.toggle('on', +li.dataset.i===i));
+    dots.forEach((d,k)=>d.classList.toggle('on', k===i));
+    if(scroll){ const li = list.querySelector(`li[data-i="${i}"]`); li && li.scrollIntoView({block:'nearest'}); }
+    if(dots[i]) showTip(i);
+  }
+  function showTip(i){
+    const c = cities[i], d = dots[i]; if(!d) return;
+    const box = svg.getBoundingClientRect(), fb = frame.getBoundingClientRect();
+    const sx = box.width/960, sy = box.height/500;
+    tip.textContent = `#${i+1} ${c.name}, ${c.country}` + (data.showCounts?` · ${counts(c)}`:'');
+    tip.style.left = (box.left - fb.left + (+d.getAttribute('cx'))*sx) + 'px';
+    tip.style.top = (box.top - fb.top + (+d.getAttribute('cy'))*sy - (+d.getAttribute('r'))*sy) + 'px';
+    tip.hidden = false;
+  }
+  list.addEventListener('click', e=>{ const li = e.target.closest('li'); if(li) select(+li.dataset.i); });
+  list.addEventListener('keydown', e=>{ if(e.key==='Enter'){ const li = e.target.closest('li'); if(li) select(+li.dataset.i); }});
+
+  // find your city
+  const find = document.getElementById('city-find'), msg = document.getElementById('find-msg');
+  const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+  find.addEventListener('input', ()=>{
+    const q = norm(find.value);
+    if(!q){ msg.textContent=''; return; }
+    const i = cities.findIndex(c=>norm(c.name).startsWith(q) || norm(c.name).includes(q));
+    if(i>=0){ msg.textContent = /^atl/.test(q) ? `ATL HOE!!! #${i+1} 🍑` : `${cities[i].name} is #${i+1}. We see you.`; select(i,true); }
+    else { msg.textContent = `Not in the top ${cities.length} yet. Stream and share to put it on the map.`; }
+  });
+
+  // map
+  function draw(){
+    const topo = window.Datamap && window.Datamap.prototype.worldTopo;
+    if(!(window.d3 && window.topojson && topo)){ note.textContent = 'Map unavailable right now. The city list still works.'; return; }
+    const land = topojson.feature(topo, topo.objects.world);
+    land.features = land.features.filter(f=>f.id!=='ATA');
+    const proj = d3.geoEqualEarth().rotate([-10,0]).fitExtent([[8,8],[952,492]], {type:'Sphere'});
+    const path = d3.geoPath(proj);
+    const s = d3.select(svg);
+    s.append('g').selectAll('path').data(land.features).join('path').attr('class','land').attr('d',path);
+    const r = d3.scaleSqrt().domain([0,max]).range([0,16]);
+    const g = s.append('g');
+    // draw small first so big circles sit underneath? draw big first, small on top
+    cities.slice().map((c,i)=>({c,i})).sort((a,b)=>b.c.n-a.c.n).forEach(({c,i})=>{
+      const [x,y] = proj([c.lon,c.lat]);
+      const rad = Math.max(3.5, r(c.n));
+      const dot = g.append('circle').attr('class','dot').attr('cx',x.toFixed(1)).attr('cy',y.toFixed(1)).attr('r',rad.toFixed(1))
+        .attr('tabindex',0).attr('aria-label',`${c.name}, ${c.country}`).node();
+      g.append('circle').attr('class','pulse').attr('cx',x.toFixed(1)).attr('cy',y.toFixed(1)).attr('r',rad.toFixed(1)).style('--r0',rad.toFixed(1)+'px');
+      dot.addEventListener('mouseenter',()=>showTip(i));
+      dot.addEventListener('mouseleave',()=>{ if(!dot.classList.contains('on')) tip.hidden = true; });
+      dot.addEventListener('click',()=>select(i,true));
+      dot.addEventListener('focus',()=>select(i,true));
+      dots[i] = dot;
+    });
+    note.remove();
+  }
+  if(document.readyState === 'complete') draw(); else window.addEventListener('load', draw);
+  window.addEventListener('resize', ()=>{ const on = dots.findIndex(d=>d && d.classList.contains('on')); if(on>=0) showTip(on); else tip.hidden = true; });
+})();
+
+/* ---------- who's the problem ---------- */
+(function(){
+  const cases = [
+    "You've been “talking” for five months. Neither of you has said what this is.",
+    "They texted “wyd” at 1:47am. You answered in under a minute.",
+    "You said you didn't want anything serious. Now you're mad they believed you.",
+    "They post everyone's story except yours.",
+    "You still have their playlist on repeat. It's been a year.",
+    "You knew what this was. You stayed anyway."
+  ];
+  const verdicts = {
+    me: ["Maybe you're the problem.", "At least you're honest about it. Press play on track one."],
+    them: ["They're the problem. Allegedly.", "Call the hotline and tell your side."],
+    both: ["You're both the problem.", "That's a situationship. There's a whole album about it."]
+  };
+  let i = 0, picks = [];
+  const card = document.getElementById('card'); const fresh = card.innerHTML;
+  let sc, ct, tally;
+  function bind(){
+    sc = document.getElementById('scenario'); ct = document.getElementById('count'); tally = document.getElementById('tally');
+    document.getElementById('choices').addEventListener('click', e=>{
+      const b = e.target.closest('button'); if(!b) return;
+      picks[i] = b.dataset.a; i++;
+      i < cases.length ? show() : finish();
+    });
+  }
+  function show(){
+    ct.textContent = `Case ${i+1} of ${cases.length}`; sc.textContent = cases[i];
+    tally.innerHTML = cases.map((_,k)=>`<i class="${picks[k]||''}"></i>`).join('');
+  }
+  function finish(){
+    const n = {me:0,them:0,both:0}; picks.forEach(p=>n[p]++);
+    const top = Object.keys(n).sort((a,b)=>n[b]-n[a])[0];
+    const [h,s] = verdicts[top];
+    card.innerHTML = `<div class="count">Verdict · ${n.me} me · ${n.them} them · ${n.both} both</div>
+      <p class="verdict">${h}</p><p style="margin:0">${s}</p>
+      <div class="choices"><a class="listen" href="https://ffm.to/youtheproblem" target="_blank" rel="noopener">Stream the single</a>
+      <button type="button" id="again">Play again</button></div>`;
+    document.getElementById('again').addEventListener('click',()=>{ i=0; picks=[]; card.innerHTML=fresh; bind(); show(); });
+  }
+  bind(); show();
+
+  const dd = document.getElementById('social-menu');
+  document.addEventListener('click', e=>{ if(dd.open && !dd.contains(e.target)) dd.open = false; });
+
+  document.querySelectorAll('[data-copy]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const el = document.getElementById(btn.dataset.copy);
+      const done = ()=>{ btn.textContent='Copied'; setTimeout(()=>btn.textContent='Copy',1600); };
+      const fallback = ()=>{ const r=document.createRange(); r.selectNodeContents(el); const s=getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent='Selected'; };
+      try{ navigator.clipboard.writeText(el.textContent).then(done,fallback); }catch(_){ fallback(); }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
