@@ -841,7 +841,7 @@ footer a:hover{text-decoration:underline}
     return new Promise(res=>{
       if(!MC_POST){ res(false); return; }
       const cb='mc_cb_'+Date.now();
-      const url = MC_POST.replace('/subscribe/post?','/subscribe/post-json?') + '&EMAIL='+encodeURIComponent(email)+'&FNAME='+encodeURIComponent(name)+'&SCORE='+encodeURIComponent(extra.score)+'&RANK='+encodeURIComponent(extra.rank)+'&VERDICT='+encodeURIComponent(extra.verdict)+'&c='+cb;
+      const url = MC_POST.replace('/subscribe/post?','/subscribe/post-json?') + '&EMAIL='+encodeURIComponent(email)+'&FNAME='+encodeURIComponent(name)+'&SCORE='+encodeURIComponent(extra.score)+'&RANK='+encodeURIComponent(extra.rank)+'&VERDICT='+encodeURIComponent(extra.verdict)+'&ANSWERS='+encodeURIComponent(picks.map((p,k)=>(k+1)+':'+label[p]).join(', '))+'&c='+cb;
       const s=document.createElement('script'); let done=false;
       const finishCb = ok=>{ if(done) return; done=true; try{ delete window[cb]; }catch(_){} s.remove(); res(ok); };
       window[cb] = r => finishCb(!!r && (r.result==='success' || /already subscribed/i.test(r.msg||'')));
