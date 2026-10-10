@@ -658,7 +658,7 @@ footer a:hover{text-decoration:underline}
     const q = norm(find.value);
     if(!q){ msg.textContent=''; return; }
     const i = cities.findIndex(c=>norm(c.name).startsWith(q) || norm(c.name).includes(q));
-    if(i>=0){ msg.textContent = /^atl/.test(q) ? `ATL HOE!!! #${i+1} 🍑` : `${cities[i].name} is #${i+1}. We see you.`; select(i,true); }
+    if(i>=0){ clearTimeout(window.__cityT); const cn=cities[i].name; window.__cityT=setTimeout(()=>window.dispatchEvent(new CustomEvent('ja:track',{detail:'City search: '+cn})),1500); msg.textContent = /^atl/.test(q) ? `ATL HOE!!! #${i+1} 🍑` : `${cities[i].name} is #${i+1}. We see you.`; select(i,true); }
     else { msg.textContent = `Not in the top ${cities.length} yet. Stream and share to put it on the map.`; }
   });
 
@@ -715,7 +715,7 @@ footer a:hover{text-decoration:underline}
     sc = document.getElementById('scenario'); ct = document.getElementById('count'); tally = document.getElementById('tally');
     document.getElementById('choices').addEventListener('click', e=>{
       const b = e.target.closest('button'); if(!b) return;
-      picks[i] = b.dataset.a; i++;
+      if(i===0) window.dispatchEvent(new CustomEvent('ja:track',{detail:'Game: started'})); picks[i] = b.dataset.a; i++;
       i < cases.length ? show() : finish();
     });
   }
@@ -726,7 +726,7 @@ footer a:hover{text-decoration:underline}
   function finish(){
     const n = {me:0,them:0,both:0}; picks.forEach(p=>n[p]++);
     const top = Object.keys(n).sort((a,b)=>n[b]-n[a])[0];
-    const [h,s] = verdicts[top];
+    const [h,s] = verdicts[top]; window.dispatchEvent(new CustomEvent('ja:track',{detail:'Game: finished, verdict '+top}));
     card.innerHTML = `<div class="count">Verdict · ${n.me} me · ${n.them} them · ${n.both} both</div>
       <p class="verdict">${h}</p><p style="margin:0">${s}</p>
       <div class="choices"><a class="listen" href="https://ffm.to/youtheproblem" target="_blank" rel="noopener">Stream the single</a>
@@ -760,5 +760,30 @@ footer a:hover{text-decoration:underline}
 })();
 </script>
 
+
+<!-- Analytics: GoatCounter (no cookies). Dashboard: https://jayactivist.goatcounter.com -->
+<script data-goatcounter="https://jayactivist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  function send(name){
+    try{ if(window.goatcounter && window.goatcounter.count){ window.goatcounter.count({path:name, title:name, event:true}); } }catch(e){}
+  }
+  window.addEventListener('ja:track', e=>send(e.detail));
+  function label(a){
+    const href=a.href||'', card=a.closest('.rel,.vid,.show');
+    const name=card && card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : (a.textContent||'').trim().replace(/\s+/g,' ');
+    if(href.includes('mailchi.mp')) return 'Email signup click';
+    if(href.includes('/concert')) return 'Tickets: '+name;
+    if(href.includes('myshopify')) return 'Store click';
+    if(href.includes('youtube.com/watch')) return 'Video: '+name;
+    if(href.includes('ffm.to')||href.includes('music.apple.com/us/album')) return 'Stream: '+(card?name:(href.includes('youtheproblem')?"Maybe I'm the Problem":href.includes('loseyouagain')?'Lose You Again':name));
+    try{ return 'Outbound: '+new URL(href).hostname.replace('www.','') }catch(e){ return 'Outbound click' }
+  }
+  document.addEventListener('click', e=>{
+    const a=e.target.closest('a[href^="http"]'); if(!a) return;
+    send(label(a));
+  }, true);
+})();
+</script>
 </body>
 </html>
