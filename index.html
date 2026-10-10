@@ -226,6 +226,38 @@ footer a:hover{text-decoration:underline}
 .email button{font:700 .75rem var(--body);background:var(--oxblood);color:var(--cream);border:0;padding:5px 10px;cursor:pointer}
 .foot-bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:2px solid var(--oxblood);padding-top:18px;font-family:var(--mono);font-size:.75rem}
 
+
+/* ---------- game unlock ---------- */
+.unlock-form{display:grid;gap:14px;border:3px dashed var(--gold);padding:20px}
+.unlock-head{display:grid;gap:4px}
+.unlock-head b{font-family:var(--display);font-weight:400;font-size:1.6rem;color:var(--gold);line-height:1.1}
+.unlock-head span{opacity:.9}
+.unlock-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.unlock-fields{grid-template-columns:1fr}}
+.unlock-fields label{display:grid;gap:6px;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.unlock-fields input{font:600 1rem var(--body);padding:12px 14px;border:3px solid var(--paper);background:transparent;color:var(--paper);text-transform:none;letter-spacing:0;min-width:0}
+.unlock-fields input::placeholder{color:var(--paper);opacity:.5}
+.unlock-form .listen{justify-self:start;box-shadow:none;border-color:var(--paper);cursor:pointer;font-family:var(--body)}
+.unlock-form .listen:disabled{opacity:.6;cursor:wait}
+.unlock-fine{margin:0;font-size:.8rem;opacity:.75}
+.unlock-err{margin:0;font-weight:700;color:var(--gold);min-height:1.2em}
+.listen.ghost-dark{background:transparent;color:var(--paper);border-color:var(--paper);box-shadow:none}
+.score-row{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.score-big{display:flex;align-items:baseline;gap:4px;line-height:1}
+.score-big b{font-family:var(--display);font-weight:400;font-size:5rem;color:var(--gold)}
+.score-big span{font-weight:800;opacity:.8}
+.score-tier{display:inline-block;background:var(--gold);color:var(--oxblood);font-weight:800;padding:6px 12px}
+.score-card{max-width:280px}
+.score-card img{display:block;width:100%;height:auto;border:3px solid var(--paper)}
+.bd-title{margin:8px 0 0;font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.breakdown{list-style:none;margin:0;padding:0;counter-reset:b;display:grid;gap:0}
+.breakdown li{counter-increment:b;display:grid;gap:4px;padding:14px 0 14px 40px;border-top:1px solid color-mix(in srgb,var(--paper) 25%,transparent);position:relative}
+.breakdown li::before{content:counter(b);position:absolute;left:0;top:14px;font-family:var(--display);font-size:1.5rem;color:var(--gold)}
+.bd-q{font-weight:700}
+.bd-a{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.bd-me{color:var(--flame)} .bd-both{color:var(--gold)} .bd-them{opacity:.85}
+.bd-t{opacity:.92}
+
 /* ---------- mobile ---------- */
 .menu-btn,.bar-cta{display:none}
 @media (max-width:760px){
@@ -723,15 +755,127 @@ footer a:hover{text-decoration:underline}
     ct.textContent = `Case ${i+1} of ${cases.length}`; sc.textContent = cases[i];
     tally.innerHTML = cases.map((_,k)=>`<i class="${picks[k]||''}"></i>`).join('');
   }
+  // Mailchimp: paste the form "action" URL from your Embedded Signup Form here.
+  const MC_POST = '';
+  const takes = [
+    { me:"You let five months pass without asking. That silence was a choice.",
+      them:"They've had five months to define it. Their silence is an answer.",
+      both:"Two grown people scared of one conversation. Classic." },
+    { me:"Under a minute at 1:47am? You're not waiting on them, you're on call.",
+      them:"A 1:47am “wyd” isn't romance. It's a booty call with punctuation.",
+      both:"They sent it, you answered. Y'all built this routine together." },
+    { me:"You set the terms. They just read them out loud.",
+      them:"If they saw you catching feelings and played dumb, that's on them.",
+      both:"Nobody said what they meant. That's how you end up here." },
+    { me:"Checking whose story they post isn't a crime, but it's telling you something.",
+      them:"Posting everyone but you is a message, and it's not a subtle one.",
+      both:"Y'all are keeping it quiet on purpose. Ask yourself why." },
+    { me:"A year later and still on repeat? The playlist isn't the problem.",
+      them:"Leaving you the soundtrack and no closure is cold.",
+      both:"Some songs just stay. Heal at your own pace." },
+    { me:"You read the terms and signed anyway. That's on you.",
+      them:"If they kept the door half open, they knew what they were doing.",
+      both:"You knew. They knew. Nobody said stop." }
+  ];
+  const tiers = [[80,"Certified Problem"],[60,"Lowkey the Problem"],[40,"Situationship Certified"],[20,"Mostly Not the Problem"],[0,"Certified Innocent (allegedly)"]];
+  const label = {me:'Me', them:'Them', both:'Both of us'};
+  const esc = s => String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
   function finish(){
     const n = {me:0,them:0,both:0}; picks.forEach(p=>n[p]++);
     const top = Object.keys(n).sort((a,b)=>n[b]-n[a])[0];
     const [h,s] = verdicts[top]; window.dispatchEvent(new CustomEvent('ja:track',{detail:'Game: finished, verdict '+top}));
+    const score = Math.round((n.me + n.both*0.5) / cases.length * 100);
+    const tier = tiers.find(t=>score>=t[0])[1];
     card.innerHTML = `<div class="count">Verdict · ${n.me} me · ${n.them} them · ${n.both} both</div>
       <p class="verdict">${h}</p><p style="margin:0">${s}</p>
-      <div class="choices"><a class="listen" href="https://ffm.to/youtheproblem" target="_blank" rel="noopener">Stream the single</a>
+      <form class="unlock-form" id="unlock-form" novalidate>
+        <div class="unlock-head"><b>Unlock your Problem Score</b><span>Get your score card to post and the full breakdown of every answer.</span></div>
+        <div class="unlock-fields">
+          <label for="ul-name">First name<input id="ul-name" name="FNAME" autocomplete="given-name" required maxlength="40" placeholder="Your name"></label>
+          <label for="ul-email">Email<input id="ul-email" name="EMAIL" type="email" autocomplete="email" required placeholder="you@email.com"></label>
+        </div>
+        <button type="submit" class="listen" id="ul-go">Unlock my score</button>
+        <p class="unlock-fine">By unlocking, you join Jay Activist's email list for new music and shows. Unsubscribe anytime.</p>
+        <p class="unlock-err" id="ul-err" aria-live="polite"></p>
+      </form>
+      <div class="choices"><a class="listen ghost-dark" href="https://ffm.to/youtheproblem" target="_blank" rel="noopener">Stream the single</a>
       <button type="button" id="again">Play again</button></div>`;
     document.getElementById('again').addEventListener('click',()=>{ i=0; picks=[]; card.innerHTML=fresh; bind(); show(); });
+    document.getElementById('unlock-form').addEventListener('submit', e=>{
+      e.preventDefault();
+      const name = document.getElementById('ul-name').value.trim();
+      const email = document.getElementById('ul-email').value.trim();
+      const err = document.getElementById('ul-err');
+      if(!name){ err.textContent='Add your first name so it goes on your card.'; return; }
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ err.textContent='That email doesn\'t look right. Check it and try again.'; return; }
+      err.textContent=''; const btn=document.getElementById('ul-go'); btn.disabled=true; btn.textContent='Unlocking…';
+      subscribe(name, email).then(ok=>{
+        window.dispatchEvent(new CustomEvent('ja:track',{detail:'Game: unlocked score'+(ok?'':' (signup failed)')}));
+        reveal(name, score, tier, h, top);
+      });
+    });
+  }
+
+  function subscribe(name, email){
+    return new Promise(res=>{
+      if(!MC_POST){ res(false); return; }
+      const cb='mc_cb_'+Date.now();
+      const url = MC_POST.replace('/subscribe/post?','/subscribe/post-json?') + '&EMAIL='+encodeURIComponent(email)+'&FNAME='+encodeURIComponent(name)+'&c='+cb;
+      const s=document.createElement('script'); let done=false;
+      const finishCb = ok=>{ if(done) return; done=true; try{ delete window[cb]; }catch(_){} s.remove(); res(ok); };
+      window[cb] = r => finishCb(!!r && (r.result==='success' || /already subscribed/i.test(r.msg||'')));
+      s.onerror = ()=>finishCb(false); setTimeout(()=>finishCb(false), 8000);
+      s.src=url; document.body.appendChild(s);
+    });
+  }
+
+  function reveal(name, score, tier, verdictLine, top){
+    const rows = picks.map((p,k)=>`<li><span class="bd-q">${esc(cases[k])}</span><span class="bd-a bd-${p}">You said: ${label[p]}</span><span class="bd-t">${esc(takes[k][p])}</span></li>`).join('');
+    card.innerHTML = `<div class="count">Unlocked · ${esc(name)}</div>
+      <div class="score-row"><div class="score-big"><b>${score}</b><span>/100</span></div><div><div class="score-tier">${tier}</div><p style="margin:6px 0 0">${esc(verdictLine)}</p></div></div>
+      <div class="score-card"><img id="score-img" alt="Your Problem Score card"></div>
+      <div class="choices"><button type="button" class="me" id="save-card">Save card</button><a class="listen ghost-dark" href="https://ffm.to/youtheproblem" target="_blank" rel="noopener">Stream the single</a></div>
+      <h4 class="bd-title">Your full breakdown</h4>
+      <ol class="breakdown">${rows}</ol>
+      <div class="choices"><button type="button" id="again">Play again</button></div>`;
+    document.getElementById('again').addEventListener('click',()=>{ i=0; picks=[]; card.innerHTML=fresh; bind(); show(); });
+    drawCard(name, score, tier, verdictLine).then(canvas=>{
+      const img=document.getElementById('score-img'); img.src=canvas.toDataURL('image/png');
+      document.getElementById('save-card').addEventListener('click', ()=>{
+        window.dispatchEvent(new CustomEvent('ja:track',{detail:'Game: saved score card'}));
+        canvas.toBlob(async blob=>{
+          const file=new File([blob],'my-problem-score.png',{type:'image/png'});
+          try{ if(navigator.canShare && navigator.canShare({files:[file]})){ await navigator.share({files:[file], title:'My Problem Score', text:'Who\'s the problem? Take the test: jayactivist.com/#problem'}); return; } }catch(_){ }
+          const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='my-problem-score.png'; document.body.appendChild(a); a.click(); a.remove();
+        },'image/png');
+      });
+    });
+  }
+
+  async function drawCard(name, score, tier, verdictLine){
+    try{ await Promise.all([document.fonts.load('120px Shrikhand'), document.fonts.load('700 40px Manrope'), document.fonts.load('600 30px "IBM Plex Mono"')]); }catch(_){}
+    const W=1080,H=1920,c=document.createElement('canvas'); c.width=W; c.height=H; const x=c.getContext('2d');
+    const FLAME='#d2481c', GOLD='#e4a72b', OX='#3a0d12', CREAM='#fff8ef';
+    x.fillStyle=FLAME; x.fillRect(0,0,W,H);
+    x.save(); x.translate(W/2, 860);
+    for(let a=0;a<60;a++){ x.rotate(Math.PI*2/60); if(a%2) continue; x.beginPath(); x.moveTo(0,0); x.lineTo(1600,-84); x.lineTo(1600,84); x.closePath(); x.fillStyle='rgba(228,167,43,.28)'; x.fill(); }
+    x.restore();
+    x.textAlign='center'; x.textBaseline='alphabetic';
+    const shadowText=(t,y,font,fill,off)=>{ x.font=font; x.fillStyle=OX; x.fillText(t,W/2+off,y+off); x.fillStyle=fill; x.fillText(t,W/2,y); };
+    x.font='600 34px "IBM Plex Mono", monospace'; x.fillStyle=CREAM; x.fillText('WHO’S THE PROBLEM?', W/2, 190);
+    let nm=name.length>14?name.slice(0,14)+'…':name; let size=nm.length>9?120:150;
+    shadowText(nm, 420, `${size}px Shrikhand, Georgia, serif`, CREAM, 8);
+    x.font='600 38px "IBM Plex Mono", monospace'; x.fillStyle=CREAM; x.fillText('PROBLEM SCORE', W/2, 560);
+    shadowText(String(score), 1000, '440px Shrikhand, Georgia, serif', GOLD, 14);
+    x.font='700 60px Manrope, sans-serif'; x.fillStyle=CREAM; x.fillText('/ 100', W/2, 1090);
+    x.font='700 56px Manrope, sans-serif'; const tw=x.measureText(tier).width+80;
+    x.fillStyle=OX; x.fillRect((W-tw)/2, 1170, tw, 104); x.fillStyle=GOLD; x.fillText(tier, W/2, 1240);
+    x.font='600 46px Manrope, sans-serif'; x.fillStyle=CREAM; x.fillText(verdictLine, W/2, 1380);
+    x.fillStyle=CREAM; x.fillRect(120, 1560, W-240, 4);
+    x.font='600 40px "IBM Plex Mono", monospace'; x.fillText('Take the test → jayactivist.com', W/2, 1660);
+    shadowText('Jay Activist', 1800, '80px Shrikhand, Georgia, serif', CREAM, 5);
+    return c;
   }
   bind(); show();
 
