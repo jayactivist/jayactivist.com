@@ -225,6 +225,53 @@ footer a:hover{text-decoration:underline}
 .email code{font-family:var(--mono);font-size:.85rem;user-select:all;overflow-wrap:anywhere}
 .email button{font:700 .75rem var(--body);background:var(--oxblood);color:var(--cream);border:0;padding:5px 10px;cursor:pointer}
 .foot-bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:2px solid var(--oxblood);padding-top:18px;font-family:var(--mono);font-size:.75rem}
+
+/* ---------- mobile ---------- */
+.menu-btn,.bar-cta{display:none}
+@media (max-width:760px){
+  .bar .wrap{flex-wrap:nowrap;padding-block:10px;gap:12px;position:relative}
+  .logo{font-size:1.3rem;margin-right:auto}
+  .bar-cta{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;background:var(--flame);color:var(--cream);padding:9px 12px;border:2px solid var(--ink)}
+  .menu-btn{display:inline-grid;place-items:center;gap:4px;width:44px;height:40px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;padding:0}
+  .menu-btn span{display:block;width:20px;height:2px;background:currentColor;transition:transform .2s, opacity .2s}
+  .bar.open .menu-btn span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .bar.open .menu-btn span:nth-child(2){opacity:0}
+  .bar.open .menu-btn span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  .bar nav{position:absolute;left:0;right:0;top:100%}
+  .menu{display:none;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:8px 16px 16px;max-height:calc(100vh - 70px);overflow:auto;box-shadow:0 12px 0 rgba(0,0,0,.08)}
+  .bar.open .menu{display:flex}
+  .menu > li > a,.menu summary{display:block;font-size:.95rem;padding:14px 4px;border-bottom:1px solid var(--line)}
+  .menu .cta{display:none}
+  .drop{position:static;box-shadow:none;border:0;padding:0 0 8px 12px;min-width:0}
+  .drop a{padding:10px 4px;font-size:.85rem}
+
+  .sec{padding-block:40px}
+  .sec-head{margin-bottom:18px}
+  .sub-head{margin:36px 0 14px}
+  .sub-head.first{margin-top:0}
+
+  /* swipeable rows */
+  .grid:not(.duo),.vgrid{display:grid;grid-auto-flow:column;grid-template-columns:none;max-width:none;
+    grid-auto-columns:68%;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
+    margin-inline:-16px;padding:0 16px 10px;scroll-padding-inline:16px;gap:14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .vgrid{grid-auto-columns:84%}
+  .grid:not(.duo)::-webkit-scrollbar,.vgrid::-webkit-scrollbar{display:none}
+  .grid:not(.duo) > *,.vgrid > *{scroll-snap-align:start}
+  .grid.duo{gap:14px}
+  .rel h3,.vid h3{font-size:.98rem}
+
+  .hero .wrap{padding-block:28px 40px;gap:24px}
+  .hero-art{max-width:300px;box-shadow:8px 8px 0 var(--ink)}
+  .hero p{font-size:1rem}
+  .btn-row{width:100%}
+  .btn-row .listen{flex:1 1 auto;text-align:center}
+  .map-stats{gap:20px}
+  .city-list{max-height:300px}
+  .card{padding:20px;min-height:0}
+  .choices button{flex:1 1 auto}
+  .classified{padding:18px}
+  .foot-top{gap:24px}
+}
 </style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
 </head>
@@ -233,8 +280,10 @@ footer a:hover{text-decoration:underline}
 <header class="bar">
   <div class="wrap">
     <a class="logo" href="#top">Jay Activist</a>
+    <a class="bar-cta" href="https://mailchi.mp/05322e2709cc/jay-act" target="_blank" rel="noopener">Subscribe</a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Open menu"><span></span><span></span><span></span></button>
     <nav aria-label="Main">
-      <ul class="menu">
+      <ul class="menu" id="main-menu">
         <li><a href="#music">Music</a></li>
         <li><a href="#videos">Videos</a></li>
         <li><a href="#shows">Shows</a></li>
@@ -698,6 +747,17 @@ footer a:hover{text-decoration:underline}
       try{ navigator.clipboard.writeText(el.textContent).then(done,fallback); }catch(_){ fallback(); }
     });
   });
+})();
+
+/* ---------- mobile menu ---------- */
+(function(){
+  const bar=document.querySelector('.bar'), btn=document.getElementById('menu-btn'), menu=document.getElementById('main-menu');
+  if(!btn) return;
+  const set=o=>{bar.classList.toggle('open',o);btn.setAttribute('aria-expanded',o);btn.setAttribute('aria-label',o?'Close menu':'Open menu');};
+  btn.addEventListener('click',()=>set(!bar.classList.contains('open')));
+  menu.addEventListener('click',e=>{ if(e.target.closest('a')) set(false); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') set(false); });
+  document.addEventListener('click',e=>{ if(bar.classList.contains('open') && !bar.contains(e.target)) set(false); });
 })();
 </script>
 
