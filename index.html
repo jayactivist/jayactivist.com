@@ -873,7 +873,7 @@ footer a:hover{text-decoration:underline}
         window.dispatchEvent(new CustomEvent('ja:track',{detail:'Game: saved score card'}));
         canvas.toBlob(async blob=>{
           const file=new File([blob],'my-problem-score.png',{type:'image/png'});
-          try{ if(navigator.canShare && navigator.canShare({files:[file]})){ await navigator.share({files:[file], title:'My Problem Score', text:'Who\'s the problem? Take the test: jayactivist.com/#problem'}); return; } }catch(_){ }
+          try{ if(navigator.canShare && navigator.canShare({files:[file]})){ await navigator.share({files:[file], title:'My Problem Score', text:'Who\'s the problem? Take the test: jayactivist.com/problem'}); return; } }catch(_){ }
           const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='my-problem-score.png'; document.body.appendChild(a); a.click(); a.remove();
         },'image/png');
       });
@@ -907,7 +907,7 @@ footer a:hover{text-decoration:underline}
   bind(); show();
 
   const dd = document.getElementById('social-menu');
-  document.addEventListener('click', e=>{ if(dd.open && !dd.contains(e.target)) dd.open = false; });
+  document.addEventListener('click', e=>{ if(dd && dd.open && !dd.contains(e.target)) dd.open = false; });
 
   document.querySelectorAll('[data-copy]').forEach(btn=>{
     btn.addEventListener('click',()=>{

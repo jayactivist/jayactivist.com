@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Jay Activist: Atlanta R&amp;B and hip-hop. New super single Maybe I'm the Problem out now.">
+<meta property="og:title" content="Who’s the Problem? Take the test">
+<meta property="og:description" content="New super single Maybe I'm the Problem out now.">
+<meta property="og:image" content="https://jayactivist.com/img/mitp.jpg">
+<meta property="og:url" content="https://jayactivist.com/problem/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../img/mitp.jpg">
+<title>Who’s the Problem? | Jay Activist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: label-style artist home. Slim top bar, split release banner, Music grid (+features), Videos grid, listener map, the game, Follow, footer. */
+:root{
+  --paper:#fbe9d8; --paper-2:#f6d9bf; --ink:#3a0d12; --ink-soft:#6e3a34;
+  --flame:#d2481c; --gold:#e4a72b; --line:#3a0d1233; --land:#efcfae; --border-land:#fbe9d8;
+  --ray-a:#f3c58f; --ray-b:#fbe9d8;
+  --cream:#fff8ef; --oxblood:#3a0d12;
+  --display:"Shrikhand", Georgia, serif;
+  --body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#1e0a10; --paper-2:#2b1018; --ink:#fbe3cb; --ink-soft:#d6ae96;
+  --flame:#f06a35; --gold:#f0b94a; --line:#fbe3cb26; --land:#3a1820; --border-land:#1e0a10; --ray-a:#3a1219; --ray-b:#1e0a10; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#1e0a10; --paper-2:#2b1018; --ink:#fbe3cb; --ink-soft:#d6ae96;
+  --flame:#f06a35; --gold:#f0b94a; --line:#fbe3cb26; --land:#3a1820; --border-land:#1e0a10; --ray-a:#3a1219; --ray-b:#1e0a10; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1rem;line-height:1.55;margin:0}
+a{color:inherit}
+img{max-width:100%}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+h1,h2,h3{text-wrap:balance;margin:0}
+.label{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
+
+/* ---------- top bar ---------- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--paper);border-bottom:3px solid var(--ink)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:14px;flex-wrap:wrap}
+.logo{font-family:var(--display);font-size:1.5rem;color:var(--flame);text-decoration:none;line-height:1}
+.menu{display:flex;align-items:center;gap:clamp(12px,2.2vw,26px);list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.menu a,.menu summary{font-family:var(--mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+.menu a:hover,.menu summary:hover{color:var(--flame)}
+.menu details{position:relative}
+.menu summary{list-style:none}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary::after{content:" +"}
+.menu details[open] summary::after{content:" –"}
+.drop{position:absolute;right:0;top:calc(100% + 14px);background:var(--paper);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:10px 0;min-width:190px;display:grid;z-index:2}
+.drop a{padding:8px 16px}
+.menu .cta{background:var(--flame);color:var(--cream);padding:8px 14px;border:2px solid var(--ink)}
+.menu .cta:hover{color:var(--cream);background:var(--oxblood)}
+
+/* ---------- hero ---------- */
+.hero{border-bottom:3px solid var(--ink);position:relative;overflow:hidden;background:var(--ray-b)}
+.hero::before{content:"";position:absolute;left:30%;top:50%;width:250vmax;height:250vmax;transform:translate(-50%,-50%);
+  background:repeating-conic-gradient(var(--ray-a) 0deg 6deg,var(--ray-b) 6deg 12deg);animation:spin 240s linear infinite}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.hero::before{animation:none}}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,72px);align-items:center;padding-block:clamp(40px,7vw,88px)}
+@media (max-width:760px){.hero .wrap{grid-template-columns:1fr}}
+.hero-text{display:grid;gap:clamp(12px,2vw,22px);justify-items:start}
+.kicker{background:var(--ink);color:var(--paper);padding:5px 12px}
+.hero h1{font-family:var(--display);font-weight:400;color:var(--flame);font-size:clamp(2.8rem,8vw,6.6rem);line-height:.92;text-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
+.hero h1 small{display:block;font-size:.4em;color:var(--gold);margin-bottom:.2em}
+.hero p{margin:0;max-width:40ch;font-weight:700;font-size:1.1rem;background:var(--paper);border:3px solid var(--ink);padding:10px 14px}
+.hero-art{position:relative;aspect-ratio:1/1;width:100%;max-width:520px;justify-self:center;border:4px solid var(--ink);box-shadow:12px 12px 0 var(--ink);transform:rotate(2.5deg);overflow:hidden;background:var(--paper-2)}
+.hero-art img{width:100%;height:100%;object-fit:cover;display:block}
+.listen{display:inline-block;font-weight:800;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;font-size:.95rem;
+  padding:14px 28px;background:var(--flame);color:var(--cream);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.listen:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap}
+.listen.ghost{background:var(--paper);color:var(--ink)}
+
+/* ---------- section shell ---------- */
+.sec{padding-block:clamp(48px,7vw,88px);border-bottom:3px solid var(--ink)}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+.sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,6vw,3.6rem);line-height:1;color:var(--flame)}
+.viewall{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:2px}
+.viewall:hover{color:var(--flame)}
+.sub-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:56px 0 20px;border-top:2px solid var(--ink);padding-top:16px;flex-wrap:wrap}
+.sub-head.first{margin-top:0}
+.grid.trio{grid-template-columns:repeat(3,minmax(0,1fr));max-width:calc(75% + clamp(4px,.6vw,7px))}
+@media (max-width:980px){.grid.trio{max-width:none}}
+@media (max-width:700px){.grid.trio{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.grid.duo{grid-template-columns:repeat(2,minmax(0,1fr));max-width:calc(50% + clamp(8px,1.2vw,14px))}
+@media (max-width:980px){.grid.duo{max-width:calc(66.6% + 10px)}}
+@media (max-width:700px){.grid.duo{max-width:none}}
+.sub-head h3{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,4vw,2.2rem);color:var(--flame)}
+
+/* ---------- music grid ---------- */
+.grid{display:grid;gap:clamp(16px,2.4vw,28px);grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:980px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:700px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rel{display:grid;gap:8px;align-content:start;min-width:0;text-decoration:none}
+.cover{aspect-ratio:1/1;max-width:100%;border:3px solid var(--ink);position:relative;overflow:hidden;background:var(--paper-2);transition:transform .15s, box-shadow .15s}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.rel:hover .cover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink)}
+.rel h3{font-weight:800;font-size:1rem;line-height:1.25;margin-top:4px}
+.rel .meta{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft)}
+.rel .go{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--flame);font-weight:600}
+
+/* ---------- videos ---------- */
+.vgrid{display:grid;gap:clamp(16px,2.4vw,28px);grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:860px){.vgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.vgrid{grid-template-columns:1fr}}
+.vid{display:grid;gap:8px;text-decoration:none;min-width:0}
+.thumb{aspect-ratio:16/9;max-width:100%;border:3px solid var(--ink);position:relative;display:grid;place-items:center;overflow:hidden;background:var(--paper-2);transition:transform .15s, box-shadow .15s}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vid:hover .thumb{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink)}
+.play{position:relative;width:54px;height:54px;border-radius:50%;background:var(--cream);border:3px solid var(--oxblood);display:grid;place-items:center;transition:transform .15s}
+.play::after{content:"";border-left:15px solid var(--oxblood);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:5px}
+.vid:hover .play{transform:scale(1.08)}
+.vid h3{font-weight:800;font-size:1rem;line-height:1.25}
+.vid .meta{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft)}
+
+/* ---------- shows ---------- */
+.show-list{list-style:none;margin:0;padding:0;border-top:3px solid var(--ink)}
+.show{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:clamp(14px,3vw,32px);align-items:center;padding-block:20px;border-bottom:3px solid var(--ink)}
+.show-date{display:grid;justify-items:center;width:84px;padding:8px 0;background:var(--flame);color:var(--cream);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);line-height:1}
+.show-date .m,.show-date .w{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase}
+.show-date .d{font-family:var(--display);font-size:2.4rem;margin:2px 0}
+.show-info h3{font-weight:800;font-size:clamp(1.15rem,2.6vw,1.5rem)}
+.show-info .meta{font-family:var(--mono);font-size:.8rem;color:var(--ink-soft);margin-top:4px}
+.show-tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;background:var(--gold);color:var(--oxblood);padding:4px 10px}
+.show-btn{padding:12px 24px}
+.show-note{margin:22px 0 0;color:var(--ink-soft)}
+.show-note .sel{font-family:var(--mono);color:var(--ink);user-select:all;overflow-wrap:anywhere}
+@media (max-width:620px){.show{grid-template-columns:auto minmax(0,1fr)}.show-tag{justify-self:start;grid-column:2}.show-btn{grid-column:1/-1;text-align:center}}
+
+/* ---------- listener map ---------- */
+.map-lede{max-width:52ch;margin:0 0 24px;font-size:1.05rem}
+.map-stats{display:flex;gap:clamp(20px,4vw,48px);flex-wrap:wrap;margin-bottom:24px}
+.map-stats div{display:grid}
+.map-stats b{font-family:var(--display);font-weight:400;font-size:clamp(2rem,5vw,3rem);line-height:1;color:var(--flame);font-variant-numeric:tabular-nums}
+.map-stats span{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.map-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,300px);gap:28px;align-items:start}
+@media (max-width:900px){.map-layout{grid-template-columns:1fr}}
+.map-frame{border:3px solid var(--ink);background:var(--paper);position:relative;min-width:0}
+.map-frame svg{display:block;width:100%;height:auto}
+.map-frame .land{fill:var(--land);stroke:var(--border-land);stroke-width:.6}
+.map-frame .dot{fill:var(--flame);fill-opacity:.78;stroke:var(--ink);stroke-width:1.2;cursor:pointer;transition:fill-opacity .15s}
+.map-frame .dot:hover,.map-frame .dot.on{fill:var(--gold);fill-opacity:1}
+.map-frame .pulse{fill:none;stroke:var(--flame);stroke-width:2;opacity:0}
+.map-frame .dot.on + .pulse{animation:ping 1.4s ease-out infinite}
+@keyframes ping{0%{opacity:.9;r:var(--r0)}100%{opacity:0;r:calc(var(--r0) * 3)}}
+@media (prefers-reduced-motion:reduce){.map-frame .dot.on + .pulse{animation:none}}
+.map-tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);font:700 .82rem var(--body);padding:6px 10px;white-space:nowrap;transform:translate(-50%,calc(-100% - 12px))}
+.map-note{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:.8rem;color:var(--ink-soft);text-align:center;padding:16px}
+.map-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 14px;border-top:3px solid var(--ink);font-family:var(--mono);font-size:.7rem;color:var(--ink-soft)}
+.city-panel{display:grid;gap:14px;min-width:0}
+.city-panel label{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.city-panel input{font:600 1rem var(--body);padding:12px 14px;border:3px solid var(--ink);background:var(--paper);color:var(--ink);width:100%}
+.find-msg{font-weight:700;min-height:1.4em;margin:0}
+.city-list{list-style:none;margin:0;padding:0;counter-reset:c;max-height:420px;overflow:auto;border-top:2px solid var(--ink)}
+.city-list li{counter-increment:c;display:grid;grid-template-columns:2.2rem minmax(0,1fr);gap:4px 8px;padding:9px 4px;border-bottom:1px solid var(--line);cursor:pointer}
+.city-list li::before{content:counter(c);font-family:var(--mono);font-size:.78rem;color:var(--flame);font-weight:600;grid-row:span 2;padding-top:2px}
+.city-list li:hover,.city-list li.on{background:var(--paper-2)}
+.city-list .n{font-weight:800;line-height:1.2}
+.city-list .c{font-family:var(--mono);font-size:.7rem;color:var(--ink-soft)}
+.city-list .bar-r{grid-column:2;height:5px;background:var(--line)}
+.city-list .bar-r i{display:block;height:100%;background:var(--flame)}
+
+/* ---------- game ---------- */
+.problem{background:var(--ink);color:var(--paper);border-bottom-color:var(--flame)}
+.problem .sec-head h2{color:var(--gold)}
+.problem .label{color:var(--paper);opacity:.75}
+.game{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:40px;align-items:start}
+@media (max-width:820px){.game{grid-template-columns:1fr}}
+.card{border:3px solid var(--paper);padding:28px;min-height:250px;display:flex;flex-direction:column;gap:20px}
+.card .count{font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;color:var(--gold)}
+.card .scenario{font-size:clamp(1.25rem,2.8vw,1.6rem);font-weight:700;line-height:1.35;margin:0}
+.choices{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;align-items:center}
+.choices button{font:800 1rem var(--body);padding:12px 18px;border:3px solid var(--paper);background:transparent;color:var(--paper);cursor:pointer}
+.choices button:hover{background:var(--paper);color:var(--ink)}
+.choices button.me{background:var(--flame);border-color:var(--flame);color:var(--cream)}
+.choices button.me:hover{background:var(--gold);border-color:var(--gold);color:var(--oxblood)}
+.choices .listen{box-shadow:none;border-color:var(--paper)}
+.verdict{font-family:var(--display);font-weight:400;font-size:clamp(2rem,5vw,3rem);color:var(--gold);line-height:1.05;margin:0}
+.classified{border:3px dashed var(--gold);padding:24px;display:grid;gap:12px}
+.classified .hl{font-family:var(--display);font-size:clamp(1.4rem,3.4vw,2rem);color:var(--flame);line-height:1.1}
+.classified p{margin:0}
+.phone{font-family:var(--mono);font-size:1.05rem;font-weight:600;color:var(--gold);user-select:all}
+.tally{display:flex;gap:4px}
+.tally i{flex:1;height:8px;background:color-mix(in srgb,var(--paper) 25%,transparent)}
+.tally i.me{background:var(--flame)} .tally i.them{background:var(--paper)} .tally i.both{background:var(--gold)}
+
+/* ---------- follow ---------- */
+.follow{background:var(--paper-2)}
+.follow .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:center}
+@media (max-width:820px){.follow .wrap{grid-template-columns:1fr}}
+.follow h2{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,6vw,3.6rem);line-height:1;color:var(--flame)}
+.follow p{max-width:46ch;margin:14px 0 0}
+.signup{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border:3px solid var(--ink);background:var(--paper);padding:18px 20px;box-shadow:6px 6px 0 var(--ink)}
+.signup div{display:grid;gap:2px;min-width:0}
+.signup b{font-family:var(--display);font-weight:400;font-size:1.5rem;color:var(--flame);line-height:1.1}
+.signup span{font-size:.95rem;color:var(--ink-soft)}
+.signup .listen{box-shadow:none}
+.socials{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:420px){.socials{grid-template-columns:1fr}}
+.socials a{display:flex;justify-content:space-between;align-items:center;gap:10px;text-decoration:none;border:3px solid var(--ink);background:var(--paper);padding:15px 18px;font-weight:800;transition:transform .12s, box-shadow .12s;min-width:0}
+.socials a span{font-family:var(--mono);font-weight:400;font-size:.76rem;color:var(--ink-soft);overflow-wrap:anywhere;text-align:right}
+.socials a:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+.socials a.store{background:var(--flame);color:var(--cream)}
+.socials a.store span{color:var(--cream)}
+
+/* ---------- footer ---------- */
+footer{background:var(--flame);color:var(--cream);padding-block:48px 28px}
+footer .wrap{display:grid;gap:32px}
+.foot-top{display:grid;grid-template-columns:minmax(0,1.2fr) repeat(2,minmax(0,1fr));gap:32px}
+@media (max-width:760px){.foot-top{grid-template-columns:1fr}}
+.foot-logo{font-family:var(--display);font-size:clamp(2.4rem,7vw,4rem);line-height:.95;color:var(--cream);text-shadow:3px 3px 0 var(--oxblood)}
+footer h4{margin:0 0 10px;font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;opacity:.85}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer a{text-decoration:none;font-weight:700}
+footer a:hover{text-decoration:underline}
+.email{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.email code{font-family:var(--mono);font-size:.85rem;user-select:all;overflow-wrap:anywhere}
+.email button{font:700 .75rem var(--body);background:var(--oxblood);color:var(--cream);border:0;padding:5px 10px;cursor:pointer}
+.foot-bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:2px solid var(--oxblood);padding-top:18px;font-family:var(--mono);font-size:.75rem}
+
+
+/* ---------- game unlock ---------- */
+.unlock-form{display:grid;gap:14px;border:3px dashed var(--gold);padding:20px}
+.unlock-head{display:grid;gap:4px}
+.unlock-head b{font-family:var(--display);font-weight:400;font-size:1.6rem;color:var(--gold);line-height:1.1}
+.unlock-head span{opacity:.9}
+.unlock-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.unlock-fields{grid-template-columns:1fr}}
+.unlock-fields label{display:grid;gap:6px;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.unlock-fields input{font:600 1rem var(--body);padding:12px 14px;border:3px solid var(--paper);background:transparent;color:var(--paper);text-transform:none;letter-spacing:0;min-width:0}
+.unlock-fields input::placeholder{color:var(--paper);opacity:.5}
+.unlock-form .listen{justify-self:start;box-shadow:none;border-color:var(--paper);cursor:pointer;font-family:var(--body)}
+.unlock-form .listen:disabled{opacity:.6;cursor:wait}
+.unlock-fine{margin:0;font-size:.8rem;opacity:.75}
+.unlock-err{margin:0;font-weight:700;color:var(--gold);min-height:1.2em}
+.listen.ghost-dark{background:transparent;color:var(--paper);border-color:var(--paper);box-shadow:none}
+.score-row{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.score-big{display:flex;align-items:baseline;gap:4px;line-height:1}
+.score-big b{font-family:var(--display);font-weight:400;font-size:5rem;color:var(--gold)}
+.score-big span{font-weight:800;opacity:.8}
+.score-tier{display:inline-block;background:var(--gold);color:var(--oxblood);font-weight:800;padding:6px 12px}
+.score-card{max-width:280px}
+.score-card img{display:block;width:100%;height:auto;border:3px solid var(--paper)}
+.bd-title{margin:8px 0 0;font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.breakdown{list-style:none;margin:0;padding:0;counter-reset:b;display:grid;gap:0}
+.breakdown li{counter-increment:b;display:grid;gap:4px;padding:14px 0 14px 40px;border-top:1px solid color-mix(in srgb,var(--paper) 25%,transparent);position:relative}
+.breakdown li::before{content:counter(b);position:absolute;left:0;top:14px;font-family:var(--display);font-size:1.5rem;color:var(--gold)}
+.bd-q{font-weight:700}
+.bd-a{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.bd-me{color:var(--flame)} .bd-both{color:var(--gold)} .bd-them{opacity:.85}
+.bd-t{opacity:.92}
+
+/* ---------- mobile ---------- */
+.menu-btn,.bar-cta{display:none}
+@media (max-width:760px){
+  .bar .wrap{flex-wrap:nowrap;padding-block:10px;gap:12px;position:relative}
+  .logo{font-size:1.3rem;margin-right:auto}
+  .bar-cta{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;background:var(--flame);color:var(--cream);padding:9px 12px;border:2px solid var(--ink)}
+  .menu-btn{display:inline-grid;place-items:center;gap:4px;width:44px;height:40px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;padding:0}
+  .menu-btn span{display:block;width:20px;height:2px;background:currentColor;transition:transform .2s, opacity .2s}
+  .bar.open .menu-btn span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .bar.open .menu-btn span:nth-child(2){opacity:0}
+  .bar.open .menu-btn span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  .bar nav{position:absolute;left:0;right:0;top:100%}
+  .menu{display:none;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:8px 16px 16px;max-height:calc(100vh - 70px);overflow:auto;box-shadow:0 12px 0 rgba(0,0,0,.08)}
+  .bar.open .menu{display:flex}
+  .menu > li > a,.menu summary{display:block;font-size:.95rem;padding:14px 4px;border-bottom:1px solid var(--line)}
+  .menu .cta{display:none}
+  .drop{position:static;box-shadow:none;border:0;padding:0 0 8px 12px;min-width:0}
+  .drop a{padding:10px 4px;font-size:.85rem}
+
+  .sec{padding-block:40px}
+  .sec-head{margin-bottom:18px}
+  .sub-head{margin:36px 0 14px}
+  .sub-head.first{margin-top:0}
+
+  /* swipeable rows */
+  .grid:not(.duo),.vgrid{display:grid;grid-auto-flow:column;grid-template-columns:none;max-width:none;
+    grid-auto-columns:68%;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
+    margin-inline:-16px;padding:0 16px 10px;scroll-padding-inline:16px;gap:14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .vgrid{grid-auto-columns:84%}
+  .grid:not(.duo)::-webkit-scrollbar,.vgrid::-webkit-scrollbar{display:none}
+  .grid:not(.duo) > *,.vgrid > *{scroll-snap-align:start}
+  .grid.duo{gap:14px}
+  .rel h3,.vid h3{font-size:.98rem}
+
+  .hero .wrap{padding-block:28px 40px;gap:24px}
+  .hero-art{max-width:300px;box-shadow:8px 8px 0 var(--ink)}
+  .hero p{font-size:1rem}
+  .btn-row{width:100%}
+  .btn-row .listen{flex:1 1 auto;text-align:center}
+  .map-stats{gap:20px}
+  .city-list{max-height:300px}
+  .card{padding:20px;min-height:0}
+  .choices button{flex:1 1 auto}
+  .classified{padding:18px}
+  .foot-top{gap:24px}
+}
+
+/* ---------- standalone game page ---------- */
+.menu.solo{display:flex !important;position:static;flex-direction:row;border:0;padding:0;background:none;box-shadow:none;gap:16px;max-height:none}
+.menu.solo > li > a{border:0;padding:8px 0;font-size:.74rem}
+.menu.solo .cta{display:inline-block !important;padding:8px 14px;border:2px solid var(--ink)}
+body{display:flex;flex-direction:column;min-height:100vh}
+main{flex:1}
+.problem{min-height:calc(100vh - 140px);border-bottom:0}
+.solo-foot{padding-block:18px;font-family:var(--mono);font-size:.75rem;background:var(--paper);color:var(--ink-soft);border-top:3px solid var(--ink)}
+.solo-foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.solo-foot a{color:var(--ink)}
+@media (max-width:760px){.bar nav{position:static}.logo{white-space:nowrap}.menu.solo{gap:12px;align-items:center}.menu.solo > li > a{font-size:.66rem;letter-spacing:.08em;white-space:nowrap}.menu.solo .cta{padding:7px 10px}}
+@media (max-width:370px){.menu.solo li:first-child{display:none}}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="/">Jay Activist</a>
+    <ul class="menu solo">
+      <li><a href="https://ffm.to/youtheproblem" target="_blank" rel="noopener">Stream the single</a></li>
+      <li><a class="cta" href="/">Full site</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="sec problem" id="problem">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Who's the problem?</h2>
+        <span class="label">Audience participation required</span>
+      </div>
+      <div class="game">
+        <div class="card" id="card" aria-live="polite">
+          <div class="count" id="count">Case 1 of 10</div>
+          <p class="scenario" id="scenario"></p>
+          <div class="choices" id="choices">
+            <button type="button" class="me" data-a="me" id="btn-me">Me</button>
+            <button type="button" data-a="them" id="btn-them">Them</button>
+            <button type="button" data-a="both" id="btn-both">Both of us</button>
+          </div>
+          <div class="tally" id="tally" aria-hidden="true"></div>
+        </div>
+        <aside class="classified">
+          <div class="label" style="color:var(--gold)">Classified</div>
+          <div class="hl">We listen. We don't judge. You might be the problem.</div>
+          <p>Still not sure? Call the hotline and tell it to us straight.</p>
+          <div class="phone">1-800-IM-THE-PROBLEM</div>
+          <div class="phone">(404) 654-3252</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+
+
+
+</main>
+
+<footer class="solo-foot">
+  <div class="wrap"><span>© 2026 Jay Activist</span><a href="/">jayactivist.com</a></div>
+</footer>
+
+
+
+<script>
+/* ---------- listener map ---------- */
+(function(){
+  let data;
+  try { data = JSON.parse(document.getElementById('listener-data').textContent); } catch(e){ return; }
+  // Score blends both platforms: each scaled to its own top city, then added.
+  const raw = data.cities.map(([name,country,sp,ap,lat,lon])=>({name,country,sp,ap,lat,lon}));
+  const maxSp = Math.max(...raw.map(c=>c.sp)) || 1, maxAp = Math.max(...raw.map(c=>c.ap)) || 1;
+  const cities = raw.map(c=>({...c, n: c.sp/maxSp + c.ap/maxAp})).sort((a,b)=>b.n-a.n);
+  const max = cities[0].n;
+  const plat = c => [c.sp?'Spotify':'', c.ap?'Apple Music':''].filter(Boolean).join(' + ');
+  const counts = c => [c.sp?`${c.sp.toLocaleString()} Spotify listeners`:'', c.ap?`${c.ap.toLocaleString()} Apple plays`:''].filter(Boolean).join(' · ');
+  const countries = new Set(cities.map(c=>c.country));
+  const fmtDate = d => new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+
+  document.getElementById('map-updated').textContent = 'Updated ' + fmtDate(data.updated);
+  document.getElementById('map-source').textContent = data.source;
+  document.getElementById('map-stats').innerHTML =
+    `<div><b>${cities.length}</b><span>Top cities</span></div>
+     <div><b>${countries.size}</b><span>Countries</span></div>
+     <div><b>${cities.filter(c=>c.country!=='United States').length}</b><span>Cities outside the US</span></div>`;
+
+  // list
+  const list = document.getElementById('city-list');
+  list.innerHTML = cities.map((c,i)=>`<li data-i="${i}" tabindex="0"><span class="n">${c.name}</span><span class="c">${c.country} · ${data.showCounts?counts(c):plat(c)}</span><span class="bar-r"><i style="width:${Math.max(6,Math.round(c.n/max*100))}%"></i></span></li>`).join('');
+
+  const svg = document.getElementById('map'), note = document.getElementById('map-note'), tip = document.getElementById('map-tip'), frame = document.getElementById('map-frame');
+  let dots = [];
+
+  function select(i, scroll){
+    list.querySelectorAll('li').forEach(li=>li.classList.toggle('on', +li.dataset.i===i));
+    dots.forEach((d,k)=>d.classList.toggle('on', k===i));
+    if(scroll){ const li = list.querySelector(`li[data-i="${i}"]`); li && li.scrollIntoView({block:'nearest'}); }
+    if(dots[i]) showTip(i);
+  }
+  function showTip(i){
+    const c = cities[i], d = dots[i]; if(!d) return;
+    const box = svg.getBoundingClientRect(), fb = frame.getBoundingClientRect();
+    const sx = box.width/960, sy = box.height/500;
+    tip.textContent = `#${i+1} ${c.name}, ${c.country}` + (data.showCounts?` · ${counts(c)}`:'');
+    tip.style.left = (box.left - fb.left + (+d.getAttribute('cx'))*sx) + 'px';
+    tip.style.top = (box.top - fb.top + (+d.getAttribute('cy'))*sy - (+d.getAttribute('r'))*sy) + 'px';
+    tip.hidden = false;
+  }
+  list.addEventListener('click', e=>{ const li = e.target.closest('li'); if(li) select(+li.dataset.i); });
+  list.addEventListener('keydown', e=>{ if(e.key==='Enter'){ const li = e.target.closest('li'); if(li) select(+li.dataset.i); }});
+
+  // find your city
+  const find = document.getElementById('city-find'), msg = document.getElementById('find-msg');
+  const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+  find.addEventListener('input', ()=>{
+    const q = norm(find.value);
+    if(!q){ msg.textContent=''; return; }
+    const i = cities.findIndex(c=>norm(c.name).startsWith(q) || norm(c.name).includes(q));
+    if(i>=0){ clearTimeout(window.__cityT); const cn=cities[i].name; window.__cityT=setTimeout(()=>window.dispatchEvent(new CustomEvent('ja:track',{detail:'City search: '+cn})),1500); msg.textContent = /^atl/.test(q) ? `ATL HOE!!! #${i+1} 🍑` : `${cities[i].name} is #${i+1}. We see you.`; select(i,true); }
+    else { msg.textContent = `Not in the top ${cities.length} yet. Stream and share to put it on the map.`; }
+  });
+
+  // map
+  function draw(){
+    const topo = window.Datamap && window.Datamap.prototype.worldTopo;
+    if(!(window.d3 && window.topojson && topo)){ note.textContent = 'Map unavailable right now. The city list still works.'; return; }
+    const land = topojson.feature(topo, topo.objects.world);
+    land.features = land.features.filter(f=>f.id!=='ATA');
+    const proj = d3.geoEqualEarth().rotate([-10,0]).fitExtent([[8,8],[952,492]], {type:'Sphere'});
+    const path = d3.geoPath(proj);
+    const s = d3.select(svg);
+    s.append('g').selectAll('path').data(land.features).join('path').attr('class','land').attr('d',path);
+    const r = d3.scaleSqrt().domain([0,max]).range([0,16]);
+    const g = s.append('g');
+    // draw small first so big circles sit underneath? draw big first, small on top
+    cities.slice().map((c,i)=>({c,i})).sort((a,b)=>b.c.n-a.c.n).forEach(({c,i})=>{
+      const [x,y] = proj([c.lon,c.lat]);
+      const rad = Math.max(3.5, r(c.n));
+      const dot = g.append('circle').attr('class','dot').attr('cx',x.toFixed(1)).attr('cy',y.toFixed(1)).attr('r',rad.toFixed(1))
+        .attr('tabindex',0).attr('aria-label',`${c.name}, ${c.country}`).node();
+      g.append('circle').attr('class','pulse').attr('cx',x.toFixed(1)).attr('cy',y.toFixed(1)).attr('r',rad.toFixed(1)).style('--r0',rad.toFixed(1)+'px');
+      dot.addEventListener('mouseenter',()=>showTip(i));
+      dot.addEventListener('mouseleave',()=>{ if(!dot.classList.contains('on')) tip.hidden = true; });
+      dot.addEventListener('click',()=>select(i,true));
+      dot.addEventListener('focus',()=>select(i,true));
+      dots[i] = dot;
+    });
+    note.remove();
+  }
+  if(document.readyState === 'complete') draw(); else window.addEventListener('load', draw);
+  window.addEventListener('resize', ()=>{ const on = dots.findIndex(d=>d && d.classList.contains('on')); if(on>=0) showTip(on); else tip.hidden = true; });
+})();
+
+/* ---------- who's the problem ---------- */
+(function(){
+  const cases = [
+    "You've been “talking” for five months. Neither of you has said what this is.",
+    "They texted “wyd” at 1:47am. You answered in under a minute.",
+    "You said you didn't want anything serious. Now you're mad they believed you.",
+    "They watched your story in 30 seconds but left your text on read for two days.",
+    "You told them you need space. Then you texted them the same night.",
+    "You went through their following list to see who they just followed.",
+    "You both said “we're just friends.” Nobody believes you, including you.",
+    "You still have their playlist on repeat. It's been a year.",
+    "You told your friends you're done. You're still texting them good morning.",
+    "You knew what this was. You stayed anyway."
+  ];
+  const verdicts = {
+    me: ["Maybe you're the problem.", "At least you're honest about it. Press play on track one."],
+    them: ["They're the problem. Allegedly.", "Call the hotline and tell your side."],
+    both: ["You're both the problem.", "That's a situationship. There's a whole album about it."]
+  };
+  let i = 0, picks = [];
+  const card = document.getElementById('card'); const fresh = card.innerHTML;
+  let sc, ct, tally;
+  function bind(){
+    sc = document.getElementById('scenario'); ct = document.getElementById('count'); tally = document.getElementById('tally');
+    document.getElementById('choices').addEventListener('click', e=>{
+      const b = e.target.closest('button'); if(!b) return;
+      if(i===0) window.dispatchEvent(new CustomEvent('ja:track',{detail:'Game: started'})); picks[i] = b.dataset.a; i++;
+      i < cases.length ? show() : finish();
+    });
+  }
+  function show(){
+    ct.textContent = `Case ${i+1} of ${cases.length}`; sc.textContent = cases[i];
+    tally.innerHTML = cases.map((_,k)=>`<i class="${picks[k]||''}"></i>`).join('');
+  }
+  // Mailchimp: paste the form "action" URL from your Embedded Signup Form here.
+  const MC_POST = 'https://linktr.us12.list-manage.com/subscribe/post?u=5882d1edc44c3d79a439530df&id=985b05e2d5';
+  // Google Sheet: paste the Apps Script web app URL here (Deploy > Web app).
+  const SHEET_POST = 'https://script.google.com/macros/s/AKfycbzuARHsLFgU0ONZSMOAD0Wgp7nQxcdx1k4sOmDwTkFgeU39d1uigo676LCO0KvsyWnhoA/exec';
+  const takes = [
+    { me:"You let five months pass without asking. That silence was a choice.",
+      them:"They've had five months to define it. Their silence is an answer.",
+      both:"Two grown people scared of one conversation. Classic." },
+    { me:"Under a minute at 1:47am? You're not waiting on them, you're on call.",
+      them:"A 1:47am “wyd” isn't romance. It's a booty call with punctuation.",
+      both:"They sent it, you answered. Y'all built this routine together." },
+    { me:"You set the terms. They just read them out loud.",
+      them:"If they saw you catching feelings and played dumb, that's on them.",
+      both:"Nobody said what they meant. That's how you end up here." },
+    { me:"If you're tracking how fast they view your story, you're already in too deep.",
+      them:"Your story in 30 seconds and your text in two days? They saw it. They chose.",
+      both:"Y'all talk in views and read receipts. That's not communication." },
+    { me:"You asked for space and then filled it yourself. That's not a boundary, that's a pause.",
+      them:"If they kept reaching out until you gave in, they didn't respect the space you asked for.",
+      both:"One asked for space, the other never gave it. Neither of you meant it." },
+    { me:"Checking their following list is a full-time job you gave yourself.",
+      them:"If they gave you a reason to check, the trust was already gone.",
+      both:"When trust is low on both sides, the following list becomes evidence." },
+    { me:"If you have to keep saying “just friends,” you're trying to convince yourself.",
+      them:"They keep the “friends” label because it lets them have you without the title.",
+      both:"Everyone around y'all already knows. It's only “just friends” until somebody says it out loud." },
+    { me:"A year later and still on repeat? The playlist isn't the problem.",
+      them:"Leaving you the soundtrack and no closure is cold.",
+      both:"Some songs just stay. Heal at your own pace." },
+    { me:"You're not done. You just announced it.",
+      them:"If they reply to every good morning, they're keeping you close on purpose.",
+      both:"Y'all keep the door cracked because neither of you wants to close it." },
+    { me:"You read the terms and signed anyway. That's on you.",
+      them:"If they kept the door half open, they knew what they were doing.",
+      both:"You knew. They knew. Nobody said stop." }
+  ];
+  const tiers = [[80,"Certified Problem"],[60,"Lowkey the Problem"],[40,"Situationship Certified"],[20,"Mostly Not the Problem"],[0,"Certified Innocent (allegedly)"]];
+  const label = {me:'Me', them:'Them', both:'Both of us'};
+  const esc = s => String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  function finish(){
+    const n = {me:0,them:0,both:0}; picks.forEach(p=>n[p]++);
+    const top = Object.keys(n).sort((a,b)=>n[b]-n[a])[0];
+    const [h,s] = verdicts[top]; window.dispatchEvent(new CustomEvent('ja:track',{detail:'Game: finished, verdict '+top}));
+    const score = Math.round((n.me + n.both*0.5) / cases.length * 100);
+    const tier = tiers.find(t=>score>=t[0])[1];
+    card.innerHTML = `<div class="count">Verdict · ${n.me} me · ${n.them} them · ${n.both} both</div>
+      <p class="verdict">${h}</p><p style="margin:0">${s}</p>
+      <form class="unlock-form" id="unlock-form" novalidate>
+        <div class="unlock-head"><b>Unlock your Problem Score</b><span>Get your score card to post and the full breakdown of every answer.</span></div>
+        <div class="unlock-fields">
+          <label for="ul-name">First name<input id="ul-name" name="FNAME" autocomplete="given-name" required maxlength="40" placeholder="Your name"></label>
+          <label for="ul-email">Email<input id="ul-email" name="EMAIL" type="email" autocomplete="email" required placeholder="you@email.com"></label>
+        </div>
+        <button type="submit" class="listen" id="ul-go">Unlock my score</button>
+        <p class="unlock-fine">By unlocking, you join Jay Activist's email list for new music and shows. Unsubscribe anytime.</p>
+        <p class="unlock-err" id="ul-err" aria-live="polite"></p>
+      </form>
+      <div class="choices"><a class="listen ghost-dark" href="https://ffm.to/youtheproblem" target="_blank" rel="noopener">Stream the single</a>
+      <button type="button" id="again">Play again</button></div>`;
+    document.getElementById('again').addEventListener('click',()=>{ i=0; picks=[]; card.innerHTML=fresh; bind(); show(); });
+    document.getElementById('unlock-form').addEventListener('submit', e=>{
+      e.preventDefault();
+      const name = document.getElementById('ul-name').value.trim();
+      const email = document.getElementById('ul-email').value.trim();
+      const err = document.getElementById('ul-err');
+      if(!name){ err.textContent='Add your first name so it goes on your card.'; return; }
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ err.textContent='That email doesn\'t look right. Check it and try again.'; return; }
+      err.textContent=''; const btn=document.getElementById('ul-go'); btn.disabled=true; btn.textContent='Unlocking…';
+      const extra={score, rank:tier, verdict:h};
+      logToSheet(name, email, extra);
+      subscribe(name, email, extra).then(ok=>{
+        window.dispatchEvent(new CustomEvent('ja:track',{detail:'Game: unlocked score'+(ok?'':' (signup failed)')}));
+        reveal(name, score, tier, h, top);
+      });
+    });
+  }
+
+  function subscribe(name, email, extra){
+    return new Promise(res=>{
+      if(!MC_POST){ res(false); return; }
+      const cb='mc_cb_'+Date.now();
+      const url = MC_POST.replace('/subscribe/post?','/subscribe/post-json?') + '&EMAIL='+encodeURIComponent(email)+'&FNAME='+encodeURIComponent(name)+'&SCORE='+encodeURIComponent(extra.score)+'&RANK='+encodeURIComponent(extra.rank)+'&VERDICT='+encodeURIComponent(extra.verdict)+'&ANSWERS='+encodeURIComponent(picks.map((p,k)=>(k+1)+':'+label[p]).join(', '))+'&c='+cb;
+      const s=document.createElement('script'); let done=false;
+      const finishCb = ok=>{ if(done) return; done=true; try{ delete window[cb]; }catch(_){} s.remove(); res(ok); };
+      window[cb] = r => finishCb(!!r && (r.result==='success' || /already subscribed/i.test(r.msg||'')));
+      s.onerror = ()=>finishCb(false); setTimeout(()=>finishCb(false), 8000);
+      s.src=url; document.body.appendChild(s);
+    });
+  }
+
+  function logToSheet(name, email, extra){
+    if(!SHEET_POST) return;
+    const body = JSON.stringify({name, email, score:extra.score, rank:extra.rank, verdict:extra.verdict,
+      answers: picks.map(p=>label[p]), source: document.referrer ? new URL(document.referrer).hostname : 'direct'});
+    try{ fetch(SHEET_POST, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body}); }catch(_){}
+  }
+
+  function reveal(name, score, tier, verdictLine, top){
+    const rows = picks.map((p,k)=>`<li><span class="bd-q">${esc(cases[k])}</span><span class="bd-a bd-${p}">You said: ${label[p]}</span><span class="bd-t">${esc(takes[k][p])}</span></li>`).join('');
+    card.innerHTML = `<div class="count">Unlocked · ${esc(name)}</div>
+      <div class="score-row"><div class="score-big"><b>${score}</b><span>/100</span></div><div><div class="score-tier">${tier}</div><p style="margin:6px 0 0">${esc(verdictLine)}</p></div></div>
+      <div class="score-card"><img id="score-img" alt="Your Problem Score card"></div>
+      <div class="choices"><button type="button" class="me" id="save-card">Save card</button><a class="listen ghost-dark" href="https://ffm.to/youtheproblem" target="_blank" rel="noopener">Stream the single</a></div>
+      <h4 class="bd-title">Your full breakdown</h4>
+      <ol class="breakdown">${rows}</ol>
+      <div class="choices"><button type="button" id="again">Play again</button></div>`;
+    document.getElementById('again').addEventListener('click',()=>{ i=0; picks=[]; card.innerHTML=fresh; bind(); show(); });
+    drawCard(name, score, tier, verdictLine).then(canvas=>{
+      const img=document.getElementById('score-img'); img.src=canvas.toDataURL('image/png');
+      document.getElementById('save-card').addEventListener('click', ()=>{
+        window.dispatchEvent(new CustomEvent('ja:track',{detail:'Game: saved score card'}));
+        canvas.toBlob(async blob=>{
+          const file=new File([blob],'my-problem-score.png',{type:'image/png'});
+          try{ if(navigator.canShare && navigator.canShare({files:[file]})){ await navigator.share({files:[file], title:'My Problem Score', text:'Who\'s the problem? Take the test: jayactivist.com/problem'}); return; } }catch(_){ }
+          const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='my-problem-score.png'; document.body.appendChild(a); a.click(); a.remove();
+        },'image/png');
+      });
+    });
+  }
+
+  async function drawCard(name, score, tier, verdictLine){
+    try{ await Promise.all([document.fonts.load('120px Shrikhand'), document.fonts.load('700 40px Manrope'), document.fonts.load('600 30px "IBM Plex Mono"')]); }catch(_){}
+    const W=1080,H=1920,c=document.createElement('canvas'); c.width=W; c.height=H; const x=c.getContext('2d');
+    const FLAME='#d2481c', GOLD='#e4a72b', OX='#3a0d12', CREAM='#fff8ef';
+    x.fillStyle=FLAME; x.fillRect(0,0,W,H);
+    x.save(); x.translate(W/2, 860);
+    for(let a=0;a<60;a++){ x.rotate(Math.PI*2/60); if(a%2) continue; x.beginPath(); x.moveTo(0,0); x.lineTo(1600,-84); x.lineTo(1600,84); x.closePath(); x.fillStyle='rgba(228,167,43,.28)'; x.fill(); }
+    x.restore();
+    x.textAlign='center'; x.textBaseline='alphabetic';
+    const shadowText=(t,y,font,fill,off)=>{ x.font=font; x.fillStyle=OX; x.fillText(t,W/2+off,y+off); x.fillStyle=fill; x.fillText(t,W/2,y); };
+    x.font='600 34px "IBM Plex Mono", monospace'; x.fillStyle=CREAM; x.fillText('WHO’S THE PROBLEM?', W/2, 190);
+    let nm=name.length>14?name.slice(0,14)+'…':name; let size=nm.length>9?120:150;
+    shadowText(nm, 420, `${size}px Shrikhand, Georgia, serif`, CREAM, 8);
+    x.font='600 38px "IBM Plex Mono", monospace'; x.fillStyle=CREAM; x.fillText('PROBLEM SCORE', W/2, 560);
+    shadowText(String(score), 1000, '440px Shrikhand, Georgia, serif', GOLD, 14);
+    x.font='700 60px Manrope, sans-serif'; x.fillStyle=CREAM; x.fillText('/ 100', W/2, 1090);
+    x.font='700 56px Manrope, sans-serif'; const tw=x.measureText(tier).width+80;
+    x.fillStyle=OX; x.fillRect((W-tw)/2, 1170, tw, 104); x.fillStyle=GOLD; x.fillText(tier, W/2, 1240);
+    x.font='600 46px Manrope, sans-serif'; x.fillStyle=CREAM; x.fillText(verdictLine, W/2, 1380);
+    x.fillStyle=CREAM; x.fillRect(120, 1560, W-240, 4);
+    x.font='600 40px "IBM Plex Mono", monospace'; x.fillText('Take the test → jayactivist.com', W/2, 1660);
+    shadowText('Jay Activist', 1800, '80px Shrikhand, Georgia, serif', CREAM, 5);
+    return c;
+  }
+  bind(); show();
+
+  const dd = document.getElementById('social-menu');
+  document.addEventListener('click', e=>{ if(dd && dd.open && !dd.contains(e.target)) dd.open = false; });
+
+  document.querySelectorAll('[data-copy]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const el = document.getElementById(btn.dataset.copy);
+      const done = ()=>{ btn.textContent='Copied'; setTimeout(()=>btn.textContent='Copy',1600); };
+      const fallback = ()=>{ const r=document.createRange(); r.selectNodeContents(el); const s=getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent='Selected'; };
+      try{ navigator.clipboard.writeText(el.textContent).then(done,fallback); }catch(_){ fallback(); }
+    });
+  });
+})();
+
+/* ---------- mobile menu ---------- */
+(function(){
+  const bar=document.querySelector('.bar'), btn=document.getElementById('menu-btn'), menu=document.getElementById('main-menu');
+  if(!btn) return;
+  const set=o=>{bar.classList.toggle('open',o);btn.setAttribute('aria-expanded',o);btn.setAttribute('aria-label',o?'Close menu':'Open menu');};
+  btn.addEventListener('click',()=>set(!bar.classList.contains('open')));
+  menu.addEventListener('click',e=>{ if(e.target.closest('a')) set(false); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') set(false); });
+  document.addEventListener('click',e=>{ if(bar.classList.contains('open') && !bar.contains(e.target)) set(false); });
+})();
+</script>
+
+
+<!-- Analytics: GoatCounter (no cookies). Dashboard: https://jayactivist.goatcounter.com -->
+<script data-goatcounter="https://jayactivist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  function send(name){
+    try{ if(window.goatcounter && window.goatcounter.count){ window.goatcounter.count({path:name, title:name, event:true}); } }catch(e){}
+  }
+  window.addEventListener('ja:track', e=>send(e.detail));
+  function label(a){
+    const href=a.href||'', card=a.closest('.rel,.vid,.show');
+    const name=card && card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : (a.textContent||'').trim().replace(/\s+/g,' ');
+    if(href.includes('mailchi.mp')) return 'Email signup click';
+    if(href.includes('/concert')) return 'Tickets: '+name;
+    if(href.includes('myshopify')) return 'Store click';
+    if(href.includes('youtube.com/watch')) return 'Video: '+name;
+    if(href.includes('ffm.to')||href.includes('music.apple.com/us/album')) return 'Stream: '+(card?name:(href.includes('youtheproblem')?"Maybe I'm the Problem":href.includes('loseyouagain')?'Lose You Again':name));
+    try{ return 'Outbound: '+new URL(href).hostname.replace('www.','') }catch(e){ return 'Outbound click' }
+  }
+  document.addEventListener('click', e=>{
+    const a=e.target.closest('a[href^="http"]'); if(!a) return;
+    send(label(a));
+  }, true);
+})();
+</script>
+</body>
+</html>
