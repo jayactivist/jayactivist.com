@@ -263,6 +263,17 @@ footer a:hover{text-decoration:underline}
 .bd-me{color:var(--flame)} .bd-both{color:var(--gold)} .bd-them{opacity:.85}
 .bd-t{opacity:.92}
 
+
+/* ---------- inline email signup ---------- */
+.signup{flex-wrap:wrap}
+.nl-form{display:flex;gap:8px;flex:1 1 260px;min-width:0}
+.nl-form input{flex:1;min-width:0;font:600 1rem var(--body);padding:12px 14px;border:3px solid var(--ink);background:var(--paper);color:var(--ink)}
+.nl-form .listen{cursor:pointer;font-family:var(--body);padding:12px 18px}
+.nl-form .listen:disabled{opacity:.6;cursor:wait}
+.nl-msg{flex-basis:100%;margin:0;font-weight:700;min-height:1.2em;color:var(--flame)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:460px){.nl-form{flex-direction:column}}
+
 /* ---------- mobile ---------- */
 .menu-btn,.bar-cta{display:none}
 @media (max-width:760px){
@@ -317,7 +328,7 @@ footer a:hover{text-decoration:underline}
 <header class="bar">
   <div class="wrap">
     <a class="logo" href="#top">Jay Activist</a>
-    <a class="bar-cta" href="https://mailchi.mp/05322e2709cc/jay-act" target="_blank" rel="noopener">Subscribe</a>
+    <a class="bar-cta" href="#follow">Subscribe</a>
     <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Open menu"><span></span><span></span><span></span></button>
     <nav aria-label="Main">
       <ul class="menu" id="main-menu">
@@ -340,7 +351,7 @@ footer a:hover{text-decoration:underline}
             </div>
           </details>
         </li>
-        <li><a class="cta" href="https://mailchi.mp/05322e2709cc/jay-act" target="_blank" rel="noopener">Subscribe</a></li>
+        <li><a class="cta" href="#follow">Subscribe</a></li>
       </ul>
     </nav>
   </div>
@@ -503,7 +514,12 @@ footer a:hover{text-decoration:underline}
             <b>Get on the email list</b>
             <span>Drops, shows and pre-saves before anyone else.</span>
           </div>
-          <a class="listen" href="https://mailchi.mp/05322e2709cc/jay-act" target="_blank" rel="noopener">Sign up</a>
+          <form class="nl-form" id="nl-form" novalidate>
+            <label class="sr" for="nl-email">Email address</label>
+            <input id="nl-email" type="email" autocomplete="email" placeholder="you@email.com" required>
+            <button type="submit" class="listen" id="nl-go">Sign up</button>
+          </form>
+          <p class="nl-msg" id="nl-msg" aria-live="polite"></p>
         </div>
       </div>
       <div class="socials">
@@ -541,7 +557,7 @@ footer a:hover{text-decoration:underline}
           <li><a href="https://www.instagram.com/thejayactivist/" target="_blank" rel="noopener">Instagram</a></li>
           <li><a href="https://www.tiktok.com/@jayactivist" target="_blank" rel="noopener">TikTok</a></li>
           <li><a href="https://jay-activist-store.myshopify.com/" target="_blank" rel="noopener">Store</a></li>
-          <li><a href="https://mailchi.mp/05322e2709cc/jay-act" target="_blank" rel="noopener">Email list</a></li>
+          <li><a href="#follow">Email list</a></li>
         </ul>
       </div>
     </div>
@@ -937,6 +953,26 @@ footer a:hover{text-decoration:underline}
   });
 })();
 
+
+/* ---------- inline email signup ---------- */
+(function(){
+  const f=document.getElementById('nl-form'); if(!f) return;
+  const MC='https://linktr.us12.list-manage.com/subscribe/post-json?u=5882d1edc44c3d79a439530df&id=985b05e2d5';
+  const input=document.getElementById('nl-email'), btn=document.getElementById('nl-go'), msg=document.getElementById('nl-msg');
+  f.addEventListener('submit', e=>{
+    e.preventDefault();
+    const email=input.value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ msg.textContent='That email doesn\'t look right. Check it and try again.'; return; }
+    btn.disabled=true; btn.textContent='Signing up…'; msg.textContent='';
+    const cb='nl_cb_'+Date.now(), s=document.createElement('script'); let done=false;
+    const finish=(ok,text)=>{ if(done) return; done=true; try{delete window[cb]}catch(_){} s.remove(); btn.disabled=false; btn.textContent='Sign up';
+      if(ok){ msg.textContent="You're on the list. Watch your inbox."; input.value=''; window.dispatchEvent(new CustomEvent('ja:track',{detail:'Email signup (site form)'})); }
+      else { msg.textContent=text||'Something went wrong. Try again in a minute.'; } };
+    window[cb]=r=>{ const already=/already subscribed/i.test(r&&r.msg||''); finish((r&&r.result==='success')||already, already?"You're already on the list.":null); };
+    s.onerror=()=>finish(false); setTimeout(()=>finish(false),8000);
+    s.src=MC+'&EMAIL='+encodeURIComponent(email)+'&c='+cb; document.body.appendChild(s);
+  });
+})();
 /* ---------- mobile menu ---------- */
 (function(){
   const bar=document.querySelector('.bar'), btn=document.getElementById('menu-btn'), menu=document.getElementById('main-menu');
