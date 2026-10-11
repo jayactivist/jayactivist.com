@@ -241,6 +241,11 @@ footer a:hover{text-decoration:underline}
 .unlock-form .listen:disabled{opacity:.6;cursor:wait}
 .unlock-fine{margin:0;font-size:.8rem;opacity:.75}
 .unlock-err{margin:0;font-weight:700;color:var(--gold);min-height:1.2em}
+.unlock-fields .ul-wide{grid-column:1/-1}
+.unlock-fields label i{font-style:normal;opacity:.6;letter-spacing:.08em}
+.unlock-sms{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font-size:.8rem;line-height:1.4;opacity:.9;cursor:pointer}
+.unlock-sms[hidden]{display:none}
+.unlock-sms input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--gold);cursor:pointer}
 .listen.ghost-dark{background:transparent;color:var(--paper);border-color:var(--paper);box-shadow:none}
 .score-row{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
 .score-big{display:flex;align-items:baseline;gap:4px;line-height:1}
@@ -549,7 +554,9 @@ main{flex:1}
         <div class="unlock-fields">
           <label for="ul-name">First name<input id="ul-name" name="FNAME" autocomplete="given-name" required maxlength="40" placeholder="Your name"></label>
           <label for="ul-email">Email<input id="ul-email" name="EMAIL" type="email" autocomplete="email" required placeholder="you@email.com"></label>
+          <label for="ul-phone" class="ul-wide"><span>Phone <i>(optional, for texts)</i></span><input id="ul-phone" name="PHONE" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="20" placeholder="(404) 555-0123"></label>
         </div>
+        <label class="unlock-sms" id="ul-sms-wrap" hidden><input type="checkbox" id="ul-sms"><span>Yes, text me new music and show updates from Jay Activist. Msg &amp; data rates may apply. Msg frequency varies. Reply STOP to opt out. Consent isn't required to unlock your score.</span></label>
         <button type="submit" class="listen" id="ul-go">Unlock my score</button>
         <p class="unlock-fine">By unlocking, you join Jay Activist's email list for new music and shows. Unsubscribe anytime.</p>
         <p class="unlock-err" id="ul-err" aria-live="polite"></p>
@@ -557,6 +564,8 @@ main{flex:1}
       <div class="choices"><a class="listen ghost-dark" href="https://ffm.to/youtheproblem" target="_blank" rel="noopener">Stream the single</a>
       <button type="button" id="again">Play again</button></div>`;
     document.getElementById('again').addEventListener('click',()=>{ i=0; picks=[]; card.innerHTML=fresh; bind(); show(); });
+    const phoneIn = document.getElementById('ul-phone'), smsWrap = document.getElementById('ul-sms-wrap');
+    phoneIn.addEventListener('input', ()=>{ smsWrap.hidden = !phoneIn.value.trim(); });
     document.getElementById('unlock-form').addEventListener('submit', e=>{
       e.preventDefault();
       const name = document.getElementById('ul-name').value.trim();
@@ -564,11 +573,20 @@ main{flex:1}
       const err = document.getElementById('ul-err');
       if(!name){ err.textContent='Add your first name so it goes on your card.'; return; }
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ err.textContent='That email doesn\'t look right. Check it and try again.'; return; }
+      let phone = '';
+      const rawPhone = phoneIn.value.trim();
+      if(rawPhone){
+        let d = rawPhone.replace(/\D/g,''); if(d.length===11 && d[0]==='1') d = d.slice(1);
+        if(d.length!==10 || /^[01]/.test(d)){ err.textContent='That phone number doesn\'t look right. Use a 10-digit US number, or leave it blank.'; return; }
+        if(!document.getElementById('ul-sms').checked){ err.textContent='Check the box to get texts, or clear the phone number to skip.'; return; }
+        phone = d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6);
+      }
       err.textContent=''; const btn=document.getElementById('ul-go'); btn.disabled=true; btn.textContent='Unlocking…';
-      const extra={score, rank:tier, verdict:h};
+      const extra={score, rank:tier, verdict:h, phone, sms: phone ? 'yes' : 'no', consentAt: phone ? new Date().toISOString() : ''};
       logToSheet(name, email, extra);
       subscribe(name, email, extra).then(ok=>{
         window.dispatchEvent(new CustomEvent('ja:track',{detail:'Game: unlocked score'+(ok?'':' (signup failed)')}));
+        if(phone) window.dispatchEvent(new CustomEvent('ja:track',{detail:'Game: phone opt-in'}));
         reveal(name, score, tier, h, top);
       });
     });
@@ -578,7 +596,7 @@ main{flex:1}
     return new Promise(res=>{
       if(!MC_POST){ res(false); return; }
       const cb='mc_cb_'+Date.now();
-      const url = MC_POST.replace('/subscribe/post?','/subscribe/post-json?') + '&EMAIL='+encodeURIComponent(email)+'&FNAME='+encodeURIComponent(name)+'&SCORE='+encodeURIComponent(extra.score)+'&RANK='+encodeURIComponent(extra.rank)+'&VERDICT='+encodeURIComponent(extra.verdict)+'&ANSWERS='+encodeURIComponent(picks.map((p,k)=>(k+1)+':'+label[p]).join(', '))+'&c='+cb;
+      const url = MC_POST.replace('/subscribe/post?','/subscribe/post-json?') + '&EMAIL='+encodeURIComponent(email)+'&FNAME='+encodeURIComponent(name)+'&SCORE='+encodeURIComponent(extra.score)+'&RANK='+encodeURIComponent(extra.rank)+'&VERDICT='+encodeURIComponent(extra.verdict)+'&ANSWERS='+encodeURIComponent(picks.map((p,k)=>(k+1)+':'+label[p]).join(', '))+(extra.phone ? '&PHONE='+encodeURIComponent(extra.phone)+'&SMSOPTIN=yes' : '')+'&c='+cb;
       const s=document.createElement('script'); let done=false;
       const finishCb = ok=>{ if(done) return; done=true; try{ delete window[cb]; }catch(_){} s.remove(); res(ok); };
       window[cb] = r => finishCb(!!r && (r.result==='success' || /already subscribed/i.test(r.msg||'')));
@@ -589,7 +607,7 @@ main{flex:1}
 
   function logToSheet(name, email, extra){
     if(!SHEET_POST) return;
-    const body = JSON.stringify({name, email, score:extra.score, rank:extra.rank, verdict:extra.verdict,
+    const body = JSON.stringify({name, email, phone:extra.phone, sms_consent:extra.sms, consent_at:extra.consentAt, score:extra.score, rank:extra.rank, verdict:extra.verdict,
       answers: picks.map(p=>label[p]), source: document.referrer ? new URL(document.referrer).hostname : 'direct'});
     try{ fetch(SHEET_POST, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body}); }catch(_){}
   }
