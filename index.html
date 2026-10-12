@@ -193,6 +193,27 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .tally i{flex:1;height:8px;background:color-mix(in srgb,var(--paper) 25%,transparent)}
 .tally i.me{background:var(--flame)} .tally i.them{background:var(--paper)} .tally i.both{background:var(--gold)}
 
+/* game: always-dark panel (same in light and dark mode) so text stays readable */
+.problem{--ink:#22060a;--paper:#fbe9d8;--paper-2:#f6d9bf;--ink-soft:#d9b8a3;--gold:#eeb240;--flame:#d9501f;--cream:#fff8ef;--oxblood:#22060a;--line:#fbe9d826;color-scheme:dark}
+
+/* game cover */
+.card.is-cover{position:relative;overflow:hidden;min-height:380px;justify-content:center;border-color:var(--gold)}
+.cover-rays{position:absolute;inset:-60%;z-index:0;pointer-events:none;
+  background:repeating-conic-gradient(from 0deg at 50% 50%,color-mix(in srgb,var(--flame) 22%,transparent) 0deg 7deg,transparent 7deg 14deg);
+  -webkit-mask:radial-gradient(circle at 50% 50%,#000 0 22%,transparent 62%);mask:radial-gradient(circle at 50% 50%,#000 0 22%,transparent 62%);
+  animation:spin 160s linear infinite}
+.gcover{position:relative;z-index:1;display:grid;gap:16px;justify-items:center;text-align:center;padding-block:8px}
+.cover-stamp{font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:2px solid var(--gold);padding:5px 10px;transform:rotate(-3deg)}
+.cover-title{font-family:var(--display);font-weight:400;margin:0;line-height:.95;font-size:clamp(2.6rem,9vw,4.4rem);color:var(--paper);text-shadow:.05em .05em 0 var(--flame);transform:rotate(-2deg)}
+.cover-title em{font-style:normal;color:var(--gold)}
+.cover-sub{margin:0;max-width:30ch;font-size:1.05rem;line-height:1.5}
+.cover-start{font:800 1.05rem var(--body);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
+  padding:16px 34px;background:var(--flame);color:var(--cream);border:3px solid var(--paper);box-shadow:6px 6px 0 var(--gold);transition:transform .12s,box-shadow .12s}
+.cover-start:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--gold)}
+.cover-start:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--gold)}
+.cover-meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+@media (prefers-reduced-motion:reduce){.cover-rays{animation:none}}
+
 /* ---------- follow ---------- */
 .follow{background:var(--paper-2)}
 .follow .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:center}
@@ -443,31 +464,31 @@ footer a:hover{text-decoration:underline}
       </div>
       <div class="sub-head first"><h3>Albums &amp; EPs</h3><span class="label">Projects</span></div>
       <div class="grid trio">
-        <a class="rel" href="https://ffm.to/youtheproblem" target="_blank" rel="noopener"><div class="cover"><img src="img/mitp.jpg" alt="" loading="lazy"></div><h3>Maybe I'm the Problem</h3><div class="meta">Super single · 3 tracks · 2026</div><span class="go">Stream / Download</span></a>
-        <a class="rel" href="https://music.apple.com/us/album/you-knew-what-this-was/6818676686" target="_blank" rel="noopener"><div class="cover"><img src="img/ykwtw.jpg" alt="" loading="lazy"></div><h3>You Knew What This Was</h3><div class="meta">Album · 9 tracks · 2025</div><span class="go">Stream / Download</span></a>
-        <a class="rel" href="https://music.apple.com/us/album/sugar-honey-iced-tea-ep/6821020973" target="_blank" rel="noopener"><div class="cover"><img src="img/shit.jpg" alt="" loading="lazy"></div><h3>Sugar Honey Iced Tea</h3><div class="meta">EP · 4 tracks · 2025</div><span class="go">Stream / Download</span></a>
+        <a class="rel" href="https://ffm.to/youtheproblem" target="_blank" rel="noopener"><div class="gcover"><img src="img/mitp.jpg" alt="" loading="lazy"></div><h3>Maybe I'm the Problem</h3><div class="meta">Super single · 3 tracks · 2026</div><span class="go">Stream / Download</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/you-knew-what-this-was/6818676686" target="_blank" rel="noopener"><div class="gcover"><img src="img/ykwtw.jpg" alt="" loading="lazy"></div><h3>You Knew What This Was</h3><div class="meta">Album · 9 tracks · 2025</div><span class="go">Stream / Download</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/sugar-honey-iced-tea-ep/6821020973" target="_blank" rel="noopener"><div class="gcover"><img src="img/shit.jpg" alt="" loading="lazy"></div><h3>Sugar Honey Iced Tea</h3><div class="meta">EP · 4 tracks · 2025</div><span class="go">Stream / Download</span></a>
       </div>
 
       <div class="sub-head"><h3>The Act Pack</h3><span class="label">Series</span></div>
       <div class="grid duo">
-        <a class="rel" href="https://music.apple.com/us/album/the-act-pack-love-edition-ep/1876981800" target="_blank" rel="noopener"><div class="cover"><img src="img/actlove.jpg" alt="" loading="lazy"></div><h3>The Act Pack Love Edition</h3><div class="meta">EP · 5 tracks · 2026</div><span class="go">Stream / Download</span></a>
-        <a class="rel" href="https://music.apple.com/us/album/the-act-pack-vol-1-ep/1826112802" target="_blank" rel="noopener"><div class="cover"><img src="img/actvol1.jpg" alt="" loading="lazy"></div><h3>The Act Pack, Vol. 1</h3><div class="meta">EP · 6 tracks · 2025</div><span class="go">Stream / Download</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/the-act-pack-love-edition-ep/1876981800" target="_blank" rel="noopener"><div class="gcover"><img src="img/actlove.jpg" alt="" loading="lazy"></div><h3>The Act Pack Love Edition</h3><div class="meta">EP · 5 tracks · 2026</div><span class="go">Stream / Download</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/the-act-pack-vol-1-ep/1826112802" target="_blank" rel="noopener"><div class="gcover"><img src="img/actvol1.jpg" alt="" loading="lazy"></div><h3>The Act Pack, Vol. 1</h3><div class="meta">EP · 6 tracks · 2025</div><span class="go">Stream / Download</span></a>
       </div>
 
       <div class="sub-head"><h3>Singles</h3><span class="label">Latest</span></div>
       <div class="grid">
-        <a class="rel" href="https://music.apple.com/us/album/the-lifestyle-parade-on-tara-blvd-single/1895416297" target="_blank" rel="noopener"><div class="cover"><img src="img/lifestyle.jpg" alt="" loading="lazy"></div><h3>The Lifestyle / Parade on Tara Blvd</h3><div class="meta">Single · 2026</div><span class="go">Stream / Download</span></a>
-        <a class="rel" href="https://ffm.to/loseyouagainjay" target="_blank" rel="noopener"><div class="cover"><img src="img/lya.jpg" alt="" loading="lazy"></div><h3>Lose You Again</h3><div class="meta">Single · 2025</div><span class="go">Stream / Download</span></a>
-        <a class="rel" href="https://music.apple.com/us/album/love-yourself-single/1810799282" target="_blank" rel="noopener"><div class="cover"><img src="img/loveyourself.jpg" alt="" loading="lazy"></div><h3>Love Yourself</h3><div class="meta">Single · 2025</div><span class="go">Stream / Download</span></a>
-        <a class="rel" href="https://music.apple.com/us/album/sacrifices-single/1802129488" target="_blank" rel="noopener"><div class="cover"><img src="img/sacrifices.jpg" alt="" loading="lazy"></div><h3>SACRIFICES</h3><div class="meta">Single · 2025</div><span class="go">Stream / Download</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/the-lifestyle-parade-on-tara-blvd-single/1895416297" target="_blank" rel="noopener"><div class="gcover"><img src="img/lifestyle.jpg" alt="" loading="lazy"></div><h3>The Lifestyle / Parade on Tara Blvd</h3><div class="meta">Single · 2026</div><span class="go">Stream / Download</span></a>
+        <a class="rel" href="https://ffm.to/loseyouagainjay" target="_blank" rel="noopener"><div class="gcover"><img src="img/lya.jpg" alt="" loading="lazy"></div><h3>Lose You Again</h3><div class="meta">Single · 2025</div><span class="go">Stream / Download</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/love-yourself-single/1810799282" target="_blank" rel="noopener"><div class="gcover"><img src="img/loveyourself.jpg" alt="" loading="lazy"></div><h3>Love Yourself</h3><div class="meta">Single · 2025</div><span class="go">Stream / Download</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/sacrifices-single/1802129488" target="_blank" rel="noopener"><div class="gcover"><img src="img/sacrifices.jpg" alt="" loading="lazy"></div><h3>SACRIFICES</h3><div class="meta">Single · 2025</div><span class="go">Stream / Download</span></a>
       </div>
 
       <div class="sub-head"><h3>Features</h3><span class="label">Appears on</span></div>
       <div class="grid">
-        <a class="rel" href="https://music.apple.com/us/album/ghetto-angels-feat-jay-activist-single/6786405152" target="_blank" rel="noopener"><div class="cover"><img src="img/ghetto.jpg" alt="" loading="lazy"></div><h3>GHETTO ANGELS</h3><div class="meta">feat. Jay Activist · 2026</div><span class="go">Stream</span></a>
-        <a class="rel" href="https://music.apple.com/us/album/rrc-episode-10-feat-jiah-jay-activist-pryce-single/1866855828" target="_blank" rel="noopener"><div class="cover"><img src="img/rrc.jpg" alt="" loading="lazy"></div><h3>RRC Episode 10</h3><div class="meta">feat. Jiah, Jay Activist &amp; Pryce · 2026</div><span class="go">Stream</span></a>
-        <a class="rel" href="https://music.apple.com/us/album/ygmco-feat-calvin-merazh-jay-activist-single/1865748639" target="_blank" rel="noopener"><div class="cover"><img src="img/ygmco.jpg" alt="" loading="lazy"></div><h3>YGMCO</h3><div class="meta">feat. Calvin Merazh &amp; Jay Activist · 2026</div><span class="go">Stream</span></a>
-        <a class="rel" href="https://music.apple.com/us/album/slide-feat-jay-activist-single/1847053138" target="_blank" rel="noopener"><div class="cover"><img src="img/slide.jpg" alt="" loading="lazy"></div><h3>Slide</h3><div class="meta">feat. Jay Activist · 2025</div><span class="go">Stream</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/ghetto-angels-feat-jay-activist-single/6786405152" target="_blank" rel="noopener"><div class="gcover"><img src="img/ghetto.jpg" alt="" loading="lazy"></div><h3>GHETTO ANGELS</h3><div class="meta">feat. Jay Activist · 2026</div><span class="go">Stream</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/rrc-episode-10-feat-jiah-jay-activist-pryce-single/1866855828" target="_blank" rel="noopener"><div class="gcover"><img src="img/rrc.jpg" alt="" loading="lazy"></div><h3>RRC Episode 10</h3><div class="meta">feat. Jiah, Jay Activist &amp; Pryce · 2026</div><span class="go">Stream</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/ygmco-feat-calvin-merazh-jay-activist-single/1865748639" target="_blank" rel="noopener"><div class="gcover"><img src="img/ygmco.jpg" alt="" loading="lazy"></div><h3>YGMCO</h3><div class="meta">feat. Calvin Merazh &amp; Jay Activist · 2026</div><span class="go">Stream</span></a>
+        <a class="rel" href="https://music.apple.com/us/album/slide-feat-jay-activist-single/1847053138" target="_blank" rel="noopener"><div class="gcover"><img src="img/slide.jpg" alt="" loading="lazy"></div><h3>Slide</h3><div class="meta">feat. Jay Activist · 2025</div><span class="go">Stream</span></a>
       </div>
     </div>
   </section>
@@ -972,7 +993,23 @@ footer a:hover{text-decoration:underline}
     shadowText('Jay Activist', 1800, '80px Shrikhand, Georgia, serif', CREAM, 5);
     return c;
   }
-  bind(); show();
+  function cover(){
+    card.classList.add('is-cover');
+    card.innerHTML = `<div class="cover-rays" aria-hidden="true"></div>
+      <div class="gcover">
+        <span class="cover-stamp">Case file · Confidential</span>
+        <p class="cover-title">Are <em>you</em> the problem?</p>
+        <p class="cover-sub">10 situationships. Answer honestly. Get your verdict and your Problem Score.</p>
+        <button type="button" class="cover-start" id="cover-start">Start the test</button>
+        <div class="cover-meta">Takes about a minute</div>
+      </div>`;
+    document.getElementById('cover-start').addEventListener('click', ()=>{
+      window.dispatchEvent(new CustomEvent('ja:track',{detail:'Game: tapped start'}));
+      card.classList.remove('is-cover'); card.innerHTML = fresh; bind(); show();
+      const first = document.getElementById('btn-me'); if(first) first.focus({preventScroll:true});
+    });
+  }
+  cover();
 
   const dd = document.getElementById('social-menu');
   document.addEventListener('click', e=>{ if(dd && dd.open && !dd.contains(e.target)) dd.open = false; });
