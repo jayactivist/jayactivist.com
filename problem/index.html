@@ -195,6 +195,15 @@ h1,h2,h3{text-wrap:balance;margin:0}
 /* game: always-dark panel (same in light and dark mode) so text stays readable */
 .problem{--ink:#22060a;--paper:#fbe9d8;--paper-2:#f6d9bf;--ink-soft:#d9b8a3;--gold:#eeb240;--flame:#d9501f;--cream:#fff8ef;--oxblood:#22060a;--line:#fbe9d826;color-scheme:dark}
 
+
+/* verdict: song player, share, email suggestion */
+.g-player{display:grid;gap:8px}
+.g-player .label{color:var(--gold);opacity:1}
+.g-player iframe{display:block;width:100%;height:152px;border:0;border-radius:12px;background:#000}
+.share-them{background:var(--gold)!important;border-color:var(--gold)!important;color:var(--oxblood)!important}
+.share-them:hover{background:var(--paper)!important;border-color:var(--paper)!important}
+.share-msg{margin:0;font-weight:700;color:var(--gold);min-height:1.2em}
+button.sug{font:inherit;font-weight:800;color:inherit;background:none;border:0;border-bottom:2px solid currentColor;padding:0;cursor:pointer}
 /* game cover */
 .card.is-cover{position:relative;overflow:hidden;min-height:380px;justify-content:center;border-color:var(--gold)}
 .cover-rays{position:absolute;inset:-60%;z-index:0;pointer-events:none;
@@ -488,6 +497,16 @@ main{flex:1}
   window.addEventListener('resize', ()=>{ const on = dots.findIndex(d=>d && d.classList.contains('on')); if(on>=0) showTip(on); else tip.hidden = true; });
 })();
 
+/* ---------- email typo catcher ---------- */
+function jaEmailSuggest(e){
+  const m = String(e).trim().match(/^([^@\s]+)@([^@\s]+)$/); if(!m) return null;
+  const d = m[2].toLowerCase();
+  const known = ['gmail.com','yahoo.com','icloud.com','hotmail.com','outlook.com','aol.com','me.com','live.com','msn.com','comcast.net','att.net'];
+  if(known.includes(d)) return null;
+  const lev=(a,b)=>{const r=[...Array(b.length+1).keys()];for(let i=1;i<=a.length;i++){let p=r[0];r[0]=i;for(let j=1;j<=b.length;j++){const t=r[j];r[j]=Math.min(r[j]+1,r[j-1]+1,p+(a[i-1]===b[j-1]?0:1));p=t;}}return r[b.length];};
+  let best=null, bd=3; for(const k of known){ const x=lev(d,k); if(x<bd){bd=x;best=k;} }
+  return best && bd<=2 ? m[1]+'@'+best : null;
+}
 /* ---------- who's the problem ---------- */
 (function(){
   const cases = [
@@ -509,6 +528,24 @@ main{flex:1}
   };
   let i = 0, picks = [];
   const card = document.getElementById('card'); const fresh = card.innerHTML;
+  const PLAYER = `<div class="g-player"><span class="label">Your verdict has a soundtrack</span>
+      <iframe title="Maybe I'm the Problem on Spotify" src="https://open.spotify.com/embed/track/6QHNZrkFFOUGHdg4pWMk2N?utm_source=jayactivist&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>`;
+  let lastVerdict = '';
+  function shareThem(){
+    window.dispatchEvent(new CustomEvent('ja:track',{detail:'Game: tapped send to them'}));
+    const url='https://jayactivist.com/problem', text=`I took the "Who's the Problem?" test and got: ${lastVerdict} Your turn. Who's really the problem?`;
+    const msg=document.getElementById('share-msg');
+    if(navigator.share){ navigator.share({title:"Who's the Problem?", text, url}).catch(()=>{}); return; }
+    const done=()=>{ if(msg) msg.textContent='Link copied. Paste it in their DMs.'; };
+    try{ navigator.clipboard.writeText(text+' '+url).then(done, ()=>{ location.href='sms:?&body='+encodeURIComponent(text+' '+url); }); }
+    catch(_){ location.href='sms:?&body='+encodeURIComponent(text+' '+url); }
+  }
+  card.addEventListener('click', e=>{
+    if(e.target.closest('#share-them')){ shareThem(); return; }
+    const s=e.target.closest('button.sug');
+    if(s){ const ei=document.getElementById('ul-email'); if(ei){ ei.value=s.dataset.fix; ei.focus(); } const er=document.getElementById('ul-err'); if(er) er.textContent=''; }
+  });
+
   let sc, ct, tally;
   function bind(){
     sc = document.getElementById('scenario'); ct = document.getElementById('count'); tally = document.getElementById('tally');
@@ -565,11 +602,12 @@ main{flex:1}
   function finish(){
     const n = {me:0,them:0,both:0}; picks.forEach(p=>n[p]++);
     const top = Object.keys(n).sort((a,b)=>n[b]-n[a])[0];
-    const [h,s] = verdicts[top]; window.dispatchEvent(new CustomEvent('ja:track',{detail:'Game: finished, verdict '+top}));
+    const [h,s] = verdicts[top]; lastVerdict = h; window.dispatchEvent(new CustomEvent('ja:track',{detail:'Game: finished, verdict '+top}));
     const score = Math.round((n.me + n.both*0.5) / cases.length * 100);
     const tier = tiers.find(t=>score>=t[0])[1];
     card.innerHTML = `<div class="count">Verdict · ${n.me} me · ${n.them} them · ${n.both} both</div>
       <p class="verdict">${h}</p><p style="margin:0">${s}</p>
+      ${PLAYER}
       <form class="unlock-form" id="unlock-form" novalidate>
         <div class="unlock-head"><b>Unlock your Problem Score</b><span>Get your score card to post and the full breakdown of every answer.</span></div>
         <div class="unlock-fields">
@@ -582,8 +620,8 @@ main{flex:1}
         <p class="unlock-fine">By unlocking, you join Jay Activist's email list for new music and shows. Unsubscribe anytime.</p>
         <p class="unlock-err" id="ul-err" aria-live="polite"></p>
       </form>
-      <div class="choices"><a class="listen ghost-dark" href="https://ffm.to/youtheproblem" target="_blank" rel="noopener">Stream the single</a>
-      <button type="button" id="again">Play again</button></div>`;
+      <div class="choices"><button type="button" class="share-them" id="share-them">Send this to them</button><button type="button" id="again">Play again</button></div>
+      <p class="share-msg" id="share-msg" aria-live="polite"></p>`;
     document.getElementById('again').addEventListener('click',()=>{ i=0; picks=[]; card.innerHTML=fresh; bind(); show(); });
     const phoneIn = document.getElementById('ul-phone'), smsWrap = document.getElementById('ul-sms-wrap');
     phoneIn.addEventListener('input', ()=>{ smsWrap.hidden = !phoneIn.value.trim(); });
@@ -594,6 +632,8 @@ main{flex:1}
       const err = document.getElementById('ul-err');
       if(!name){ err.textContent='Add your first name so it goes on your card.'; return; }
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ err.textContent='That email doesn\'t look right. Check it and try again.'; return; }
+      { const sug=jaEmailSuggest(email), ei=document.getElementById('ul-email');
+        if(sug && ei.dataset.kept!==email){ ei.dataset.kept=email; err.innerHTML='Did you mean <button type="button" class="sug" data-fix="'+esc(sug)+'">'+esc(sug)+'</button>? Tap it to fix, or tap Unlock again to keep yours.'; window.dispatchEvent(new CustomEvent('ja:track',{detail:'Email typo caught'})); return; } }
       let phone = '';
       const rawPhone = phoneIn.value.trim();
       if(rawPhone){
@@ -638,7 +678,9 @@ main{flex:1}
     card.innerHTML = `<div class="count">Unlocked · ${esc(name)}</div>
       <div class="score-row"><div class="score-big"><b>${score}</b><span>/100</span></div><div><div class="score-tier">${tier}</div><p style="margin:6px 0 0">${esc(verdictLine)}</p></div></div>
       <div class="score-card"><img id="score-img" alt="Your Problem Score card"></div>
-      <div class="choices"><button type="button" class="me" id="save-card">Save card</button><a class="listen ghost-dark" href="https://ffm.to/youtheproblem" target="_blank" rel="noopener">Stream the single</a></div>
+      <div class="choices"><button type="button" class="me" id="save-card">Save card</button><button type="button" class="share-them" id="share-them">Send this to them</button></div>
+      <p class="share-msg" id="share-msg" aria-live="polite"></p>
+      ${PLAYER}
       <h4 class="bd-title">Your full breakdown</h4>
       <ol class="breakdown">${rows}</ol>
       <div class="choices"><button type="button" id="again">Play again</button></div>`;
@@ -736,6 +778,7 @@ main{flex:1}
     const href=a.href||'', card=a.closest('.rel,.vid,.show');
     const name=card && card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : (a.textContent||'').trim().replace(/\s+/g,' ');
     if(href.includes('mailchi.mp')) return 'Email signup click';
+    if(href.includes('.ics')||href.includes('calendar.google')) return 'Calendar: '+name;
     if(href.includes('/concert')||href.includes('posh.vip')) return 'Tickets: '+name;
     if(href.includes('myshopify')) return 'Store click';
     if(href.includes('youtube.com/watch')) return 'Video: '+name;

@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Jay Activist//Shows//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:atl-creator-cookout-20261025@jayactivist.com
+DTSTAMP:20261012T040000Z
+DTSTART:20261025T190000Z
+DTEND:20261026T020000Z
+SUMMARY:ATL Creator Cookout (Jay Activist live)
+LOCATION:The Wren's Nest\, 1050 Ralph David Abernathy Blvd SW\, Atlanta\, GA 30310
+DESCRIPTION:Jay Activist performing at the ATL Creator Cookout. Tickets: https://posh.vip/e/atl-creator-cookout
+URL:https://posh.vip/e/atl-creator-cookout
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Jay Activist at the ATL Creator Cookout is tomorrow
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Jay Activist at the ATL Creator Cookout in 2 hours
+END:VALARM
+END:VEVENT
+END:VCALENDAR
