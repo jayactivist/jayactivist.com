@@ -699,7 +699,7 @@ main{flex:1}
     const href=a.href||'', card=a.closest('.rel,.vid,.show');
     const name=card && card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : (a.textContent||'').trim().replace(/\s+/g,' ');
     if(href.includes('mailchi.mp')) return 'Email signup click';
-    if(href.includes('/concert')) return 'Tickets: '+name;
+    if(href.includes('/concert')||href.includes('posh.vip')) return 'Tickets: '+name;
     if(href.includes('myshopify')) return 'Store click';
     if(href.includes('youtube.com/watch')) return 'Video: '+name;
     if(href.includes('ffm.to')||href.includes('music.apple.com/us/album')) return 'Stream: '+(card?name:(href.includes('youtheproblem')?"Maybe I'm the Problem":href.includes('loseyouagain')?'Lose You Again':name));
