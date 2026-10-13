@@ -143,6 +143,11 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .cal-menu a{padding:10px 16px;text-decoration:none;font-weight:700}
 .cal-menu a:hover{background:var(--paper-2);color:var(--flame)}
 @media (max-width:620px){.show-actions{grid-column:1/-1}.show-actions .show-btn{flex:1;text-align:center}.cal-menu{left:0;right:auto}}
+
+.shows-empty{display:grid;gap:8px;justify-items:start;border:3px dashed var(--ink);padding:22px}
+.shows-empty[hidden]{display:none}
+.shows-empty b{font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,3.4vw,2rem);color:var(--flame);line-height:1.1}
+.shows-empty .listen{margin-top:6px}
 .show-note{margin:22px 0 0;color:var(--ink-soft)}
 .show-note .sel{font-family:var(--mono);color:var(--ink);user-select:all;overflow-wrap:anywhere}
 @media (max-width:620px){.show{grid-template-columns:auto minmax(0,1fr)}.show-tag{justify-self:start;grid-column:2}}
@@ -433,8 +438,13 @@ footer a:hover{text-decoration:underline}
         <h2>Shows</h2>
         <a class="viewall" href="https://open.spotify.com/artist/6lEsbycrGkZFkJ1bvrCBGS/concerts" target="_blank" rel="noopener">All dates on Spotify</a>
       </div>
-      <ul class="show-list">
-        <li class="show">
+      <div class="shows-empty" id="shows-empty" hidden>
+        <b>New dates coming</b>
+        <span>Get notified first when Jay announces the next show.</span>
+        <a class="listen" href="#follow">Get notified</a>
+      </div>
+      <ul class="show-list" id="show-list">
+        <li class="show" data-date="2026-10-25">
           <div class="show-date"><span class="m">Oct</span><span class="d">25</span><span class="w">Sun</span></div>
           <div class="show-info">
             <h3>The Wren's Nest</h3>
@@ -1107,6 +1117,18 @@ function jaEmailSuggest(e){
     s.onerror=()=>finish(false); setTimeout(()=>finish(false),8000);
     s.src=MC+'&EMAIL='+encodeURIComponent(email)+'&c='+cb; document.body.appendChild(s);
   });
+})();
+
+/* ---------- hide past shows ---------- */
+(function(){
+  const list=document.getElementById('show-list'), empty=document.getElementById('shows-empty'); if(!list) return;
+  const now=new Date(), today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  let left=0;
+  list.querySelectorAll('li.show[data-date]').forEach(li=>{
+    const [y,m,d]=li.dataset.date.split('-').map(Number);
+    if(new Date(y,m-1,d) < today) li.remove(); else left++;
+  });
+  if(!left){ list.hidden=true; empty.hidden=false; }
 })();
 /* ---------- mobile menu ---------- */
 (function(){
