@@ -184,6 +184,11 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .city-list .c{font-family:var(--mono);font-size:.7rem;color:var(--ink-soft)}
 .city-list .bar-r{grid-column:2;height:5px;background:var(--line)}
 .city-list .bar-r i{display:block;height:100%;background:var(--flame)}
+.view-toggle{display:inline-flex;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);margin-bottom:24px}
+.view-toggle button{font:600 .78rem var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:10px 18px;border:0;background:var(--paper);color:var(--ink);cursor:pointer}
+.view-toggle button+button{border-left:3px solid var(--ink)}
+.view-toggle button:hover{color:var(--flame)}
+.view-toggle button[aria-pressed="true"]{background:var(--flame);color:var(--cream)}
 
 /* ---------- game ---------- */
 .problem{background:var(--ink);color:var(--paper);border-bottom-color:var(--flame)}
@@ -577,11 +582,15 @@ footer a:hover{text-decoration:underline}
         <h2>Where you're listening</h2>
         <span class="label" id="map-updated">Updated weekly</span>
       </div>
-      <p class="map-lede">These are the top cities playing Jay Activist on Spotify and Apple Music right now. Find yours, and if it's not here yet, run it up.</p>
+      <div class="view-toggle" role="group" aria-label="Map view">
+        <button type="button" data-view="us" aria-pressed="true">US</button>
+        <button type="button" data-view="world" aria-pressed="false">Worldwide</button>
+      </div>
+      <p class="map-lede" id="map-lede">These are the top US cities playing Jay Activist on Spotify and Apple Music right now. Find yours, and if it's not here yet, run it up.</p>
       <div class="map-stats" id="map-stats"></div>
       <div class="map-layout">
         <div class="map-frame" id="map-frame">
-          <svg id="map" viewBox="0 0 960 500" role="img" aria-label="World map of top listener cities"></svg>
+          <svg id="map" viewBox="0 0 960 500" role="img" aria-label="Map of top listener cities"></svg>
           <div class="map-note" id="map-note">Loading map…</div>
           <div class="map-tip" id="map-tip" hidden></div>
           <div class="map-foot"><span>Circle size = Spotify + Apple Music activity</span><span id="map-source">Spotify · last 28 days</span></div>
@@ -757,30 +766,29 @@ footer a:hover{text-decoration:underline}
   // Score blends both platforms: each scaled to its own top city, then added.
   const raw = data.cities.map(([name,country,sp,ap,lat,lon])=>({name,country,sp,ap,lat,lon}));
   const maxSp = Math.max(...raw.map(c=>c.sp)) || 1, maxAp = Math.max(...raw.map(c=>c.ap)) || 1;
-  const cities = raw.map(c=>({...c, n: c.sp/maxSp + c.ap/maxAp})).sort((a,b)=>b.n-a.n);
-  const max = cities[0].n;
+  const all = raw.map(c=>({...c, n: c.sp/maxSp + c.ap/maxAp})).sort((a,b)=>b.n-a.n);
+  const isUS = c => c.country === 'United States';
   const plat = c => [c.sp?'Spotify':'', c.ap?'Apple Music':''].filter(Boolean).join(' + ');
   const counts = c => [c.sp?`${c.sp.toLocaleString()} Spotify listeners`:'', c.ap?`${c.ap.toLocaleString()} Apple plays`:''].filter(Boolean).join(' · ');
-  const countries = new Set(cities.map(c=>c.country));
+  const allCountries = new Set(all.map(c=>c.country));
   const fmtDate = d => new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
 
   document.getElementById('map-updated').textContent = 'Updated ' + fmtDate(data.updated);
   document.getElementById('map-source').textContent = data.source;
-  document.getElementById('map-stats').innerHTML =
-    `<div><b>${cities.length}</b><span>Top cities</span></div>
-     <div><b>${countries.size}</b><span>Countries</span></div>
-     <div><b>${cities.filter(c=>c.country!=='United States').length}</b><span>Cities outside the US</span></div>`;
 
-  // list
+  const lede = document.getElementById('map-lede'), stats = document.getElementById('map-stats');
   const list = document.getElementById('city-list');
-  list.innerHTML = cities.map((c,i)=>`<li data-i="${i}" tabindex="0"><span class="n">${c.name}</span><span class="c">${c.country} · ${data.showCounts?counts(c):plat(c)}</span><span class="bar-r"><i style="width:${Math.max(6,Math.round(c.n/max*100))}%"></i></span></li>`).join('');
-
   const svg = document.getElementById('map'), note = document.getElementById('map-note'), tip = document.getElementById('map-tip'), frame = document.getElementById('map-frame');
-  let dots = [];
+  const toggle = document.querySelectorAll('.view-toggle button');
+  const LEDE = {
+    us: "These are the top US cities playing Jay Activist on Spotify and Apple Music right now. Find yours, and if it's not here yet, run it up.",
+    world: "And it doesn't stop at the border. These are the top cities playing Jay Activist around the world right now."
+  };
+  let view = 'us', cities = [], max = 1, dots = [];
 
   function select(i, scroll){
     list.querySelectorAll('li').forEach(li=>li.classList.toggle('on', +li.dataset.i===i));
-    dots.forEach((d,k)=>d.classList.toggle('on', k===i));
+    dots.forEach((d,k)=>d && d.classList.toggle('on', k===i));
     if(scroll){ const li = list.querySelector(`li[data-i="${i}"]`); li && li.scrollIntoView({block:'nearest'}); }
     if(dots[i]) showTip(i);
   }
@@ -788,7 +796,7 @@ footer a:hover{text-decoration:underline}
     const c = cities[i], d = dots[i]; if(!d) return;
     const box = svg.getBoundingClientRect(), fb = frame.getBoundingClientRect();
     const sx = box.width/960, sy = box.height/500;
-    tip.textContent = `#${i+1} ${c.name}, ${c.country}` + (data.showCounts?` · ${counts(c)}`:'');
+    tip.textContent = `#${i+1} ${c.name}` + (isUS(c)?'':`, ${c.country}`) + (data.showCounts?` · ${counts(c)}`:'');
     tip.style.left = (box.left - fb.left + (+d.getAttribute('cx'))*sx) + 'px';
     tip.style.top = (box.top - fb.top + (+d.getAttribute('cy'))*sy - (+d.getAttribute('r'))*sy) + 'px';
     tip.hidden = false;
@@ -796,33 +804,26 @@ footer a:hover{text-decoration:underline}
   list.addEventListener('click', e=>{ const li = e.target.closest('li'); if(li) select(+li.dataset.i); });
   list.addEventListener('keydown', e=>{ if(e.key==='Enter'){ const li = e.target.closest('li'); if(li) select(+li.dataset.i); }});
 
-  // find your city
-  const find = document.getElementById('city-find'), msg = document.getElementById('find-msg');
-  const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
-  find.addEventListener('input', ()=>{
-    const q = norm(find.value);
-    if(!q){ msg.textContent=''; return; }
-    const i = cities.findIndex(c=>norm(c.name).startsWith(q) || norm(c.name).includes(q));
-    if(i>=0){ clearTimeout(window.__cityT); const cn=cities[i].name; window.__cityT=setTimeout(()=>window.dispatchEvent(new CustomEvent('ja:track',{detail:'City search: '+cn})),1500); msg.textContent = /^atl/.test(q) ? `ATL HOE!!! #${i+1} 🍑` : `${cities[i].name} is #${i+1}. We see you.`; select(i,true); }
-    else { msg.textContent = `Not in the top ${cities.length} yet. Stream and share to put it on the map.`; }
-  });
-
-  // map
-  function draw(){
+  function drawMap(){
+    svg.innerHTML = ''; dots = [];
     const topo = window.Datamap && window.Datamap.prototype.worldTopo;
-    if(!(window.d3 && window.topojson && topo)){ note.textContent = 'Map unavailable right now. The city list still works.'; return; }
+    if(!(window.d3 && window.topojson && topo)){ if(note.isConnected) note.textContent = 'Map unavailable right now. The city list still works.'; return; }
     const land = topojson.feature(topo, topo.objects.world);
-    land.features = land.features.filter(f=>f.id!=='ATA');
-    const proj = d3.geoEqualEarth().rotate([-10,0]).fitExtent([[8,8],[952,492]], {type:'Sphere'});
+    let features = land.features.filter(f=>f.id!=='ATA'), proj;
+    if(view === 'us'){
+      features = features.filter(f=>f.id==='USA');
+      proj = d3.geoAlbersUsa().fitExtent([[16,16],[944,484]], {type:'FeatureCollection',features});
+    } else {
+      proj = d3.geoEqualEarth().rotate([-10,0]).fitExtent([[8,8],[952,492]], {type:'Sphere'});
+    }
     const path = d3.geoPath(proj);
     const s = d3.select(svg);
-    s.append('g').selectAll('path').data(land.features).join('path').attr('class','land').attr('d',path);
-    const r = d3.scaleSqrt().domain([0,max]).range([0,16]);
+    s.append('g').selectAll('path').data(features).join('path').attr('class','land').attr('d',path);
+    const r = d3.scaleSqrt().domain([0,max]).range([0, view==='us'?22:16]);
     const g = s.append('g');
-    // draw small first so big circles sit underneath? draw big first, small on top
-    cities.slice().map((c,i)=>({c,i})).sort((a,b)=>b.c.n-a.c.n).forEach(({c,i})=>{
-      const [x,y] = proj([c.lon,c.lat]);
-      const rad = Math.max(3.5, r(c.n));
+    cities.map((c,i)=>({c,i})).sort((a,b)=>b.c.n-a.c.n).forEach(({c,i})=>{
+      const p = proj([c.lon,c.lat]); if(!p) return;
+      const [x,y] = p, rad = Math.max(3.5, r(c.n));
       const dot = g.append('circle').attr('class','dot').attr('cx',x.toFixed(1)).attr('cy',y.toFixed(1)).attr('r',rad.toFixed(1))
         .attr('tabindex',0).attr('aria-label',`${c.name}, ${c.country}`).node();
       g.append('circle').attr('class','pulse').attr('cx',x.toFixed(1)).attr('cy',y.toFixed(1)).attr('r',rad.toFixed(1)).style('--r0',rad.toFixed(1)+'px');
@@ -832,9 +833,46 @@ footer a:hover{text-decoration:underline}
       dot.addEventListener('focus',()=>select(i,true));
       dots[i] = dot;
     });
-    note.remove();
+    if(note.isConnected) note.remove();
   }
-  if(document.readyState === 'complete') draw(); else window.addEventListener('load', draw);
+
+  function render(v){
+    view = v; tip.hidden = true;
+    cities = view === 'us' ? all.filter(isUS) : all;
+    max = cities.length ? cities[0].n : 1;
+    toggle.forEach(b=>b.setAttribute('aria-pressed', b.dataset.view===view));
+    lede.textContent = LEDE[view];
+    svg.setAttribute('aria-label', view==='us' ? 'US map of top listener cities' : 'World map of top listener cities');
+    stats.innerHTML = view === 'us'
+      ? `<div><b>${cities.length}</b><span>Top US cities</span></div>
+         <div><b>${allCountries.size}</b><span>Countries worldwide</span></div>`
+      : `<div><b>${cities.length}</b><span>Top cities</span></div>
+         <div><b>${allCountries.size}</b><span>Countries</span></div>
+         <div><b>${all.filter(c=>!isUS(c)).length}</b><span>Cities outside the US</span></div>`;
+    list.innerHTML = cities.map((c,i)=>`<li data-i="${i}" tabindex="0"><span class="n">${c.name}</span><span class="c">${isUS(c)&&view==='us'?'':c.country+' · '}${data.showCounts?counts(c):plat(c)}</span><span class="bar-r"><i style="width:${Math.max(6,Math.round(c.n/max*100))}%"></i></span></li>`).join('');
+    list.scrollTop = 0;
+    if(mapReady) drawMap();
+  }
+  toggle.forEach(b=>b.addEventListener('click',()=>{ if(b.dataset.view!==view){ render(b.dataset.view); runFind(); } }));
+
+  // find your city (switches to Worldwide if the city is only there)
+  const find = document.getElementById('city-find'), msg = document.getElementById('find-msg');
+  const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+  const match = (arr,q) => arr.findIndex(c=>norm(c.name).startsWith(q) || norm(c.name).includes(q));
+  function runFind(){
+    const q = norm(find.value);
+    if(!q){ msg.textContent=''; return; }
+    let i = match(cities,q);
+    if(i<0 && view==='us' && match(all,q)>=0){ render('world'); i = match(cities,q); }
+    if(i>=0){ clearTimeout(window.__cityT); const cn=cities[i].name; window.__cityT=setTimeout(()=>window.dispatchEvent(new CustomEvent('ja:track',{detail:'City search: '+cn})),1500); msg.textContent = /^atl/.test(q) ? `ATL HOE!!! #${i+1} 🍑` : `${cities[i].name} is #${i+1}${view==='us'?' in the US':' worldwide'}. We see you.`; select(i,true); }
+    else { msg.textContent = `Not in the top ${cities.length} yet. Stream and share to put it on the map.`; }
+  }
+  find.addEventListener('input', runFind);
+
+  let mapReady = false;
+  render('us');
+  function boot(){ mapReady = true; drawMap(); }
+  if(document.readyState === 'complete') boot(); else window.addEventListener('load', boot);
   window.addEventListener('resize', ()=>{ const on = dots.findIndex(d=>d && d.classList.contains('on')); if(on>=0) showTip(on); else tip.hidden = true; });
 })();
 
