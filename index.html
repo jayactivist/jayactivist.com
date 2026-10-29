@@ -318,13 +318,15 @@ footer a:hover{text-decoration:underline}
 
 /* ---------- inline email signup ---------- */
 .signup{flex-wrap:wrap}
-.nl-form{display:flex;gap:8px;flex:1 1 260px;min-width:0}
-.nl-form input{flex:1;min-width:0;font:600 1rem var(--body);padding:12px 14px;border:3px solid var(--ink);background:var(--paper);color:var(--ink)}
+.nl-form{display:flex;flex-wrap:wrap;gap:8px;flex:1 1 360px;min-width:0}
+.nl-form input:not([type=checkbox]){flex:1 1 160px;min-width:0;font:600 1rem var(--body);padding:12px 14px;border:3px solid var(--ink);background:var(--paper);color:var(--ink)}
 .nl-form .listen{cursor:pointer;font-family:var(--body);padding:12px 18px}
 .nl-form .listen:disabled{opacity:.6;cursor:wait}
 .nl-msg{flex-basis:100%;margin:0;font-weight:700;min-height:1.2em;color:var(--flame)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-@media (max-width:460px){.nl-form{flex-direction:column}}
+.nl-form .nl-sms{flex-basis:100%;color:var(--ink-soft)}
+.nl-form .nl-sms[hidden]{display:none}
+@media (max-width:460px){.nl-form{flex-direction:column}.nl-form input:not([type=checkbox]){flex:none}}
 
 
 /* ---------- about ---------- */
@@ -619,7 +621,10 @@ footer a:hover{text-decoration:underline}
           <form class="nl-form" id="nl-form" novalidate>
             <label class="sr" for="nl-email">Email address</label>
             <input id="nl-email" type="email" autocomplete="email" placeholder="you@email.com" required>
+            <label class="sr" for="nl-phone">Phone number (optional, for texts)</label>
+            <input id="nl-phone" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="20" placeholder="Phone (optional, for texts)">
             <button type="submit" class="listen" id="nl-go">Sign up</button>
+            <label class="unlock-sms nl-sms" id="nl-sms-wrap" hidden><input type="checkbox" id="nl-sms"><span>Yes, text me new music and show updates from Jay Activist. Msg &amp; data rates may apply. Msg frequency varies. Reply STOP to opt out. Consent isn't required to sign up.</span></label>
           </form>
           <p class="nl-msg" id="nl-msg" aria-live="polite"></p>
         </div>
@@ -1138,6 +1143,9 @@ function jaEmailSuggest(e){
   const f=document.getElementById('nl-form'); if(!f) return;
   const MC='https://linktr.us12.list-manage.com/subscribe/post-json?u=5882d1edc44c3d79a439530df&id=985b05e2d5';
   const input=document.getElementById('nl-email'), btn=document.getElementById('nl-go'), msg=document.getElementById('nl-msg');
+  const phoneIn=document.getElementById('nl-phone'), smsWrap=document.getElementById('nl-sms-wrap'), smsBox=document.getElementById('nl-sms');
+  const SHEET='https://script.google.com/macros/s/AKfycbzuARHsLFgU0ONZSMOAD0Wgp7nQxcdx1k4sOmDwTkFgeU39d1uigo676LCO0KvsyWnhoA/exec';
+  phoneIn.addEventListener('input', ()=>{ smsWrap.hidden=!phoneIn.value.trim(); });
   msg.addEventListener('click', e=>{ const s=e.target.closest('button.sug'); if(s){ input.value=s.dataset.fix; msg.textContent=''; input.focus(); } });
   f.addEventListener('submit', e=>{
     e.preventDefault();
@@ -1145,14 +1153,27 @@ function jaEmailSuggest(e){
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ msg.textContent='That email doesn\'t look right. Check it and try again.'; return; }
     { const sug=jaEmailSuggest(email);
       if(sug && input.dataset.kept!==email){ input.dataset.kept=email; msg.innerHTML='Did you mean <button type="button" class="sug" data-fix="'+sug.replace(/[<>"&]/g,'')+'">'+sug.replace(/[<>"&]/g,'')+'</button>? Tap it to fix, or tap Sign up again to keep yours.'; window.dispatchEvent(new CustomEvent('ja:track',{detail:'Email typo caught'})); return; } }
+    let phone='';
+    const rawPhone=phoneIn.value.trim();
+    if(rawPhone){
+      let d=rawPhone.replace(/\D/g,''); if(d.length===11 && d[0]==='1') d=d.slice(1);
+      if(d.length!==10 || /^[01]/.test(d)){ msg.textContent='That phone number doesn\'t look right. Use a 10-digit US number, or leave it blank.'; return; }
+      if(!smsBox.checked){ msg.textContent='Check the box to get texts, or clear the phone number to skip.'; return; }
+      phone=d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6);
+    }
     btn.disabled=true; btn.textContent='Signing up…'; msg.textContent='';
     const cb='nl_cb_'+Date.now(), s=document.createElement('script'); let done=false;
     const finish=(ok,text)=>{ if(done) return; done=true; try{delete window[cb]}catch(_){} s.remove(); btn.disabled=false; btn.textContent='Sign up';
-      if(ok){ msg.textContent="You're on the list. Watch your inbox."; input.value=''; window.dispatchEvent(new CustomEvent('ja:track',{detail:'Email signup (site form)'})); }
+      if(ok){
+        msg.textContent=phone?"You're on the list. Watch your inbox and your texts.":"You're on the list. Watch your inbox.";
+        if(phone){ try{ fetch(SHEET,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({name:'',email,phone,sms_consent:'yes',consent_at:new Date().toISOString(),score:'',rank:'',verdict:'',answers:[],source:'site signup form'})}); }catch(_){}
+          window.dispatchEvent(new CustomEvent('ja:track',{detail:'Phone opt-in (site form)'})); }
+        input.value=''; phoneIn.value=''; smsBox.checked=false; smsWrap.hidden=true;
+        window.dispatchEvent(new CustomEvent('ja:track',{detail:'Email signup (site form)'})); }
       else { msg.textContent=text||'Something went wrong. Try again in a minute.'; } };
     window[cb]=r=>{ const already=/already subscribed/i.test(r&&r.msg||''); finish((r&&r.result==='success')||already, already?"You're already on the list.":null); };
     s.onerror=()=>finish(false); setTimeout(()=>finish(false),8000);
-    s.src=MC+'&EMAIL='+encodeURIComponent(email)+'&c='+cb; document.body.appendChild(s);
+    s.src=MC+'&EMAIL='+encodeURIComponent(email)+(phone?'&PHONE='+encodeURIComponent(phone)+'&SMSOPTIN=yes':'')+'&c='+cb; document.body.appendChild(s);
   });
 })();
 
