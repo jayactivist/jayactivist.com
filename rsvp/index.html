@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Valentine's Show — Early RSVP | Jay Activist</title>
+<meta name="description" content="Jay Activist live in Atlanta, Valentine's 2027. RSVP early to get the date, venue and presale before anyone else.">
+<meta property="og:title" content="Jay Activist Live · Valentine's 2027 · Early RSVP">
+<meta property="og:description" content="For the lovers, the situationships, and whoever's the problem. RSVP to get first access.">
+<meta property="og:image" content="https://jayactivist.com/img/jay-live.jpg">
+<meta property="og:url" content="https://jayactivist.com/rsvp/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../img/mitp.jpg">
+<link rel="canonical" href="https://jayactivist.com/rsvp/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --paper:#fbe9d8; --paper-2:#f6d9bf; --ink:#3a0d12; --ink-soft:#6e3a34;
+  --flame:#d2481c; --gold:#e4a72b; --cream:#fff8ef; --oxblood:#3a0d12;
+  --display:"Shrikhand", Georgia, serif;
+  --body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root{
+  --paper:#1e0a10; --paper-2:#2b1018; --ink:#fbe3cb; --ink-soft:#d6ae96;
+  --flame:#f06a35; --gold:#f0b94a; color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+.label{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
+
+.bar{border-bottom:3px solid var(--ink)}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:14px;gap:16px}
+.logo{font-family:var(--display);font-size:1.5rem;color:var(--flame);text-decoration:none;line-height:1}
+.bar nav a{font-family:var(--mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;margin-left:18px}
+.bar nav a{white-space:nowrap}
+.bar nav a:hover{color:var(--flame)}
+@media (max-width:480px){.bar nav a.opt{display:none}}
+
+.hero{padding-block:clamp(36px,6vw,72px);display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,64px);align-items:start}
+@media (max-width:860px){.hero{grid-template-columns:1fr}}
+.stamp{display:inline-block;font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--flame);border:2px solid var(--flame);padding:5px 10px;transform:rotate(-2deg)}
+h1{font-family:var(--display);font-weight:400;color:var(--flame);font-size:clamp(2.6rem,7vw,5.2rem);line-height:.95;margin:18px 0 14px;text-shadow:4px 4px 0 var(--ink);transform:rotate(-1.5deg)}
+.tag{font-size:clamp(1.1rem,2vw,1.35rem);font-weight:700;margin:0 0 22px;max-width:30ch}
+.facts{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:10px}
+.facts li{display:flex;gap:14px;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:10px}
+.facts .label{min-width:84px;color:var(--ink-soft)}
+.facts b{font-weight:800}
+.why{margin:0;color:var(--ink-soft);max-width:46ch}
+
+.card{border:3px solid var(--ink);background:var(--paper-2);box-shadow:10px 10px 0 var(--ink);padding:clamp(20px,3vw,30px)}
+.card h2{font-family:var(--display);font-weight:400;font-size:1.9rem;line-height:1.05;margin:0 0 6px;color:var(--flame)}
+.card .sub{margin:0 0 18px;color:var(--ink-soft)}
+form{display:grid;gap:14px}
+.f{display:grid;gap:6px}
+.f > span,.f legend{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.f i{font-style:normal;opacity:.6}
+input[type=text],input[type=email],input[type=tel]{font:600 1rem var(--body);padding:12px 14px;border:3px solid var(--ink);background:var(--paper);color:var(--ink);min-width:0;width:100%}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:8px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills label{cursor:pointer}
+.pills input{position:absolute;opacity:0;pointer-events:none}
+.pills span{display:inline-block;font:700 .9rem var(--body);padding:8px 14px;border:2px solid var(--ink);background:var(--paper)}
+.pills input:checked + span{background:var(--ink);color:var(--paper)}
+.pills input:focus-visible + span{outline:3px solid var(--gold);outline-offset:2px}
+.sms{display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:var(--ink-soft)}
+.sms[hidden]{display:none}
+.sms input{margin-top:3px;flex:none;width:18px;height:18px;accent-color:var(--flame)}
+.go{font:800 1rem var(--body);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:15px 26px;background:var(--flame);color:var(--cream);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);transition:transform .12s,box-shadow .12s;justify-self:start}
+.go:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.go:disabled{opacity:.6;cursor:wait;transform:none}
+.fine{margin:0;font-size:.78rem;color:var(--ink-soft)}
+.err{margin:0;font-weight:700;color:var(--flame);min-height:1.2em}
+.err button{font:inherit;color:inherit;background:none;border:0;padding:0;text-decoration:underline;cursor:pointer}
+
+.done[hidden]{display:none}
+.done{display:grid;gap:14px}
+.done .big{font-family:var(--display);font-weight:400;font-size:2.2rem;line-height:1;color:var(--flame);margin:0}
+.done p{margin:0}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn2{font:700 .9rem var(--body);text-decoration:none;cursor:pointer;padding:11px 16px;border:3px solid var(--ink);background:var(--paper);color:var(--ink)}
+.btn2:hover{background:var(--ink);color:var(--paper)}
+.share-msg{font-size:.85rem;color:var(--ink-soft);min-height:1.2em}
+
+footer{border-top:3px solid var(--ink);padding-block:20px;font-family:var(--mono);font-size:.75rem;letter-spacing:.06em}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-right:14px}
+footer a:hover{color:var(--flame)}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="logo" href="/">Jay Activist</a>
+  <nav><a class="opt" href="/#music">Music</a><a href="/problem/">Who's the problem?</a></nav>
+</div></header>
+
+<main class="wrap hero">
+  <section>
+    <span class="stamp">Early RSVP · Limited room</span>
+    <h1>Jay Activist Live. Valentine's 2027.</h1>
+    <p class="tag">For the lovers, the situationships, and whoever's the problem.</p>
+    <ul class="facts">
+      <li><span class="label">When</span><b>Valentine's week, Feb 2027</b></li>
+      <li><span class="label">Where</span><b>Atlanta · venue drops to the list first</b></li>
+      <li><span class="label">Room</span><b>About 120 people. That's it.</b></li>
+    </ul>
+    <p class="why">RSVP now and you're first in line. The list gets the date, the venue and a cheaper presale ticket before anyone else can buy. No payment today. Want to catch Jay before then? <a href="/#shows">See other upcoming shows</a>.</p>
+  </section>
+
+  <section class="card" aria-labelledby="rsvp-h">
+    <div id="rsvp-box">
+      <h2 id="rsvp-h">Save your spot</h2>
+      <p class="sub">Takes 20 seconds. Texts are the fastest way to catch the presale.</p>
+      <form id="rsvp" novalidate>
+        <label class="f"><span>First name</span><input type="text" id="r-name" autocomplete="given-name" maxlength="40" required placeholder="Your name"></label>
+        <label class="f"><span>Phone <i>(for the presale text)</i></span><input type="tel" id="r-phone" inputmode="tel" autocomplete="tel-national" maxlength="20" placeholder="(404) 555-0123"></label>
+        <label class="sms" id="r-sms-wrap" hidden><input type="checkbox" id="r-sms"><span>Yes, text me show updates and new music from Jay Activist. Msg &amp; data rates may apply. Msg frequency varies. Reply STOP to opt out. Consent isn't required to RSVP.</span></label>
+        <label class="f"><span>Email <i>(optional)</i></span><input type="email" id="r-email" autocomplete="email" placeholder="you@email.com"></label>
+        <fieldset class="f">
+          <legend>Where are you?</legend>
+          <div class="pills">
+            <label><input type="radio" name="city" value="Atlanta area" checked><span>Atlanta area</span></label>
+            <label><input type="radio" name="city" value="Driving in"><span>I'd drive in</span></label>
+            <label><input type="radio" name="city" value="Not local"><span>Not local, keep me posted</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="f">
+          <legend>Who's coming?</legend>
+          <div class="pills">
+            <label><input type="radio" name="party" value="1" checked><span>Just me</span></label>
+            <label><input type="radio" name="party" value="2"><span>Me +1</span></label>
+            <label><input type="radio" name="party" value="3+"><span>A group</span></label>
+          </div>
+        </fieldset>
+        <button type="submit" class="go" id="r-go">RSVP early</button>
+        <p class="err" id="r-err" aria-live="polite"></p>
+        <p class="fine">RSVPing doesn't buy a ticket. Leave a phone number or an email so we can reach you. Adding an email joins Jay Activist's email list; unsubscribe anytime.</p>
+      </form>
+    </div>
+    <div class="done" id="done" hidden>
+      <p class="big">You're on the list.</p>
+      <p id="done-msg">Watch your texts. The date, the venue and the presale come to you first.</p>
+      <p><b>Bringing someone?</b> Send them the link so they get the presale too.</p>
+      <div class="btns">
+        <button type="button" class="btn2" id="share">Send to my +1</button>
+        <a class="btn2" href="/problem/">Find out who's the problem</a>
+      </div>
+      <p class="share-msg" id="share-msg" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div><a href="https://www.tiktok.com/@jayactivist" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/thejayactivist/" target="_blank" rel="noopener">Instagram</a><a href="https://open.spotify.com/artist/6lEsbycrGkZFkJ1bvrCBGS" target="_blank" rel="noopener">Spotify</a></div>
+  <div>© Jay Activist · Atlanta</div>
+</div></footer>
+
+<script>
+(function(){
+  // Same list and sheet the homepage and the game already use.
+  const MC='https://linktr.us12.list-manage.com/subscribe/post-json?u=5882d1edc44c3d79a439530df&id=985b05e2d5';
+  const SHEET='https://script.google.com/macros/s/AKfycbzuARHsLFgU0ONZSMOAD0Wgp7nQxcdx1k4sOmDwTkFgeU39d1uigo676LCO0KvsyWnhoA/exec';
+  const track = d => window.dispatchEvent(new CustomEvent('ja:track',{detail:d}));
+  const $ = id => document.getElementById(id);
+  const f=$('rsvp'), nameIn=$('r-name'), phoneIn=$('r-phone'), emailIn=$('r-email'), smsWrap=$('r-sms-wrap'), smsBox=$('r-sms'), err=$('r-err'), btn=$('r-go');
+  const esc = s => String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  function emailSuggest(e){
+    const m=String(e).trim().match(/^([^@\s]+)@([^@\s]+)$/); if(!m) return null;
+    const d=m[2].toLowerCase(), known=['gmail.com','yahoo.com','icloud.com','hotmail.com','outlook.com','aol.com','me.com','live.com','msn.com','comcast.net','att.net'];
+    if(known.includes(d)) return null;
+    const lev=(a,b)=>{const r=[...Array(b.length+1).keys()];for(let i=1;i<=a.length;i++){let p=r[0];r[0]=i;for(let j=1;j<=b.length;j++){const t=r[j];r[j]=Math.min(r[j]+1,r[j-1]+1,p+(a[i-1]===b[j-1]?0:1));p=t;}}return r[b.length];};
+    let best=null,bd=3; for(const k of known){const x=lev(d,k); if(x<bd){bd=x;best=k;}}
+    return best && bd<=2 ? m[1]+'@'+best : null;
+  }
+
+  phoneIn.addEventListener('input', ()=>{ smsWrap.hidden=!phoneIn.value.trim(); });
+  err.addEventListener('click', e=>{ const s=e.target.closest('button[data-fix]'); if(s){ emailIn.value=s.dataset.fix; err.textContent=''; emailIn.focus(); } });
+
+  f.addEventListener('submit', e=>{
+    e.preventDefault();
+    const name=nameIn.value.trim(), email=emailIn.value.trim(), rawPhone=phoneIn.value.trim();
+    const city=f.querySelector('input[name=city]:checked').value, party=f.querySelector('input[name=party]:checked').value;
+    if(!name){ err.textContent='Add your first name.'; nameIn.focus(); return; }
+    if(!rawPhone && !email){ err.textContent='Leave a phone number or an email so we can reach you.'; phoneIn.focus(); return; }
+    let phone='';
+    if(rawPhone){
+      let d=rawPhone.replace(/\D/g,''); if(d.length===11 && d[0]==='1') d=d.slice(1);
+      if(d.length!==10 || /^[01]/.test(d)){ err.textContent="That phone number doesn't look right. Use a 10-digit US number."; return; }
+      if(!smsBox.checked){ err.textContent='Check the box to get texts, or clear the phone number and use email.'; return; }
+      phone=d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6);
+    }
+    if(email){
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ err.textContent="That email doesn't look right."; return; }
+      const sug=emailSuggest(email);
+      if(sug && emailIn.dataset.kept!==email){ emailIn.dataset.kept=email; err.innerHTML='Did you mean <button type="button" data-fix="'+esc(sug)+'">'+esc(sug)+'</button>? Tap it to fix, or tap RSVP again to keep yours.'; return; }
+    }
+    err.textContent=''; btn.disabled=true; btn.textContent='Saving…';
+
+    // 1) Log every RSVP to the Google Sheet (this is the list to import into EVEN).
+    const source='valentines-rsvp | '+city+' | party '+party;
+    try{ fetch(SHEET,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify({name,email,phone,sms_consent:phone?'yes':'no',consent_at:phone?new Date().toISOString():'',
+        score:'',rank:'',verdict:'',answers:[],source,event:'Valentines 2027 RSVP',city,party})}); }catch(_){}
+
+    // 2) If they gave an email, add them to the Mailchimp list too.
+    const finish=()=>{
+      track('RSVP: submitted'); if(phone) track('RSVP: phone opt-in'); track('RSVP: '+city+', party '+party);
+      $('rsvp-box').hidden=true; $('done').hidden=false;
+      $('done-msg').textContent = phone ? 'Watch your texts. The date, the venue and the presale come to you first.' : 'Watch your inbox. The date, the venue and the presale come to you first.';
+    };
+    if(!email){ setTimeout(finish,400); return; }
+    const cb='rsvp_cb_'+Date.now(), s=document.createElement('script'); let done=false;
+    const end=()=>{ if(done) return; done=true; try{delete window[cb]}catch(_){} s.remove(); finish(); };
+    window[cb]=()=>end(); s.onerror=end; setTimeout(end,8000);
+    s.src=MC+'&EMAIL='+encodeURIComponent(email)+'&FNAME='+encodeURIComponent(name)+(phone?'&PHONE='+encodeURIComponent(phone)+'&SMSOPTIN=yes':'')+'&c='+cb;
+    document.body.appendChild(s);
+  });
+
+  $('share').addEventListener('click', ()=>{
+    const text="Jay Activist's Valentine's show in Atlanta. Only ~120 spots. RSVP so you get the presale:";
+    const url='https://jayactivist.com/rsvp/';
+    track('RSVP: tapped share');
+    if(navigator.share){ navigator.share({title:"Jay Activist · Valentine's show",text,url}).catch(()=>{}); return; }
+    const done=()=>{ $('share-msg').textContent='Link copied. Paste it to them.'; };
+    try{ navigator.clipboard.writeText(text+' '+url).then(done,()=>{ location.href='sms:?&body='+encodeURIComponent(text+' '+url); }); }
+    catch(_){ location.href='sms:?&body='+encodeURIComponent(text+' '+url); }
+  });
+})();
+</script>
+
+<!-- Analytics: GoatCounter (no cookies). Dashboard: https://jayactivist.goatcounter.com -->
+<script data-goatcounter="https://jayactivist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+  window.addEventListener('ja:track', e=>{ try{ if(window.goatcounter && window.goatcounter.count){ window.goatcounter.count({path:e.detail, title:e.detail, event:true}); } }catch(_){} });
+</script>
+</body>
+</html>

@@ -146,6 +146,11 @@ h1,h2,h3{text-wrap:balance;margin:0}
 
 .shows-empty{display:grid;gap:8px;justify-items:start;border:3px dashed var(--ink);padding:22px}
 .shows-empty[hidden]{display:none}
+.show-feature{display:grid;gap:8px;justify-items:start;border:3px solid var(--ink);background:var(--paper-2);box-shadow:6px 6px 0 var(--flame);padding:22px;margin-bottom:22px}
+.show-feature b{font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,3.4vw,2rem);color:var(--flame);line-height:1.1}
+.show-feature .listen{margin-top:6px}
+.show-feature .show-tag{grid-column:auto}
+
 .shows-empty b{font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,3.4vw,2rem);color:var(--flame);line-height:1.1}
 .shows-empty .listen{margin-top:6px}
 .show-note{margin:22px 0 0;color:var(--ink-soft)}
@@ -444,6 +449,12 @@ footer a:hover{text-decoration:underline}
       <div class="sec-head">
         <h2>Shows</h2>
         <a class="viewall" href="https://open.spotify.com/artist/6lEsbycrGkZFkJ1bvrCBGS/concerts" target="_blank" rel="noopener">All dates on Spotify</a>
+      </div>
+      <div class="show-feature">
+        <span class="show-tag">Early RSVP</span>
+        <b>Valentine's 2027 · Atlanta</b>
+        <span>Jay's Valentine's headline show. About 120 spots. RSVP to get the date, the venue and the presale before anyone else.</span>
+        <a class="listen" href="/rsvp/">RSVP early</a>
       </div>
       <div class="shows-empty" id="shows-empty" hidden>
         <b>New dates coming</b>
