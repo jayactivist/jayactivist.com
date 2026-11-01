@@ -44,7 +44,8 @@ a{color:inherit}
 .hero{padding-block:clamp(36px,6vw,72px);display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,64px);align-items:start}
 @media (max-width:860px){.hero{grid-template-columns:1fr}}
 .stamp{display:inline-block;font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--flame);border:2px solid var(--flame);padding:5px 10px;transform:rotate(-2deg)}
-h1{font-family:var(--display);font-weight:400;color:var(--flame);font-size:clamp(2.6rem,7vw,5.2rem);line-height:.95;margin:18px 0 14px;text-shadow:4px 4px 0 var(--ink);transform:rotate(-1.5deg)}
+h1{font-family:var(--body);font-weight:800;color:var(--ink);font-size:clamp(2.4rem,6.4vw,4.6rem);line-height:1;letter-spacing:-.03em;margin:20px 0 16px}
+h1 span{display:block;color:var(--flame)}
 .tag{font-size:clamp(1.1rem,2vw,1.35rem);font-weight:700;margin:0 0 22px;max-width:30ch}
 .facts{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:10px}
 .facts li{display:flex;gap:14px;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:10px}
@@ -101,7 +102,7 @@ footer a:hover{color:var(--flame)}
 <main class="wrap hero">
   <section>
     <span class="stamp">Early RSVP · Limited room</span>
-    <h1>Jay Activist Live. Valentine's 2027.</h1>
+    <h1>Jay Activist Live <span>Valentine's 2027</span></h1>
     <p class="tag">For the lovers, the situationships, and whoever's the problem.</p>
     <ul class="facts">
       <li><span class="label">When</span><b>Valentine's week, Feb 2027</b></li>
