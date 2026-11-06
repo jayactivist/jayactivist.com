@@ -3,29 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Valentine's Show — Early RSVP | Jay Activist</title>
+<title>A Love Jones Affair · Feb 12 — Early RSVP | Jay Activist</title>
 <meta name="description" content="Jay Activist live at Peters Street Station, Atlanta. Friday, Feb 12, 2027. RSVP early to get the presale before anyone else.">
-<meta property="og:title" content="Jay Activist Live · Valentine's 2027 · Early RSVP">
-<meta property="og:description" content="For the lovers, the situationships, and whoever's the problem. RSVP to get first access.">
-<meta property="og:image" content="https://jayactivist.com/img/jay-live.jpg">
+<meta property="og:title" content="Jay Activist Live · A Love Jones Affair · Fri Feb 12">
+<meta property="og:description" content="Candlelight, a little jazz, and the songs you'll want to say out loud. Peters Street Station, Atlanta. RSVP for the presale.">
+<meta property="og:image" content="https://jayactivist.com/img/jay-lovejones.jpg">
 <meta property="og:url" content="https://jayactivist.com/rsvp/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../img/mitp.jpg">
 <link rel="canonical" href="https://jayactivist.com/rsvp/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap">
 <style>
 :root{
-  --paper:#fbe9d8; --paper-2:#f6d9bf; --ink:#3a0d12; --ink-soft:#6e3a34;
-  --flame:#d2481c; --gold:#e4a72b; --cream:#fff8ef; --oxblood:#3a0d12;
-  --display:"Shrikhand", Georgia, serif;
+  --paper:#1A110D; --paper-2:#24170F; --ink:#F2E6D3; --ink-soft:#CDB99F;
+  --flame:#E3A857; --gold:#E3A857; --cream:#1A110D; --oxblood:#1A110D;
+  --wine:#8E2F3A; --line:#3A2A20; --line-2:#5A4334; color-scheme:dark;
+  --display:"Cormorant Garamond", Georgia, serif;
   --body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
 }
-@media (prefers-color-scheme: dark){:root{
-  --paper:#1e0a10; --paper-2:#2b1018; --ink:#fbe3cb; --ink-soft:#d6ae96;
-  --flame:#f06a35; --gold:#f0b94a; color-scheme:dark}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.55}
 a{color:inherit}
@@ -91,6 +89,31 @@ footer{border-top:3px solid var(--ink);padding-block:20px;font-family:var(--mono
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 footer a{text-decoration:none;margin-right:14px}
 footer a:hover{color:var(--flame)}
+
+/* Love Jones look */
+body{position:relative;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.09;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body::after{content:"";position:fixed;left:-160px;top:80px;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(227,168,87,.18),rgba(227,168,87,0) 70%)}
+header,main,footer{position:relative;z-index:1}
+.bar,footer{border-color:var(--line);border-width:1px}
+.logo{font-style:italic;font-weight:500;font-size:1.7rem}
+.stamp{transform:none;border-width:1px;font-weight:500;letter-spacing:.16em}
+.photo{display:block;width:100%;height:auto;max-width:460px;aspect-ratio:4/5;object-fit:cover;object-position:50% 78%;margin:22px 0 4px;border:1px solid var(--line);filter:grayscale(1) sepia(.18) contrast(1.08) brightness(.92)}
+h1{color:var(--ink)}
+h1 span{font-family:var(--display);font-style:italic;font-weight:500;letter-spacing:0;text-transform:none;margin-top:6px}
+.tag{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.35rem,2.4vw,1.6rem);line-height:1.3;color:#E8D9C3}
+.facts li{border-bottom:1px solid var(--line)}
+.facts li:first-child{border-top:1px solid var(--line);padding-top:10px}
+.card{border:1px solid #4A3528;box-shadow:10px 10px 0 var(--wine)}
+.card h2,.done .big{font-style:italic;font-weight:500}
+input[type=text],input[type=email],input[type=tel]{border:1px solid var(--line-2);background:var(--paper)}
+input::placeholder{color:#8C7A66}
+.pills span{border:1px solid var(--line-2)}
+.go{border:0;box-shadow:5px 5px 0 var(--wine);color:#1A110D}
+.go:hover{box-shadow:7px 7px 0 var(--wine)}
+.btn2{border:1px solid var(--line-2)}
+.btn2:hover{background:var(--flame);color:#1A110D}
+.err{color:#F08A7E}
 </style>
 </head>
 <body>
@@ -101,19 +124,20 @@ footer a:hover{color:var(--flame)}
 
 <main class="wrap hero">
   <section>
-    <span class="stamp">Early RSVP</span>
-    <h1>Jay Activist Live <span>Valentine's 2027</span></h1>
-    <p class="tag">For the lovers, the situationships, and whoever's the problem.</p>
+    <span class="stamp">An evening of poetry, R&amp;B &amp; bad decisions</span>
+    <img class="photo" src="../img/jay-lovejones.jpg" alt="Jay Activist singing into a mic on stage" width="1000" height="1500">
+    <h1>Jay Activist Live <span>a love jones affair</span></h1>
+    <p class="tag">Candlelight, a little jazz, and the songs you'll want to say out loud.</p>
     <ul class="facts">
       <li><span class="label">When</span><b>Friday, Feb 12, 2027</b></li>
       <li><span class="label">Where</span><b>Peters Street Station · Atlanta</b></li>
     </ul>
-    <p class="why">RSVP now and you're first in line. The list gets a cheaper presale ticket before anyone else can buy. No payment today. Want to catch Jay before then? <a href="/#shows">See other upcoming shows</a>.</p>
+    <p class="why">One night only, the room turns into a candlelit lounge. Live R&amp;B, a little jazz in the air, and Jay front to back. RSVP now and the presale comes to you first. No payment today. Want to catch Jay before then? <a href="/#shows">See other upcoming shows</a>.</p>
   </section>
 
   <section class="card" aria-labelledby="rsvp-h">
     <div id="rsvp-box">
-      <h2 id="rsvp-h">Save your spot</h2>
+      <h2 id="rsvp-h">Save your seat at the table</h2>
       <p class="sub">Takes 20 seconds. Texts are the fastest way to catch the presale.</p>
       <form id="rsvp" novalidate>
         <label class="f"><span>First name</span><input type="text" id="r-name" autocomplete="given-name" maxlength="40" required placeholder="Your name"></label>
@@ -136,7 +160,7 @@ footer a:hover{color:var(--flame)}
             <label><input type="radio" name="party" value="3+"><span>A group</span></label>
           </div>
         </fieldset>
-        <button type="submit" class="go" id="r-go">RSVP early</button>
+        <button type="submit" class="go" id="r-go">Put me on the list</button>
         <p class="err" id="r-err" aria-live="polite"></p>
         <p class="fine">RSVPing doesn't buy a ticket. Leave a phone number or an email so we can reach you. Adding an email joins Jay Activist's email list; unsubscribe anytime.</p>
       </form>
@@ -144,7 +168,7 @@ footer a:hover{color:var(--flame)}
     <div class="done" id="done" hidden>
       <p class="big">You're on the list.</p>
       <p id="done-msg">Watch your texts. The presale and show updates come to you first.</p>
-      <p><b>Bringing someone?</b> Send them the link so they get the presale too.</p>
+      <p><b>Bring somebody who makes you write poems.</b> Send them the link so they get the presale too.</p>
       <div class="btns">
         <button type="button" class="btn2" id="share">Send to my +1</button>
         <a class="btn2" href="/problem/">Find out who's the problem</a>
@@ -222,7 +246,7 @@ footer a:hover{color:var(--flame)}
   });
 
   $('share').addEventListener('click', ()=>{
-    const text="Jay Activist live at Peters Street Station, Fri Feb 12. RSVP so you get the presale:";
+    const text="Jay Activist's Love Jones night, Fri Feb 12 at Peters Street Station. RSVP so we both get the presale:";
     const url='https://jayactivist.com/rsvp/';
     track('RSVP: tapped share');
     if(navigator.share){ navigator.share({title:"Jay Activist · Valentine's show",text,url}).catch(()=>{}); return; }
