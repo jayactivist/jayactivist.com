@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Valentine's Show — Early RSVP | Jay Activist</title>
-<meta name="description" content="Jay Activist live in Atlanta, Valentine's 2027. RSVP early to get the date, venue and presale before anyone else.">
+<meta name="description" content="Jay Activist live at Peters Street Station, Atlanta. Friday, Feb 12, 2027. RSVP early to get the presale before anyone else.">
 <meta property="og:title" content="Jay Activist Live · Valentine's 2027 · Early RSVP">
 <meta property="og:description" content="For the lovers, the situationships, and whoever's the problem. RSVP to get first access.">
 <meta property="og:image" content="https://jayactivist.com/img/jay-live.jpg">
@@ -101,15 +101,14 @@ footer a:hover{color:var(--flame)}
 
 <main class="wrap hero">
   <section>
-    <span class="stamp">Early RSVP · Limited room</span>
+    <span class="stamp">Early RSVP</span>
     <h1>Jay Activist Live <span>Valentine's 2027</span></h1>
     <p class="tag">For the lovers, the situationships, and whoever's the problem.</p>
     <ul class="facts">
-      <li><span class="label">When</span><b>Valentine's week, Feb 2027</b></li>
-      <li><span class="label">Where</span><b>Atlanta · venue drops to the list first</b></li>
-      <li><span class="label">Room</span><b>About 120 people. That's it.</b></li>
+      <li><span class="label">When</span><b>Friday, Feb 12, 2027</b></li>
+      <li><span class="label">Where</span><b>Peters Street Station · Atlanta</b></li>
     </ul>
-    <p class="why">RSVP now and you're first in line. The list gets the date, the venue and a cheaper presale ticket before anyone else can buy. No payment today. Want to catch Jay before then? <a href="/#shows">See other upcoming shows</a>.</p>
+    <p class="why">RSVP now and you're first in line. The list gets a cheaper presale ticket before anyone else can buy. No payment today. Want to catch Jay before then? <a href="/#shows">See other upcoming shows</a>.</p>
   </section>
 
   <section class="card" aria-labelledby="rsvp-h">
@@ -144,7 +143,7 @@ footer a:hover{color:var(--flame)}
     </div>
     <div class="done" id="done" hidden>
       <p class="big">You're on the list.</p>
-      <p id="done-msg">Watch your texts. The date, the venue and the presale come to you first.</p>
+      <p id="done-msg">Watch your texts. The presale and show updates come to you first.</p>
       <p><b>Bringing someone?</b> Send them the link so they get the presale too.</p>
       <div class="btns">
         <button type="button" class="btn2" id="share">Send to my +1</button>
@@ -212,7 +211,7 @@ footer a:hover{color:var(--flame)}
     const finish=()=>{
       track('RSVP: submitted'); if(phone) track('RSVP: phone opt-in'); track('RSVP: '+city+', party '+party);
       $('rsvp-box').hidden=true; $('done').hidden=false;
-      $('done-msg').textContent = phone ? 'Watch your texts. The date, the venue and the presale come to you first.' : 'Watch your inbox. The date, the venue and the presale come to you first.';
+      $('done-msg').textContent = phone ? 'Watch your texts. The presale and show updates come to you first.' : 'Watch your inbox. The presale and show updates come to you first.';
     };
     if(!email){ setTimeout(finish,400); return; }
     const cb='rsvp_cb_'+Date.now(), s=document.createElement('script'); let done=false;
@@ -223,7 +222,7 @@ footer a:hover{color:var(--flame)}
   });
 
   $('share').addEventListener('click', ()=>{
-    const text="Jay Activist's Valentine's show in Atlanta. Only ~120 spots. RSVP so you get the presale:";
+    const text="Jay Activist live at Peters Street Station, Fri Feb 12. RSVP so you get the presale:";
     const url='https://jayactivist.com/rsvp/';
     track('RSVP: tapped share');
     if(navigator.share){ navigator.share({title:"Jay Activist · Valentine's show",text,url}).catch(()=>{}); return; }
