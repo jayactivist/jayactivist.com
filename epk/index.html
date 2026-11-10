@@ -4,27 +4,28 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Jay Activist · Electronic Press Kit (EPK)</title>
-<meta name="description" content="Jay Activist EPK: Atlanta R&amp;B and hip-hop artist. Bio, press photos, music, videos, and booking contact.">
+<meta name="description" content="Jay Activist EPK: Atlanta hip-hop / R&amp;B artist. Biography, career highlights, press photos, popular tracks, videos, and management contact.">
 <meta property="og:title" content="Jay Activist · Electronic Press Kit">
-<meta property="og:description" content="Bio, press photos, music, videos, and booking for Atlanta R&amp;B / hip-hop artist Jay Activist.">
-<meta property="og:image" content="https://jayactivist.com/img/jay-activist-atlanta-rnb-singer-live-on-stage.jpg">
+<meta property="og:description" content="Biography, career highlights, press photos, music, and management for Atlanta hip-hop / R&amp;B artist Jay Activist.">
+<meta property="og:image" content="https://jayactivist.com/img/jay-activist-atlanta-rapper-press-photo-singing.jpg">
 <meta property="og:url" content="https://jayactivist.com/epk/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://jayactivist.com/epk/">
 <link rel="icon" href="../img/jay-activist-maybe-im-the-problem-cover-art.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@600;700&family=Poppins:wght@400;500;600&display=swap">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MusicGroup",
   "name": "Jay Activist",
   "url": "https://jayactivist.com/",
-  "image": "https://jayactivist.com/img/jay-activist-atlanta-rnb-singer-live-on-stage.jpg",
-  "genre": ["R&B", "Hip-Hop"],
+  "image": "https://jayactivist.com/img/jay-activist-atlanta-rapper-press-photo-singing.jpg",
+  "genre": ["Hip-Hop", "R&B"],
+  "foundingDate": "2021",
   "foundingLocation": {"@type": "Place", "name": "Atlanta, Georgia"},
-  "email": "jayactivistmanagement@gmail.com",
+  "member": {"@type": "Person", "name": "Jacob Liburd", "alternateName": "Jay Activist"},
   "sameAs": [
     "https://open.spotify.com/artist/6lEsbycrGkZFkJ1bvrCBGS",
     "https://music.apple.com/us/artist/jay-activist/1465915308",
@@ -37,81 +38,94 @@
 </script>
 <style>
 :root{
-  --paper:#fbe9d8; --paper-2:#f6d9bf; --ink:#3a0d12; --ink-soft:#6e3a34;
-  --flame:#d2481c; --gold:#e4a72b; --line:#3a0d1233; --cream:#fff8ef; --oxblood:#3a0d12;
-  --display:"Shrikhand", Georgia, serif;
-  --body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --bg:#0b0907; --panel:#15110d; --ink:#f4ece2; --soft:#c9bba9;
+  --bronze:#b98a52; --bronze-2:#8f6638;
+  --head:"Anton", Impact, "Arial Narrow", sans-serif;
+  --tab:"Oswald", "Arial Narrow", sans-serif;
+  --body:"Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme: dark){:root{
-  --paper:#1e0a10; --paper-2:#2b1018; --ink:#fbe3cb; --ink-soft:#d6ae96;
-  --flame:#f06a35; --gold:#f0b94a; --line:#fbe3cb26; --oxblood:#3a0d12; color-scheme:dark}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.55}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;font-size:1rem}
 a{color:inherit}
 img{max-width:100%;display:block}
-:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-.wrap{max-width:1080px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
-.label{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+:focus-visible{outline:3px solid var(--bronze);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
 
-.bar{border-bottom:3px solid var(--ink)}
-.bar .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:14px;gap:16px}
-.logo{font-family:var(--display);font-size:1.5rem;color:var(--flame);text-decoration:none;line-height:1}
-.bar nav a{font-family:var(--mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;margin-left:18px;white-space:nowrap}
-.bar nav a:hover{color:var(--flame)}
+.bar{position:absolute;inset:0 0 auto 0;z-index:5}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:16px}
+.logo{font-family:var(--head);font-size:1.5rem;letter-spacing:.02em;text-decoration:none;text-transform:uppercase}
+.bar nav a{font-family:var(--tab);text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;text-decoration:none;margin-left:18px}
+.bar nav a:hover{color:var(--bronze)}
+@media (max-width:560px){.bar nav{display:none}}
 
-.hero{padding-block:clamp(32px,6vw,64px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,56px);align-items:center}
-@media (max-width:820px){.hero{grid-template-columns:1fr}}
-.stamp{display:inline-block;font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--flame);border:2px solid var(--flame);padding:5px 10px;transform:rotate(-2deg)}
-h1{font-family:var(--display);font-weight:400;color:var(--flame);font-size:clamp(3rem,9vw,6rem);line-height:.92;margin:18px 0 16px;text-shadow:.045em .045em 0 var(--ink);transform:rotate(-2deg)}
-.tagline{font-weight:700;font-size:1.15rem;max-width:36ch;margin:0 0 20px}
-.hero img{border:3px solid var(--ink);box-shadow:10px 10px 0 var(--ink);aspect-ratio:2/3;object-fit:cover;width:100%;max-height:78vh}
-@media (max-width:820px){.hero img{aspect-ratio:4/5;max-height:none}}
-.btns{display:flex;flex-wrap:wrap;gap:12px}
-.btn{display:inline-block;font-weight:800;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;font-size:.85rem;padding:12px 18px;border:3px solid var(--ink);background:var(--flame);color:var(--cream)}
-.btn.alt{background:transparent;color:var(--ink)}
-.btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+/* Tan "tab" headings like the Canva layout */
+.tab{display:inline-block;font-family:var(--tab);font-style:italic;font-weight:700;text-transform:uppercase;letter-spacing:.02em;
+  color:#120c07;background:var(--bronze);padding:.28em 1.1em .28em .9em;font-size:clamp(1.15rem,2.4vw,1.6rem);
+  clip-path:polygon(4% 0,100% 0,96% 100%,0 100%);margin:0 0 18px}
+.big{font-family:var(--head);text-transform:uppercase;font-weight:400;line-height:.95;margin:0;letter-spacing:.01em}
 
-section{padding-block:clamp(32px,5vw,56px);border-top:3px solid var(--ink)}
-h2{font-family:var(--display);font-weight:400;color:var(--flame);font-size:clamp(2rem,5vw,3rem);line-height:1;margin:0 0 24px}
-.cols{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(24px,4vw,48px)}
-@media (max-width:820px){.cols{grid-template-columns:1fr}}
-.bio p{margin:0 0 14px;max-width:62ch}
-.bio p:first-child{font-weight:800;font-size:1.15rem}
-.facts{border:3px solid var(--ink);background:var(--paper-2);padding:18px 20px;align-self:start}
-.facts dl{margin:0;display:grid;gap:12px}
-.facts dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
-.facts dd{margin:2px 0 0;font-weight:700}
+/* Hero */
+.hero{position:relative;min-height:min(92vh,880px);display:flex;align-items:flex-end;overflow:hidden;background:var(--bg)}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,9,7,.15) 0%,rgba(11,9,7,.2) 45%,rgba(11,9,7,.92) 82%,var(--bg) 100%)}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-bottom:clamp(28px,6vw,64px)}
+.hero h1{font-size:clamp(3.6rem,13vw,9rem)}
+.hero .sub{font-family:var(--tab);text-transform:uppercase;letter-spacing:.16em;color:var(--bronze);margin-top:10px;font-size:clamp(.9rem,2vw,1.1rem)}
+.chev{display:inline-block;color:var(--bronze);opacity:.5;letter-spacing:-.12em;margin-left:.2em}
+.band{height:14px;background:var(--bronze);clip-path:polygon(0 0,100% 60%,100% 100%,0 100%)}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:20px}
-.card{text-decoration:none;display:block}
-.card img{border:3px solid var(--ink);aspect-ratio:1;object-fit:cover;width:100%}
-.card h3{font-size:1rem;font-weight:800;margin:10px 0 2px;line-height:1.25}
-.card .meta{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft)}
-.card:hover h3{color:var(--flame)}
+section{padding-block:clamp(40px,6vw,72px)}
+.split{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,64px)}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+.bio p{margin:0 0 16px;max-width:62ch;color:var(--ink)}
 
-.photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px}
-.photos figure{margin:0}
-.photos img{border:3px solid var(--ink);aspect-ratio:2/3;object-fit:cover;width:100%}
-.photos figcaption{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:10px;font-size:.9rem}
-.photos figcaption a{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--flame);font-weight:600;white-space:nowrap}
+.highlights ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.highlights li{padding-left:22px;position:relative}
+.highlights li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;background:var(--bronze);transform:rotate(45deg)}
 
-.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
-.vids img{border:3px solid var(--ink);aspect-ratio:16/9;object-fit:cover;width:100%}
+.info{display:grid;grid-template-columns:auto 1fr;gap:6px 24px;margin:0}
+.info dt{color:var(--soft);font-size:.9rem}
+.info dd{margin:0;font-weight:600}
 
-ul.high{margin:0;padding:0;list-style:none;display:grid;gap:12px;max-width:70ch}
-ul.high li{padding-left:22px;position:relative}
-ul.high li::before{content:"✦";position:absolute;left:0;color:var(--flame)}
+/* Polaroid press photos */
+.photos-wrap{background:var(--panel);border-block:1px solid #2a2017}
+.polaroids{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:clamp(18px,3vw,32px);margin-top:8px}
+.pol{margin:0;background:#fff;padding:10px 10px 12px;box-shadow:0 14px 30px rgba(0,0,0,.45);transform:rotate(var(--r,0deg));transition:transform .2s}
+.pol:nth-child(odd){--r:-2.2deg}.pol:nth-child(even){--r:1.8deg}.pol:nth-child(3n){--r:-.8deg}
+.pol:hover{transform:rotate(0) scale(1.02)}
+.pol img{aspect-ratio:2/3;object-fit:cover;width:100%}
+.pol figcaption{display:flex;justify-content:flex-end;margin-top:8px}
+.pol a{font-family:var(--tab);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:#3b2a18;text-decoration:none;font-weight:700}
+.pol a:hover{color:var(--bronze-2)}
+.note{color:var(--soft);font-size:.9rem;margin:18px 0 0}
 
-.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.contact div{border:3px solid var(--ink);padding:18px 20px}
-.contact h3{margin:0 0 6px;font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
-.contact a{font-weight:800;overflow-wrap:anywhere}
-.links{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:22px}
-.links a{font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-bottom:2px solid currentColor}
+/* Page-2 banner */
+.banner{position:relative}
+.banner img{width:100%;aspect-ratio:16/7;object-fit:cover;object-position:50% 40%}
+.banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,var(--bg))}
 
-footer{border-top:3px solid var(--ink);padding-block:22px;font-family:var(--mono);font-size:.72rem;color:var(--ink-soft)}
-footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.tracks{display:grid;gap:12px}
+.tracks iframe{width:100%;height:152px;border:0;border-radius:12px}
+.vids{display:grid;gap:18px}
+.vid{position:relative;display:block;width:100%;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer;aspect-ratio:16/9;background:#000;overflow:hidden;border:0}
+.vid img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .2s}
+.vid:hover img{opacity:1}
+.vid span{position:absolute;left:14px;bottom:12px;right:14px;font-weight:600;text-shadow:0 2px 8px #000}
+.vid i{position:absolute;inset:0;margin:auto;width:68px;height:48px;background:#e1251b;border-radius:12px}
+.vid i::after{content:"";position:absolute;left:27px;top:14px;border-left:18px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.contact-rows{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.contact-rows li{display:flex;align-items:center;gap:12px}
+.ico{width:34px;height:34px;flex:none;border-radius:50%;background:var(--bronze);display:grid;place-items:center}
+.ico svg{width:18px;height:18px;fill:#120c07}
+.contact-rows a{text-decoration:none;font-weight:600;overflow-wrap:anywhere}
+.contact-rows a:hover{color:var(--bronze)}
+.contact-rows small{display:block;color:var(--soft);font-weight:400}
+
+footer{border-top:1px solid #2a2017;padding-block:22px;color:var(--soft);font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 </style>
 </head>
 <body>
@@ -119,119 +133,120 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <header class="bar">
   <div class="wrap">
     <a class="logo" href="/">Jay Activist</a>
-    <nav><a href="#music">Music</a><a href="#photos">Photos</a><a href="#contact">Booking</a></nav>
+    <nav><a href="#bio">Bio</a><a href="#photos">Press photos</a><a href="#music">Music</a><a href="#management">Management</a></nav>
   </div>
 </header>
 
 <main>
-  <div class="wrap hero">
-    <div>
-      <span class="stamp">Electronic Press Kit</span>
-      <h1>Jay Activist</h1>
-      <p class="tagline">Atlanta R&amp;B and hip-hop. Storytelling about love, ambition, and situationships.</p>
-      <div class="btns">
-        <a class="btn" href="mailto:jayactivistmanagement@gmail.com?subject=Booking%20inquiry%20%E2%80%94%20Jay%20Activist">Book Jay Activist</a>
-        <a class="btn alt" href="https://open.spotify.com/artist/6lEsbycrGkZFkJ1bvrCBGS" target="_blank" rel="noopener">Listen on Spotify</a>
-      </div>
+  <div class="hero">
+    <img class="hero-photo" src="../img/jay-activist-atlanta-rapper-press-photo-singing.jpg" width="1200" height="1800" alt="Jay Activist, Atlanta hip-hop and R&amp;B artist, smiling while singing into a microphone">
+    <div class="wrap">
+      <h1 class="big">Jay Activist<span class="chev" aria-hidden="true">›››</span></h1>
+      <div class="sub">Electronic Press Kit · Atlanta · Hip-Hop / R&amp;B</div>
     </div>
-    <img src="../img/jay-activist-atlanta-rnb-singer-live-on-stage.jpg" width="1000" height="1500" alt="Jay Activist, Atlanta R&amp;B and hip-hop artist, smiling and singing into a microphone on stage in a green crochet shirt">
   </div>
+  <div class="band" aria-hidden="true"></div>
 
   <section id="bio">
-    <div class="wrap cols">
+    <div class="wrap split">
       <div class="bio">
-        <h2>Bio</h2>
-        <p>Jay Activist didn’t wait for a moment, he built one.</p>
-        <p>Coming out of the Southside of Atlanta, he started on college stages where crowds didn’t know his name yet. That didn’t last long. Open mics turned into packed rooms, and packed rooms turned into people showing up just to see what he was going to do next.</p>
-        <p>At the center of Jay’s music is storytelling. His catalog plays like an ongoing conversation about love, ambition, situationships, heartbreak, confidence, and the things people have trouble saying out loud. Titles like <em>Lose You Again</em> and <em>MAYBE IM THE PROBLEM</em> feel like chapters in a bigger story, each release connected to what came before while revealing something new.</p>
-        <p>His sound lives between R&amp;B and rap, moving from smooth and melodic to introspective and conversational without losing his identity. Behind it all is an obsessive work ethic: recording, performing, testing ideas, studying what connects, and doing it again.</p>
-      </div>
-      <aside class="facts" aria-label="Quick facts">
-        <dl>
-          <div><dt>Based in</dt><dd>Atlanta, GA</dd></div>
-          <div><dt>Genre</dt><dd>R&amp;B / Hip-hop, with Caribbean roots</dd></div>
-          <div><dt>For fans of</dt><dd>Bryson Tiller, PARTYNEXTDOOR, 6LACK, J. Cole, Wale</dd></div>
-          <div><dt>Latest release</dt><dd>“Maybe I’m the Problem” (super single, Sept 2026)</dd></div>
-          <div><dt>Next headline show</dt><dd>A Love Jones Affair · Feb 12, 2027 · Peters Street Station, Atlanta</dd></div>
-          <div><dt>Short bio</dt><dd style="font-weight:500">Jay Activist is an Atlanta artist blending R&amp;B and rap into story-driven records about love, ambition, and the situationships in between.</dd></div>
+        <h2 class="tab">Biography</h2>
+        <p>Jay Activist is the definition of charisma. Raised on the Southside of Atlanta with Caribbean flavor, he blends moody trap and soulful vibes into music painting stories of late nights, complicated love, and the introspective thoughts of someone young navigating life.</p>
+        <p>Jay Activist first made his stamp on the rap scene going viral for his record “Still Atlanta” as a response to Omeretta and has since continued to grow his fanbase through college campuses across Atlanta with help from organizations such as NCEG. From the <em>Sugar Honey Iced Tea</em> EP through <em>You Knew What This Was</em> to his current single “Maybe I’m the Problem,” Jay Activist isn’t just telling stories — he’s building a soundtrack for those who play the game with heart and style, with the new era <em>We’re Just Friends (WJF)</em> coming next.</p>
+
+        <h2 class="tab" style="margin-top:18px">Personal info</h2>
+        <dl class="info">
+          <dt>Real name</dt><dd>Jacob Liburd</dd>
+          <dt>Location</dt><dd>Atlanta</dd>
+          <dt>Category</dt><dd>Hip-Hop / R&amp;B</dd>
+          <dt>Artist since</dt><dd>2021</dd>
         </dl>
-      </aside>
+      </div>
+      <div class="highlights">
+        <h2 class="tab">Career highlights</h2>
+        <ul>
+          <li>Opening act for Sexyy Red &amp; Mariah the Scientist at Pantherpalooza (GSU)</li>
+          <li>Cover of Rocklan One Magazine</li>
+          <li>Headlined Actifest (2023)</li>
+          <li>5K monthly listeners on Spotify</li>
+          <li>Contestant on <em>Rhythm + Flow</em> Season 2</li>
+          <li>Performed at Holidaypalooza at SXSW (2025)</li>
+        </ul>
+
+        <h2 class="tab" style="margin-top:30px">Social media</h2>
+        <ul class="contact-rows">
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 4.6a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4zm0 8.6a3.4 3.4 0 1 1 0-6.8 3.4 3.4 0 0 1 0 6.8zm5.4-9.9a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg></span><a href="https://www.instagram.com/thejayactivist/" target="_blank" rel="noopener">@thejayactivist <small>Instagram</small></a></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 2h-3.4v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.4 6.4 0 1 0 5.4 6.3V8.7a8 8 0 0 0 4.6 1.5V6.8a4.6 4.6 0 0 1-4.6-4.8z"/></svg></span><a href="https://www.tiktok.com/@jayactivist" target="_blank" rel="noopener">@jayactivist <small>TikTok</small></a></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15V9l5.8 3-5.8 3z"/></svg></span><a href="https://www.youtube.com/@JayActivist1" target="_blank" rel="noopener">@JayActivist1 <small>YouTube</small></a></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22zm5 15.9a.7.7 0 0 1-1 .2c-2.7-1.6-6-2-10-1.1a.7.7 0 1 1-.3-1.4c4.3-1 8-.6 11 1.2.3.3.4.7.3 1.1zm1.3-3a.9.9 0 0 1-1.2.3c-3-1.9-7.7-2.4-11.3-1.3a.9.9 0 1 1-.5-1.7c4.1-1.2 9.2-.6 12.7 1.5.4.3.5.8.3 1.2zm.1-3.1C14.8 8.6 8.8 8.4 5.3 9.4a1 1 0 1 1-.6-2c4-1.2 10.6-1 14.8 1.5a1 1 0 1 1-1.1 1.9z"/></svg></span><a href="https://open.spotify.com/artist/6lEsbycrGkZFkJ1bvrCBGS" target="_blank" rel="noopener">Jay Activist <small>Spotify</small></a></li>
+        </ul>
+      </div>
     </div>
   </section>
+
+  <section id="photos" class="photos-wrap">
+    <div class="wrap">
+      <h2 class="tab">Press photos</h2>
+      <div class="polaroids">
+        <figure class="pol"><img src="../img/jay-activist-press-photo-gold-hat-portrait.jpg" width="533" height="800" alt="Jay Activist press photo, seated portrait in a gold cap and olive outfit" loading="lazy"><figcaption><a href="../img/jay-activist-press-photo-gold-hat-portrait.jpg" download>Download</a></figcaption></figure>
+        <figure class="pol"><img src="../img/jay-activist-press-photo-denim-jacket.jpg" width="533" height="800" alt="Jay Activist press photo in a denim jacket" loading="lazy"><figcaption><a href="../img/jay-activist-press-photo-denim-jacket.jpg" download>Download</a></figcaption></figure>
+        <figure class="pol"><img src="../img/jay-activist-press-photo-denim-kitchen.jpg" width="533" height="800" alt="Jay Activist press photo, side profile in a denim jacket" loading="lazy"><figcaption><a href="../img/jay-activist-press-photo-denim-kitchen.jpg" download>Download</a></figcaption></figure>
+        <figure class="pol"><img src="../img/jay-activist-live-performance-atlanta.jpg" width="533" height="800" alt="Jay Activist performing live in Atlanta in an Atlanta Braves cap" loading="lazy"><figcaption><a href="../img/jay-activist-live-performance-atlanta.jpg" download>Download</a></figcaption></figure>
+        <figure class="pol"><img src="../img/jay-activist-press-photo-leather-jacket-backstage.jpg" width="640" height="800" alt="Jay Activist backstage in a black leather jacket" loading="lazy"><figcaption><a href="../img/jay-activist-press-photo-leather-jacket-backstage.jpg" download>Download</a></figcaption></figure>
+        <figure class="pol"><img src="../img/jay-activist-atlanta-rapper-press-photo-singing.jpg" width="1200" height="1800" alt="Jay Activist singing into a microphone" loading="lazy"><figcaption><a href="../img/jay-activist-atlanta-rapper-press-photo-singing.jpg" download>Download</a></figcaption></figure>
+      </div>
+      <p class="note">Photos may be used for press and promotion of Jay Activist. Please credit “Jay Activist.”</p>
+    </div>
+  </section>
+
+  <div class="banner"><img src="../img/jay-activist-live-at-vinyl-atlanta.jpg" width="1280" height="720" alt="Jay Activist performing live at Vinyl in Atlanta" loading="lazy"></div>
 
   <section id="music">
-    <div class="wrap">
-      <h2>Music</h2>
-      <div class="grid">
-        <a class="card" href="https://ffm.to/youtheproblem" target="_blank" rel="noopener"><img src="../img/jay-activist-maybe-im-the-problem-cover-art.jpg" alt="Maybe I'm the Problem cover art by Jay Activist" loading="lazy"><h3>Maybe I’m the Problem</h3><div class="meta">Super single · 2026</div></a>
-        <a class="card" href="https://ffm.to/loseyouagainjay" target="_blank" rel="noopener"><img src="../img/jay-activist-lose-you-again-single-cover.jpg" alt="Lose You Again cover art by Jay Activist" loading="lazy"><h3>Lose You Again</h3><div class="meta">Single</div></a>
-        <a class="card" href="https://music.apple.com/us/album/you-knew-what-this-was/6818676686" target="_blank" rel="noopener"><img src="../img/jay-activist-you-knew-what-this-was-album-cover.jpg" alt="You Knew What This Was album cover by Jay Activist" loading="lazy"><h3>You Knew What This Was</h3><div class="meta">Album</div></a>
-        <a class="card" href="https://music.apple.com/us/album/sugar-honey-iced-tea-ep/6821020973" target="_blank" rel="noopener"><img src="../img/jay-activist-sugar-honey-iced-tea-ep-cover.jpg" alt="Sugar Honey Iced Tea cover art by Jay Activist" loading="lazy"><h3>Sugar Honey Iced Tea</h3><div class="meta">EP</div></a>
+    <div class="wrap split">
+      <div>
+        <h2 class="tab">Popular tracks</h2>
+        <div class="tracks">
+          <iframe title="Tonight by Jay Activist on Spotify" src="https://open.spotify.com/embed/track/1lNLQiGE33MJUHynzRo6w3?utm_source=generator&amp;theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <iframe title="Sugar Honey Iced Tea by Jay Activist on Spotify" src="https://open.spotify.com/embed/track/5qPZHEhy90qPBbBRf7da1b?utm_source=generator&amp;theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <iframe title="FOREPLAY by Jay Activist on Spotify" src="https://open.spotify.com/embed/track/0JRyAgpbCl0AOlIoSO1CBq?utm_source=generator&amp;theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+      </div>
+      <div>
+        <h2 class="tab">YouTube</h2>
+        <div class="vids">
+          <button class="vid" type="button" data-yt="MLywlACh5p4" aria-label="Play Jay Activist – Tonight (Official Visualizer)"><img src="https://i.ytimg.com/vi/MLywlACh5p4/hqdefault.jpg" alt="Jay Activist – Tonight official visualizer" loading="lazy"><i></i><span>Jay Activist – Tonight (Official Visualizer)</span></button>
+          <button class="vid" type="button" data-yt="hJyDG1z70o8" aria-label="Play Jay Activist – Sugar Honey Iced Tea"><img src="https://i.ytimg.com/vi/hJyDG1z70o8/hqdefault.jpg" alt="Jay Activist – Sugar Honey Iced Tea video" loading="lazy"><i></i><span>Jay Activist – Sugar Honey Iced Tea</span></button>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="videos">
+  <section id="management" class="photos-wrap">
     <div class="wrap">
-      <h2>Videos</h2>
-      <div class="vids">
-        <a class="card" href="https://www.youtube.com/watch?v=pspQSCAQSA0" target="_blank" rel="noopener"><img src="../img/jay-activist-lose-you-again-music-video-ft-kaliyah-lyric.jpg" alt="Jay Activist Lose You Again music video still" loading="lazy"><h3>Lose You Again (ft. Kaliyah Lyric)</h3><div class="meta">Official music video</div></a>
-        <a class="card" href="https://www.youtube.com/watch?v=JLyiLOo1GVM" target="_blank" rel="noopener"><img src="../img/jay-activist-sugar-honey-iced-tea-live-center-stage-atlanta.jpg" alt="Jay Activist performing Sugar Honey Iced Tea live at Center Stage" loading="lazy"><h3>Sugar Honey Iced Tea</h3><div class="meta">Live at Center Stage 2025</div></a>
-        <a class="card" href="https://www.youtube.com/watch?v=MLywlACh5p4" target="_blank" rel="noopener"><img src="../img/jay-activist-tonight-visualizer.jpg" alt="Jay Activist Tonight visualizer still" loading="lazy"><h3>Tonight</h3><div class="meta">Official visualizer</div></a>
-      </div>
-    </div>
-  </section>
-
-  <section id="photos">
-    <div class="wrap">
-      <h2>Press photos</h2>
-      <div class="photos">
-        <figure>
-          <img src="../img/jay-activist-atlanta-rnb-singer-live-on-stage.jpg" width="1000" height="1500" alt="Jay Activist smiling and singing on stage in Atlanta" loading="lazy">
-          <figcaption><span>Jay Activist live, close-up</span><a href="../img/jay-activist-atlanta-rnb-singer-live-on-stage.jpg" download>Download</a></figcaption>
-        </figure>
-        <figure>
-          <img src="../img/jay-activist-atlanta-rapper-live-performance-with-band.jpg" width="900" height="1350" alt="Jay Activist performing live with his band in Atlanta" loading="lazy">
-          <figcaption><span>Jay Activist live with band</span><a href="../img/jay-activist-atlanta-rapper-live-performance-with-band.jpg" download>Download</a></figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section id="highlights">
-    <div class="wrap">
-      <h2>Highlights</h2>
-      <ul class="high">
-        <li>“Lose You Again” caught on across TikTok as a yearning anthem.</li>
-        <li>Took the “WHO’S THE PROBLEM?” rollout for <em>Maybe I’m the Problem</em> onto the Atlanta University Center campus, with a real working hotline and an interactive online game.</li>
-        <li>Performed “Sugar Honey Iced Tea” live at Center Stage (2025).</li>
-        <li>Headlining <em>A Love Jones Affair</em> at Peters Street Station, Atlanta, Feb 12, 2027.</li>
+      <h2 class="tab">Management</h2>
+      <ul class="contact-rows">
+        <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2V5zm2 2v.5l8 5 8-5V7H4zm16 2.8-8 5-8-5V17h16V9.8z"/></svg></span><a href="mailto:derek.jackson@nationalceg.org?subject=Jay%20Activist%20inquiry">derek.jackson@nationalceg.org <small>Management · NCEG</small></a></li>
+        <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 4.6a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4zm0 8.6a3.4 3.4 0 1 1 0-6.8 3.4 3.4 0 0 1 0 6.8zm5.4-9.9a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg></span><a href="https://www.instagram.com/serpgnik/" target="_blank" rel="noopener">@serpgnik <small>Management on Instagram</small></a></li>
       </ul>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="wrap">
-      <h2>Booking &amp; contact</h2>
-      <div class="contact">
-        <div><h3>Booking &amp; management</h3><a href="mailto:jayactivistmanagement@gmail.com">jayactivistmanagement@gmail.com</a></div>
-        <div><h3>Music &amp; business</h3><a href="mailto:jayactivist41@gmail.com">jayactivist41@gmail.com</a></div>
-      </div>
-      <div class="links">
-        <a href="https://open.spotify.com/artist/6lEsbycrGkZFkJ1bvrCBGS" target="_blank" rel="noopener">Spotify</a>
-        <a href="https://music.apple.com/us/artist/jay-activist/1465915308" target="_blank" rel="noopener">Apple Music</a>
-        <a href="https://www.youtube.com/@JayActivist1" target="_blank" rel="noopener">YouTube</a>
-        <a href="https://www.instagram.com/thejayactivist/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.tiktok.com/@jayactivist" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://soundcloud.com/jayactivist" target="_blank" rel="noopener">SoundCloud</a>
-        <a href="/">Website</a>
-      </div>
     </div>
   </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 Jay Activist</span><span>Atlanta, GA</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Jay Activist</span><a href="/">jayactivist.com</a></div></footer>
 
+<script>
+// Load each YouTube player only when tapped (keeps the page fast).
+document.querySelectorAll('.vid[data-yt]').forEach(function(b){
+  b.addEventListener('click', function(){
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.yt+'?autoplay=1&rel=0';
+    f.title=b.getAttribute('aria-label');
+    f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen=true;
+    b.replaceChildren(f);
+  }, {once:true});
+});
+</script>
 <!-- Analytics: GoatCounter (no cookies). Dashboard: https://jayactivist.goatcounter.com -->
 <script data-goatcounter="https://jayactivist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
